@@ -1,2 +1,30 @@
-<h1>Orders#edit</h1>
-<p>Find me in app/views/orders/edit.html.erb</p>
+<h1>Edit Order</h1>
+<h1> Supplier: <%= @order.supplier.name %></h1>
+<h1>Restaurant: </h1>
+
+<div class="order-details">
+  <%= form_for @order do |f| %>
+    <div class="field">
+      <%= f.label :instructions %>
+      <%= f.text_area :instructions %>
+    </div>
+
+    <div class="field">
+      <%= f.label :delivery_date %>
+      <%= f.date_select :delivery_date %>
+    </div>
+  <% end %>
+</div>
+
+<div class="order-inventory">
+  <% @inventory_items.each do |inventory_item|%>
+    <div class="inventory-item">
+
+      <%= inventory_item.name %>
+      <%= inventory_item.price %>
+      <%= inventory_item.quantity %>
+
+    </div>
+
+  <% end %>
+</div>
