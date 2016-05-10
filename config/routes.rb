@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+
+  get 'orders/index'
+
+  get 'orders/show'
+
+  get 'orders/create'
+
+  get 'orders/edit'
+
+  get 'orders/update'
+
+  get 'inventory_items/index'
+
+  resources :suppliers do
+    resources :inventory_items
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

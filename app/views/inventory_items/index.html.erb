@@ -1,0 +1,14 @@
+<h1><%= @supplier.name %></h1>
+<h1>InventoryItems</h1>
+
+<div class="inventory">
+  <ul>
+    <% @inventory_items.each do |inventory_item| %>
+      <li>
+        <%= inventory_item.item.name %>
+        <%= inventory_item.quantity %>
+        <%= inventory_item.price %>
+      </li>
+    <% end %>
+  </ul>
+</div>
