@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+items = %w(chicken beef pork tomato potato parsley carrot apple orange tortilla)
+
+items.each { |item| Item.create(name: item, description: 'Food') }
