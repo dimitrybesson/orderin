@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  restaurant_id: 1
+  supplier_id: 1
+  user_id: 1
+  instructions: MyText
+  delivery_date: 2016-05-10 16:08:21
+
+two:
+  restaurant_id: 1
+  supplier_id: 1
+  user_id: 1
+  instructions: MyText
+  delivery_date: 2016-05-10 16:08:21
