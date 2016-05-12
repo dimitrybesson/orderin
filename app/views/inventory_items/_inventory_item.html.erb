@@ -1,0 +1,16 @@
+<li class="inventory-item">
+  <span class="inventory-item-name"><%= inventory_item.name %></span>
+
+  <div class="inventory-item-right">
+    <span class="inventory-item-price"><%= inventory_item.price %></span>
+    <span class="inventory-item-quantity"><%= inventory_item.quantity %></span>
+
+    <%= form_for @order_item do |f| %>
+      <%= f.hidden_field :order_id, value: @order.id %>
+      <%= f.hidden_field :inventory_item_id, value: inventory_item.id %>
+      <%= f.number_field :quantity %>
+      <%= f.submit "Add" %>
+    <% end %>
+  </div>
+
+</li>

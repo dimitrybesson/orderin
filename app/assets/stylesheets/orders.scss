@@ -1,3 +1,61 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+#order-edit {
+  overflow: hidden;
+}
+
+.inventory-section {
+  width: 67%;
+  float: left;
+}
+
+.order-summary {
+  width: 33%;
+  float: right;
+}
+
+.inventory-item {
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.new_order_item {
+  display: inline-block;
+}
+
+#order_item_quantity {
+  width: 50px;
+}
+
+.inventory-item-right {
+  float: right;
+}
+
+.inventory-item-price {
+  display: inline-block;
+  text-align: center;
+  width: 3rem;
+}
+
+.inventory-item-quantity {
+  display: inline-block;
+  text-align: center;
+  width: 3rem;
+}

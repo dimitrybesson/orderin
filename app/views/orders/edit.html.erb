@@ -1,38 +1,48 @@
 <h1>Edit Order</h1>
-<h1> Supplier: <%= @order.supplier.name %></h1>
-<h1>Restaurant: </h1>
-
-<div class="order-details">
-  <%= form_for @order do |f| %>
-    <div class="field">
-      <%= f.label :instructions %>
-      <%= f.text_area :instructions %>
-    </div>
-
-    <div class="field">
-      <%= f.label :delivery_date %>
-      <%= f.date_select :delivery_date %>
-    </div>
-  <% end %>
+<!--nav will probably be in layout?  -->
+<nav>
+  <!-- Nav options: home and cancel order -->
+</nav>
+<div class="order-info">
+  <h1> Supplier: <%= @order.supplier.name %></h1>
+  <h1>Restaurant: </h1>
+  <!--user name  -->
 </div>
 
-<div class="order-inventory">
-  <% @inventory_items.each do |inventory_item|%>
-    <div class="inventory-item">
 
-      <%= inventory_item.name %>
-      <%= inventory_item.price %>
-      <%= inventory_item.quantity %>
+<main id="order-edit">
+  <section class='inventory-section'>
+    <div class="inventory">
+      <ul class="inventory-items">
+        <%= render @inventory_items %>
+      </ul>
+    </div>
+  </section>
 
-      <%= form_for @order_item do |f| %>
-        <%= f.hidden_field :order_id, value: @order.id %>
-        <%= f.hidden_field :inventory_item_id, value: inventory_item.id %>
-        <%= f.number_field :quantity %>
-        <%= f.submit "Add" %>
 
+
+  <aside class="order-summary">
+
+    <div class="order-details">
+      <%= render @order %>
+    </div>
+
+    <div class="order-instructions">
+      <%= form_for @order do |f| %>
+        <div class="field">
+          <%= f.label :instructions %>
+          <%= f.text_area :instructions %>
+        </div>
+
+        <div class="field">
+          <%= f.label :delivery_date %>
+          <%= f.date_select :delivery_date %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Submit" %>
+        </div>
       <% end %>
-
     </div>
-
-  <% end %>
-</div>
+  </aside>
+</main>

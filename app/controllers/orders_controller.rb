@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @inventory_items = @order.supplier.inventory_items
     @order_item = OrderItem.new
+    @order_items = @order.order_items
   end
 
   def update
