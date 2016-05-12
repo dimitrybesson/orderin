@@ -24,6 +24,14 @@
       <%= inventory_item.price %>
       <%= inventory_item.quantity %>
 
+      <%= form_for @order_item do |f| %>
+        <%= f.hidden_field :order_id, value: @order.id %>
+        <%= f.hidden_field :inventory_item_id, value: inventory_item.id %>
+        <%= f.number_field :quantity %>
+        <%= f.submit "Add" %>
+
+      <% end %>
+
     </div>
 
   <% end %>

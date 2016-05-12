@@ -1,4 +1,4 @@
-module ItemsHelper
+module InventoryItemsHelper
 
   def name
     self.item.name
