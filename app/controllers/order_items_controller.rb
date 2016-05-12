@@ -2,8 +2,10 @@ class OrderItemsController < ApplicationController
 
   def create
     @order_item = OrderItem.new(order_item_params)
+    @order = @order_item.order
+    @order_items = @order.order_items
     if @order_item.save
-      render nothing:true
+      render @order
     else
       # error message
     end
