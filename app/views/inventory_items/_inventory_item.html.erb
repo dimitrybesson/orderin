@@ -2,7 +2,7 @@
   <span class="inventory-item-name"><%= inventory_item.name %></span>
 
   <div class="inventory-item-right">
-    <span class="inventory-item-price"><%= inventory_item.price %></span>
+    <span class="inventory-item-price"><%= inventory_item.formatted_price %></span>
     <span class="inventory-item-quantity"><%= inventory_item.quantity %></span>
 
     <%= form_for @order_item do |f| %>

@@ -59,3 +59,37 @@ ul {
   text-align: center;
   width: 3rem;
 }
+
+.order-summary {
+  border: 2px solid red;
+}
+
+.inventory-section {
+  border: 2px solid blue;
+}
+
+.order-item {
+  overflow: hidden;
+}
+
+.order-item-right {
+  float: right;
+}
+
+.order-item-price {
+  display: inline-block;
+  text-align: center;
+  width: 2rem;
+}
+
+.order-item-quantity {
+  display: inline-block;
+  text-align: center;
+  width: 2rem;
+}
+
+.order-item-subtotal {
+  display: inline-block;
+  text-align: center;
+  width: 2rem;
+}

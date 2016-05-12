@@ -1,6 +1,8 @@
 <li class="order-item">
   <%= order_item.name %>
-  <%= order_item.price %>
-  <%= order_item.quantity %>
-  <%= order_item.subtotal %>
+  <div class="order-item-right">
+    <span class='order-item-price'><%= order_item.formatted_price %></span>
+    <span class='order-item-quantity'><%= order_item.quantity %></span>
+    <span class='order-item-subtotal'><%= order_item.formatted_subtotal %></span>
+  </div>
 </li>
