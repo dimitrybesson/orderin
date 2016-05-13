@@ -4,5 +4,6 @@
     <span class='order-item-price'><%= order_item.formatted_price %></span>
     <span class='order-item-quantity'><%= order_item.quantity %></span>
     <span class='order-item-subtotal'><%= order_item.formatted_subtotal %></span>
+    <%= link_to "X", order_item_path(order_item), method: :delete, class: 'order-item-delete' %>
   </div>
 </li>

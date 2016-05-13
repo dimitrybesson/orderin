@@ -5,6 +5,7 @@ class OrderItemsController < ApplicationController
     @order = @order_item.order
     @order_items = @order.order_items
     if @order_item.save
+      @order_item.deduct_from_inventory
       render @order
     else
       # error message
@@ -15,6 +16,16 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
+    @order_item = OrderItem.find(params[:id])
+    @order = @order_item.order
+    @inventory_item = @order_item.inventory_item
+
+    @inventory_item.quantity += @order_item.quantity
+    @inventory_item.save
+
+    @order_item.destroy
+    @order_item = OrderItem.new
+    render @inventory_item
   end
 
   private
