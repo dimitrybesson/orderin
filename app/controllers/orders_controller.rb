@@ -8,6 +8,8 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+
+
   end
 
   def create
@@ -30,6 +32,10 @@ class OrdersController < ApplicationController
 
     @order_item = OrderItem.new
     @order_items = @order.order_items
+
+    if request.xhr?
+      render partial: 'order_total'
+    end
   end
 
   def update

@@ -6,13 +6,19 @@ class OrderItemsController < ApplicationController
     @order_items = @order.order_items
     if @order_item.save
       @order_item.deduct_from_inventory
-      render @order
+      render @order_item
     else
       # error message
     end
   end
 
   def update
+    @order_item = OrderItem.find(params[:id])
+    if @order_item.update_attributes(order_item_params)
+      render @order_item
+    else
+
+    end
   end
 
   def destroy
