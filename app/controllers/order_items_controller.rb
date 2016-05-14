@@ -14,11 +14,17 @@ class OrderItemsController < ApplicationController
 
   def update
     @order_item = OrderItem.find(params[:id])
+    delta = @order_item.quantity - params[:order_item][:quantity].to_i
     if @order_item.update_attributes(order_item_params)
+      @order_item.update_inventory(delta)
       render @order_item
     else
 
     end
+  end
+
+  def mass_update
+    render nothing:true
   end
 
   def destroy

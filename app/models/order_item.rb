@@ -27,5 +27,10 @@ class OrderItem < ActiveRecord::Base
     self.inventory_item.update_attributes(quantity: new_quantity)
   end
 
+  def update_inventory(delta)
+    new_quantity = self.inventory_item.quantity + delta
+    self.inventory_item.update_attributes(quantity: new_quantity)
+  end
+
 
 end

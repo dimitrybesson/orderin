@@ -32,11 +32,11 @@ $(document).on('ready page:load', function() {
   });
 
 // Destroy and remove order_item from order_summary
-  $('.order-details').on('click', '.order-item-delete', function(event) {
+  $('.order-items').on('click', '.order-item-delete', function(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
 
-    var orderItem = $(this).parent().parent()
+    var orderItem = $(this).parent().parent();
 
     $.ajax({
       method: 'DELETE',
@@ -50,12 +50,48 @@ $(document).on('ready page:load', function() {
     });
   });
 
+// Update order_item
+  $('.order-items').on('submit', '.edit_order_item', function(event) {
+    event.preventDefault();
 
+    var orderItem = $(this).parent().parent();
+
+    $.ajax({
+      method: 'PATCH',
+      url: $(this).attr('action'),
+      data: $(this).serialize(),
+      dataType: 'html',
+      success: function(data) {
+        orderItem.replaceWith(data);
+        orderTotalUpdate();
+      }
+
+    });
+  });
+
+  $('.edit_order').on('submit', function(event) {
+    event.preventDefault();
+    var activeForms = $('.edit_order_item').not('.hidden');
+    var forms = {};
+    var counter = 0;
+    activeForms.each(function(form) {
+      console.log(form);
+      // var serializedForm = form.serialize();
+      forms[counter] = serializedForm;
+      counter++;
+    });
+
+    $.ajax({
+      method: 'PATCH',
+      url: '/order_items',
+      data: forms
+    });
+  });
 
 
 
 // Hover over order_item to see edit option and pointer cursor
-  $('.order-details').on('mouseover', '.order-item', function() {
+  $('.order-items').on('mouseover', '.order-item', function() {
 
     var orderItemRight = $(this).children();
     var editIconContainer = orderItemRight.children('.edit-icon-container');
@@ -65,7 +101,7 @@ $(document).on('ready page:load', function() {
     $(this).css({cursor: 'pointer'});
   });
 
-  $('.order-details').on('mouseout', '.order-item', function() {
+  $('.order-items').on('mouseout', '.order-item', function() {
 
     var orderItemRight = $(this).children();
     var editIconContainer = orderItemRight.children('.edit-icon-container');
@@ -74,8 +110,12 @@ $(document).on('ready page:load', function() {
     editIcon.toggleClass('hidden');
   });
 
+  $('.order-items').on('click', '.edit_order_item', function(event) {
+    event.stopPropagation();
+  });
+
 // Click order_item to show edit order_item form
-  $('.order-details').on('click', '.order-item', function() {
+  $('.order-items').on('click', ('.order-item'), function() {
     var orderItemRight = $(this).children();
     var editIconContainer = orderItemRight.children('.edit-icon-container');
     var orderItemQuantity = orderItemRight.children('.order-item-quantity');
@@ -86,6 +126,7 @@ $(document).on('ready page:load', function() {
     var editOrderForm = orderItemRight.children('.edit_order_item');
     editOrderForm.toggleClass('hidden');
   });
+
 
 
 });
