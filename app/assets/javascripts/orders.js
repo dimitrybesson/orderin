@@ -72,19 +72,24 @@ $(document).on('ready page:load', function() {
   $('.edit_order').on('submit', function(event) {
     event.preventDefault();
     var activeForms = $('.edit_order_item').not('.hidden');
-    var forms = {};
+    var forms = [];
     var counter = 0;
-    activeForms.each(function(form) {
-      console.log(form);
-      // var serializedForm = form.serialize();
-      forms[counter] = serializedForm;
+    activeForms.each(function(index, form) {
+      var formAction = $(this).attr('action');
+      var newQuantity = $(this).children('#order_item_quantity').val();
+      console.log(newQuantity);
+      // var serializedForm = $(this).serialize();
+      forms.push([formAction, newQuantity]);
       counter++;
     });
+
+    var formData = {};
+    formData['formInfo'] = forms;
 
     $.ajax({
       method: 'PATCH',
       url: '/order_items',
-      data: forms
+      data: formData
     });
   });
 
