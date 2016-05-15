@@ -5,7 +5,7 @@
     <span class='order-item-quantity'><%= order_item.quantity %></span>
     <div class='edit-icon-container'><span class='edit-icon hidden'>E</span></div>
     <%= form_for order_item, html: {class: 'hidden edit_order_item'} do |f| %>
-      <%= f.number_field :quantity %>
+      <%= f.number_field :quantity, options = {min: 0, max: (order_item.inventory_item.quantity + order_item.quantity)} %>
       <%= f.submit "+" %>
     <% end %>
     <span class='order-item-subtotal'><%= order_item.formatted_subtotal %></span>
