@@ -76,7 +76,6 @@ $(document).on('ready page:load', function() {
     activeForms.each(function(index, form) {
       var formAction = $(this).attr('action');
       var newQuantity = $(this).children('#order_item_quantity').val();
-      // var serializedForm = $(this).serialize();
       forms.push([formAction, newQuantity]);
     });
 
