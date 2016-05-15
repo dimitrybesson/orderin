@@ -8,7 +8,7 @@
     <%= form_for @order_item do |f| %>
       <%= f.hidden_field :order_id, value: @order.id %>
       <%= f.hidden_field :inventory_item_id, value: inventory_item.id %>
-      <%= f.number_field :quantity %>
+      <%= f.number_field :quantity, options = {min: 0, max: inventory_item.quantity} %>
       <%= f.submit "Add" %>
     <% end %>
   </div>
