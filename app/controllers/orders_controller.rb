@@ -8,8 +8,6 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
-
-
   end
 
   def create
@@ -23,13 +21,7 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
-    # @inventory_items = @order.supplier.inventory_items
-
-    # exclude_list = @order.order_items.map { |item| item.inventory_item_id }
-    #
-    # @inventory_items = @order.supplier.inventory_items.where.not(id: exclude_list)
     @inventory_items = @order.accessible_items
-
     @order_item = OrderItem.new
     @order_items = @order.order_items
 

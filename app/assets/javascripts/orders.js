@@ -1,8 +1,9 @@
 $(document).on('ready page:load', function() {
 
-  function orderTotalUpdate() {
+  function orderTotalUpdate(order) {
 
     $.ajax({
+      url: '/orders/' + order +'/edit',
       method: 'GET',
       dataType: 'html',
       success: function(data) {
@@ -16,7 +17,7 @@ $(document).on('ready page:load', function() {
     event.preventDefault();
 
     var inventoryItem = $(this).parent().parent()
-
+    orderId = $(this).attr('data');
     $.ajax({
       method: 'POST',
       url: $(this).attr('action'),
@@ -24,9 +25,8 @@ $(document).on('ready page:load', function() {
       data: $(this).serialize(),
       success: function(data) {
         $('.order-items').append(data);
-        // $('#order_item_quantity', this).val('');
         inventoryItem.remove();
-        orderTotalUpdate();
+        orderTotalUpdate(orderId);
       }
     });
   });
@@ -37,6 +37,7 @@ $(document).on('ready page:load', function() {
     event.stopImmediatePropagation();
 
     var orderItem = $(this).parent().parent();
+    orderId = $(this).attr('data');
 
     $.ajax({
       method: 'DELETE',
@@ -45,7 +46,7 @@ $(document).on('ready page:load', function() {
       success: function(data) {
         $('.inventory-items').prepend(data);
         orderItem.remove(); //instead, we are going to remove order-item
-        orderTotalUpdate();
+        orderTotalUpdate(orderId);
       }
     });
   });
@@ -55,7 +56,7 @@ $(document).on('ready page:load', function() {
     event.preventDefault();
 
     var orderItem = $(this).parent().parent();
-
+    orderId = $(this).attr('data');
     $.ajax({
       method: 'PATCH',
       url: $(this).attr('action'),
@@ -63,7 +64,7 @@ $(document).on('ready page:load', function() {
       dataType: 'html',
       success: function(data) {
         orderItem.replaceWith(data);
-        orderTotalUpdate();
+        orderTotalUpdate(orderId);
       }
 
     });
