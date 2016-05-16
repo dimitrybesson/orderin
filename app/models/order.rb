@@ -8,6 +8,10 @@ class Order < ActiveRecord::Base
     self.order_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
+  def formatted_total
+    '%.2f' % (self.total / 100.0)
+  end
+
   def exclude_list
     self.order_items.map { |item| item.inventory_item_id }
   end
