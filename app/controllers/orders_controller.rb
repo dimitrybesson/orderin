@@ -21,9 +21,13 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
-    @inventory_items = @order.supplier.inventory_items
+    @inventory_items = @order.accessible_items
     @order_item = OrderItem.new
     @order_items = @order.order_items
+
+    if request.xhr?
+      render partial: 'order_total'
+    end
   end
 
   def update

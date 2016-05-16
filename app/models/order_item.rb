@@ -21,4 +21,16 @@ class OrderItem < ActiveRecord::Base
   def formatted_subtotal
     '%.2f' % (self.subtotal / 100.0)
   end
+
+  def deduct_from_inventory
+    new_quantity = self.inventory_item.quantity - self.quantity
+    self.inventory_item.update_attributes(quantity: new_quantity)
+  end
+
+  def update_inventory(delta)
+    new_quantity = self.inventory_item.quantity + delta
+    self.inventory_item.update_attributes(quantity: new_quantity)
+  end
+
+
 end

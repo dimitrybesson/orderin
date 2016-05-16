@@ -3,6 +3,12 @@
   <div class="order-item-right">
     <span class='order-item-price'><%= order_item.formatted_price %></span>
     <span class='order-item-quantity'><%= order_item.quantity %></span>
+    <div class='edit-icon-container'><span class='edit-icon hidden'>E</span></div>
+    <%= form_for order_item, html: {class: 'hidden edit_order_item', data: order_item.order.id} do |f| %>
+      <%= f.number_field :quantity, options = {min: 0, max: (order_item.inventory_item.quantity + order_item.quantity)} %>
+      <%= f.submit "+" %>
+    <% end %>
     <span class='order-item-subtotal'><%= order_item.formatted_subtotal %></span>
+    <%= link_to "X", order_item_path(order_item), method: :delete, class: 'order-item-delete', data: order_item.order.id %>
   </div>
 </li>

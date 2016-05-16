@@ -78,18 +78,31 @@ ul {
 
 .order-item-price {
   display: inline-block;
-  text-align: center;
+  text-align: right;
   width: 2rem;
 }
 
 .order-item-quantity {
   display: inline-block;
-  text-align: center;
+  text-align: right;
   width: 3rem;
+}
+
+.edit-icon-container {
+  display: inline-block;
+  width: 1rem;
+}
+
+.edit_order_item {
+  display: inline;
 }
 
 .order-item-subtotal {
   display: inline-block;
-  text-align: center;
+  text-align: right;
   width: 3rem;
+}
+
+.hidden {
+  display: none;
 }
