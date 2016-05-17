@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516195953) do
+ActiveRecord::Schema.define(version: 20160516222708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "institutions_roles_users", id: false, force: :cascade do |t|
+    t.integer "institution_id",   null: false
+    t.integer "user_id",          null: false
+    t.integer "role_id"
+    t.string  "institution_type"
+  end
+
+  add_index "institutions_roles_users", ["institution_id"], name: "index_institutions_roles_users_on_institution_id", using: :btree
+  add_index "institutions_roles_users", ["role_id"], name: "index_institutions_roles_users_on_role_id", using: :btree
+  add_index "institutions_roles_users", ["user_id"], name: "index_institutions_roles_users_on_user_id", using: :btree
 
   create_table "inventory_items", force: :cascade do |t|
     t.integer  "item_id"
@@ -66,6 +77,12 @@ ActiveRecord::Schema.define(version: 20160516195953) do
     t.string   "phone"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "suppliers", force: :cascade do |t|
