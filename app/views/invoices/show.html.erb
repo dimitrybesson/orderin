@@ -1,2 +1,10 @@
 <h1>Invoices#show</h1>
-<p>Find me in app/views/invoices/show.html.erb</p>
+Invoice#: <%= @invoice.id %>
+Order#: <%= @invoice.order_id %>
+
+<p>Items</p>
+<% @invoice_items.each do |invoice_item| %>
+  <div>
+    <%= invoice_item.order_item.name.capitalize %>, quantity: <%= invoice_item.quantity %>, price: <%= invoice_item.formatted_price %>, subtotal: <%= invoice_item.formatted_subtotal %>, difference: <%= invoice_item.quantity - invoice_item.order_item.quantity %>
+  </div>
+<% end %>

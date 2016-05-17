@@ -10,23 +10,26 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
+    @invoice = Invoice.new
+    @invoice.user_id = current_user.id
+    @invoice.order_id = params[:order_id]
     if @invoice.save
-      redirect_to edit_invoice_url(@invoice)
+      redirect_to edit_order_invoice_url(@invoice.order, @invoice)
     else
       ## what now?
+    end
   end
 
   def edit
     @invoice = Invoice.find(params[:id])
     @order = @invoice.order
-    @order_items = @order.order_items
+    @invoice_items = @invoice.invoice_items
   end
 
   def update
     @invoice = Invoice.find(params[:id])
     if @invoice.update_attributes(invoice_params)
-      reidrect_to invoice_url(@invoice)
+      redirect_to invoice_url(@invoice)
     else
     end
   end
