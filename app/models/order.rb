@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   belongs_to :restaurant
   belongs_to :supplier
   has_many :order_items
+  has_one :invoice # this can be a has_one relationship
 
   def total
     self.order_items.inject(0) { |sum, item| sum + item.subtotal }

@@ -1,6 +1,7 @@
 class OrderItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :inventory_item
+  has_one :invoice_item
 
   def subtotal
     self.price * self.quantity

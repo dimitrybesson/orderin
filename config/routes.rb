@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  get 'home/index'
+
+  devise_for :users
+  get 'users/:id' => 'users#show', as: 'user'
 
   resources :suppliers do
     resources :inventory_items
@@ -9,6 +14,10 @@ Rails.application.routes.draw do
   resources :restaurants
 
   patch 'order_items' => 'order_items#mass_update'
+
+  resources :invoices
+  resources :invoice_items
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
