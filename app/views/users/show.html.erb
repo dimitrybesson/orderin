@@ -1,1 +1,19 @@
 <h1><%= @user.email %></h1>
+
+<h2>Restaurants</h2>
+<div class="user-restaurants">
+  <% @user_restaurants.each do |restaurant| %>
+    <div class="user-restaurant" data-id="<%= restaurant.id %>">
+      <%= restaurant.name %>
+    </div>
+  <% end %>
+</div>
+
+<h2>Suppliers</h2>
+<div class="user-suppliers">
+</div>
+
+<h2>Orders</h2>
+<div class="restaurant-orders">
+
+</div>
