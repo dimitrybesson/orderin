@@ -29,6 +29,8 @@ class InvoiceItemsController < ApplicationController
       invoice_item.update_inventory(delta)
       invoice_item.update_attribute("quantity", invoice_item_mass_params("#{invoice_item.id}")["#{invoice_item.id}"])
     end
+    @order.status[:invoiced] = true
+    @order.save
     redirect_to order_invoice_url(@order, @invoice)
   end
 

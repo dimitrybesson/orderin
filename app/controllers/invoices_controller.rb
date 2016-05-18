@@ -29,6 +29,7 @@ class InvoicesController < ApplicationController
   def update
     @invoice = Invoice.find(params[:id])
     if @invoice.update_attributes(invoice_params)
+
       redirect_to invoice_url(@invoice)
     else
     end

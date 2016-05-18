@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.status = {}
     if @order.save
       redirect_to edit_order_url(@order)
     else
@@ -21,6 +22,9 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
+
+    redirect_to order_url(@order), notice: "Invoice created, order can no longer be updated." if @order.invoiced?
+
     @inventory_items = @order.accessible_items
     @order_item = OrderItem.new
     @order_items = @order.order_items
@@ -33,6 +37,8 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update_attributes(order_params)
+      @order.status[:submitted] = true
+      @order.save
       redirect_to order_url(@order) # we will add logic to allow user to edit if status is not sent
     else
     end

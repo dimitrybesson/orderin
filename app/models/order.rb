@@ -1,6 +1,4 @@
 class Order < ActiveRecord::Base
-
-  store_accessor :status, :seen, :invoiced, :shipped, :received, :paid
   #user
   belongs_to :restaurant
   belongs_to :supplier
@@ -8,18 +6,43 @@ class Order < ActiveRecord::Base
   has_one :invoice # this can be a has_one relationship
 
   def total
-    self.order_items.inject(0) { |sum, item| sum + item.subtotal }
+    order_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def formatted_total
-    '%.2f' % (self.total / 100.0)
+    '%.2f' % (total / 100.0)
   end
 
   def exclude_list
-    self.order_items.map { |item| item.inventory_item_id }
+    order_items.map { |item| item.inventory_item_id }
   end
 
   def accessible_items
-    self.supplier.inventory_items.where.not(id: self.exclude_list)
+    supplier.inventory_items.where.not(id: exclude_list)
   end
+
+  def submitted?
+    status["submitted"]
+  end
+
+  def seen?
+    status["seen"]
+  end
+
+  def invoiced?
+    status["invoiced"]
+  end
+
+  def shipped?
+    status["shipped"]
+  end
+
+  def received?
+    status["received"]
+  end
+
+  def paid?
+    status["paid"]
+  end
+
 end
