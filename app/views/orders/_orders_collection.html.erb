@@ -1,0 +1,7 @@
+<% @orders.each do |order| %>
+  <div class="order-display">
+    <p> <%= order.id %></p>
+    <p> <%= order.delivery_date %></p>
+    <p> Total: <%=  %></p>
+  </div>
+<% end %>
