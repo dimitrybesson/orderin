@@ -4,6 +4,6 @@
     <p> Restaurant: <%= order.restaurant.name %></p>
     <p> Supplier: <%= order.supplier.name %></p>
     <p> Delivery Date: <%= order.delivery_date %></p>
-    <p> Total: <%=  %></p>
+    <p> Total: $<%= order.formatted_total %></p>
   </div>
 <% end %>
