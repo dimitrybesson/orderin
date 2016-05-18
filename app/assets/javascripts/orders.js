@@ -25,6 +25,7 @@ $(document).on('ready page:load', function() {
       data: $(this).serialize(),
       success: function(data) {
         $('.order-items').append(data);
+        $('.order-item-draggable').draggable({ revert: 'invalid'});
         inventoryItem.remove();
         orderTotalUpdate(orderId);
       }
@@ -45,6 +46,7 @@ $(document).on('ready page:load', function() {
       dataType: 'html',
       success: function(data) {
         $('.inventory-items').prepend(data);
+        $('.draggable').draggable({ revert: 'invalid' });
         orderItem.remove(); //instead, we are going to remove order-item
         orderTotalUpdate(orderId);
       }
