@@ -22,4 +22,20 @@ class InvoiceItem < ActiveRecord::Base
     new_quantity = self.order_item.inventory_item.quantity + delta
     self.order_item.inventory_item.update_attributes(quantity: new_quantity)
   end
+
+  def delta_is_positive?
+    if (self.quantity - self.order_item.quantity) > 0
+      return true
+    else
+      return false
+    end
+  end
+
+  def delta_is_negative?
+    if (self.quantity - self.order_item.quantity) < 0
+      return true
+    else
+      return false
+    end
+  end
 end
