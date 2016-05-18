@@ -134,9 +134,13 @@ $(document).on('ready page:load', function() {
   });
 
   $(function() {
-    $( ".draggable" ).draggable({ revert: "invalid" });
-    $( ".droppable" ).droppable({
-      drop: function( event, ui ) {
+    $('.sortable').sortable({
+      revert: true
+    });
+    $('.draggable').draggable({ connectToSortable: '.sortable', revert: 'invalid' });
+    $('.droppable').droppable({
+      accept: '.draggable',
+      drop: function(event, ui) {
         var formData = (ui.draggable.find('form'));
         var orderId = formData.attr('data');
         $.ajax({
@@ -152,6 +156,24 @@ $(document).on('ready page:load', function() {
         });
       }
     });
+    $('.order-item-draggable').draggable({ revert: 'invalid' });
+    $('.order-item-droppable').droppable({
+      accept: '.order-item-draggable',
+      drop: function(event, ui) {
+        var deleteUrl = ui.draggable.find('form').attr('action');
+        var orderId = ui.draggable.find('form').attr('data');
+        $.ajax({
+          method: 'DELETE',
+          url: deleteUrl,
+          dataType: 'html',
+          success: function(data) {
+            $('.inventory-items').prepend(data);
+            ui.draggable.remove();
+            orderTotalUpdate(orderId);
+          }
+        })
+      }
+    })
   });
 
 });
