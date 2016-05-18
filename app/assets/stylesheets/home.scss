@@ -1,3 +1,51 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #4CAF50;
+
+}
+
+.splash-title {
+  font-size: 80px;
+  text-align: center;
+  color: #000;
+  font-family: 'Permanent Marker', sans-serif;
+  margin-bottom: 10px;
+}
+
+.splash-container {
+  border: 3px solid #B6B6B6;
+  width: 60%;
+  margin: auto;
+  padding-bottom: 40px;
+  margin-top: 2rem;
+}
+
+.splash-tag {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.splash-nav {
+  background-color: #388E3C;
+  height: 2rem;
+  overflow: hidden;
+  border-bottom: 1px solid #B6B6B6;
+}
+
+.splash-nav-links {
+  float: right;
+  line-height: 2rem;
+  padding-right: 0.5rem;
+}
+
+.splash-content {
+  background-color: #C8E6C9;
+  width: 70%;
+  margin: 4rem auto;
+  padding: 0.5rem;
+  border: 1px solid black;
+}
