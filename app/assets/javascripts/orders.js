@@ -25,6 +25,7 @@ $(document).on('ready page:load', function() {
       data: $(this).serialize(),
       success: function(data) {
         $('.order-items').append(data);
+        $('.order-item-draggable').draggable({ revert: 'invalid'});
         inventoryItem.remove();
         orderTotalUpdate(orderId);
       }
@@ -45,6 +46,7 @@ $(document).on('ready page:load', function() {
       dataType: 'html',
       success: function(data) {
         $('.inventory-items').prepend(data);
+        $('.inventory-item-draggable').draggable({ revert: 'invalid' });
         orderItem.remove(); //instead, we are going to remove order-item
         orderTotalUpdate(orderId);
       }
@@ -121,16 +123,74 @@ $(document).on('ready page:load', function() {
 // Click order_item to show edit order_item form
   $('.order-items').on('click', ('.order-item'), function() {
     var orderItemRight = $(this).children();
-    var editIconContainer = orderItemRight.children('.edit-icon-container');
+    var editIconContainer = orderItemRight.children('.edit-icon-container')
+    var editIcon = orderItemRight.children('.edit-icon-container').children('.edit-icon');
     var orderItemQuantity = orderItemRight.children('.order-item-quantity');
 
-    orderItemQuantity.toggleClass('hidden');
-    editIconContainer.remove();
+    orderItemQuantity.addClass('hidden');
+    editIcon.remove();
 
     var editOrderForm = orderItemRight.children('.edit_order_item');
-    editOrderForm.toggleClass('hidden');
+    editOrderForm.removeClass('hidden');
+    // editIconContainer.html(editIcon);
   });
 
-
+  $(function() {
+    $('.inventory-item-draggable').draggable({ revert: 'invalid' });
+    $('.inventory-item-droppable').droppable({
+      tolerance: 'pointer',
+      accept: '.inventory-item-draggable',
+      over: function(event, ui) {
+        $(this).addClass('order-dragover');
+      },
+      out: function(event, ui) {
+        $(this).removeClass('order-dragover');
+      },
+      drop: function(event, ui) {
+        var formData = (ui.draggable.find('form'));
+        var orderId = formData.attr('data');
+        $(this).removeClass('order-dragover');
+        $.ajax({
+          method: 'POST',
+          url: '/order_items',
+          dataType: 'html',
+          data: formData.serialize(),
+          success: function(data) {
+            $('.order-items').append(data);
+            $('.order-item-draggable').draggable({ revert: 'invalid'});
+            ui.draggable.remove();
+            orderTotalUpdate(orderId);
+          }
+        });
+      }
+    });
+    $('.order-item-draggable').draggable({ revert: 'invalid' });
+    $('.order-item-droppable').droppable({
+      tolerance: 'pointer',
+      accept: '.order-item-draggable',
+      over: function(event, ui) {
+        $(this).addClass('inventory-dragover');
+      },
+      out: function(event, ui) {
+        $(this).removeClass('inventory-dragover');
+      },
+      drop: function(event, ui) {
+        var deleteUrl = ui.draggable.find('form').attr('action');
+        var orderId = ui.draggable.find('form').attr('data');
+        $(this).removeClass('inventory-dragover');
+        $.ajax({
+          method: 'DELETE',
+          url: deleteUrl,
+          dataType: 'html',
+          success: function(data) {
+            $('.inventory-items').prepend(data);
+            $('.inventory-item-draggable').draggable({ revert: 'invalid' });
+            ui.draggable.remove();
+            orderTotalUpdate(orderId);
+          }
+        })
+      }
+    })
+  });
 
 });

@@ -9,13 +9,16 @@ Rails.application.routes.draw do
     resources :inventory_items
   end
 
-  resources :orders
+  resources :orders do
+    resources :invoices
+  end
+
   resources :order_items
   resources :restaurants
 
   patch 'order_items' => 'order_items#mass_update'
+  patch 'invoice_items' => 'invoice_items#mass_update'
 
-  resources :invoices
   resources :invoice_items
   resources :suppliers
 
