@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   patch 'invoice_items' => 'invoice_items#mass_update'
 
   resources :invoice_items
+  resources :suppliers
 
 
   # The priority is based upon order of creation: first created -> highest priority.
