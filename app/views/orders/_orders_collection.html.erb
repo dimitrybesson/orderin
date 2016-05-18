@@ -1,7 +1,9 @@
 <% @orders.each do |order| %>
   <div class="order-display">
-    <p> <%= order.id %></p>
-    <p> <%= order.delivery_date %></p>
+    <p> Order ID: <%= order.id %></p>
+    <p> Restaurant: <%= order.restaurant.name %></p>
+    <p> Supplier: <%= order.supplier.name %></p>
+    <p> Delivery Date: <%= order.delivery_date %></p>
     <p> Total: <%=  %></p>
   </div>
 <% end %>

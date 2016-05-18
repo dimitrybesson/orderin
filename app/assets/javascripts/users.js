@@ -41,6 +41,8 @@ $(document).on('ready page:load', function() {
     else if (selectedSupplierIdArray.length === 0) {
       // Get all suppliers for all restaurants
 
+      // var data = {restaurant_ids: selectedRestaurantIdArray}
+
       $.ajax({
         method: 'GET',
         url: '/suppliers',
@@ -65,7 +67,17 @@ $(document).on('ready page:load', function() {
     // this is for when there are restaurants and suppliers
     // can be refactored to only check presence of suppliers, because there cannot be any suppliers on the page without a restaurant being selected first
     else if (selectedRestaurantIdArray.length > 0 && selectedSupplierIdArray.length > 0) {
-      console.log('restaurant and supplier selected')
+
+      $.ajax({
+        method: 'GET',
+        url: '/orders',
+        data: {restaurant_ids: selectedRestaurantIdArray, supplier_ids: selectedSupplierIdArray},
+        dataType: 'html',
+        success: function(data) {
+          console.log('IT WORKS')
+          $('.orders-collection').html(data);
+        }
+      })
     }
 
   });
