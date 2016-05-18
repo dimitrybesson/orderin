@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_and_belongs_to_many :institutions, polymorphic: true, join_table: "institutions_roles_users"
-  has_and_belongs_to_many :roles, join_table: "institutions_roles_users"
+  has_many :orders
+  has_many :permissions
+  has_many :roles, through: :permissions
+  has_many :restaurants, through: :permissions, source: :institution, source_type: "Restaurant"
+  has_many :suppliers, through: :permissions, source: :institution, source_type: "Supplier"
 end

@@ -1,1 +1,19 @@
 <h1><%= @user.email %></h1>
+
+<h2>Restaurants</h2>
+<div class="user-restaurants">
+  <%= render @restaurants %>
+</div>
+<div class="main">
+  <h2>Suppliers</h2>
+  <div class="user-suppliers">
+    <div class="supplier" data-id="700">
+      I am a supplier - I will be deleted soon
+    </div>
+  </div>
+
+  <h2>Orders</h2>
+  <div class="restaurant-orders">
+
+  </div>
+</div>
