@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :invoices
   resources :invoice_items
+  resources :suppliers
 
 
   # The priority is based upon order of creation: first created -> highest priority.

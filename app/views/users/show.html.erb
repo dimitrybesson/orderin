@@ -2,18 +2,18 @@
 
 <h2>Restaurants</h2>
 <div class="user-restaurants">
-  <% @user_restaurants.each do |restaurant| %>
-    <div class="user-restaurant" data-id="<%= restaurant.id %>">
-      <%= restaurant.name %>
+  <%= render @restaurants %>
+</div>
+<div class="main">
+  <h2>Suppliers</h2>
+  <div class="user-suppliers">
+    <div class="supplier" data-id="700">
+      I am a supplier - I will be deleted soon
     </div>
-  <% end %>
-</div>
+  </div>
 
-<h2>Suppliers</h2>
-<div class="user-suppliers">
-</div>
+  <h2>Orders</h2>
+  <div class="restaurant-orders">
 
-<h2>Orders</h2>
-<div class="restaurant-orders">
-
+  </div>
 </div>
