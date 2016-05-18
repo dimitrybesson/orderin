@@ -114,3 +114,12 @@ ul {
 .inventory-dragover {
   border: 2px dashed blue;
 }
+
+.inventory-section {
+  @include span-columns(8);
+  padding: 1rem;
+}
+
+.order-summary {
+  @include span-columns(4);
+}

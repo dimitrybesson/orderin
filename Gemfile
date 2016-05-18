@@ -31,7 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bourbon'
+gem 'bourbon', '5.0.0.beta.3'
 gem 'neat'
 gem 'devise'
 

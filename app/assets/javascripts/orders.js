@@ -46,7 +46,7 @@ $(document).on('ready page:load', function() {
       dataType: 'html',
       success: function(data) {
         $('.inventory-items').prepend(data);
-        $('.draggable').draggable({ revert: 'invalid' });
+        $('.inventory-item-draggable').draggable({ revert: 'invalid' });
         orderItem.remove(); //instead, we are going to remove order-item
         orderTotalUpdate(orderId);
       }
@@ -136,10 +136,10 @@ $(document).on('ready page:load', function() {
   });
 
   $(function() {
-    $('.draggable').draggable({ revert: 'invalid' });
-    $('.droppable').droppable({
+    $('.inventory-item-draggable').draggable({ revert: 'invalid' });
+    $('.inventory-item-droppable').droppable({
       tolerance: 'pointer',
-      accept: '.draggable',
+      accept: '.inventory-item-draggable',
       over: function(event, ui) {
         $(this).addClass('order-dragover');
       },
@@ -184,7 +184,7 @@ $(document).on('ready page:load', function() {
           dataType: 'html',
           success: function(data) {
             $('.inventory-items').prepend(data);
-            $('.draggable').draggable({ revert: 'invalid' });
+            $('.inventory-item-draggable').draggable({ revert: 'invalid' });
             ui.draggable.remove();
             orderTotalUpdate(orderId);
           }
