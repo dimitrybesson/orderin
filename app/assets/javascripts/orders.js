@@ -137,9 +137,6 @@ $(document).on('ready page:load', function() {
     $( ".draggable" ).draggable({ revert: "invalid" });
     $( ".droppable" ).droppable({
       drop: function( event, ui ) {
-        // console.log(ui.draggable.find('#order_item_quantity').val());
-        // console.log(ui.draggable.find('#order_item_inventory_item_id').val());
-        // console.log(formData.serialize());
         var formData = (ui.draggable.find('form'));
         var orderId = formData.attr('data');
         $.ajax({
