@@ -2,9 +2,9 @@ html {
   box-sizing: border-box;
 }
 
-body {
+#home-body {
   background-color: #4CAF50;
-
+  padding-bottom: 4rem;
 }
 
 .splash-title {
@@ -16,11 +16,12 @@ body {
 }
 
 .splash-container {
-  border: 3px solid #B6B6B6;
+  border: 3px solid #000;
   width: 60%;
   margin: auto;
   padding-bottom: 40px;
   margin-top: 2rem;
+  background-color: #C8E6C9;
 }
 
 .splash-tag {
@@ -45,7 +46,14 @@ body {
 .splash-content {
   background-color: #C8E6C9;
   width: 70%;
-  margin: 4rem auto;
+  margin: 4rem auto 0;
   padding: 0.5rem;
   border: 1px solid black;
+}
+
+.splash-avo {
+  margin: 4rem 45% 0;
+  max-width: 10%;
+  border-radius: 50%;
+  border: 1px solid #000;
 }
