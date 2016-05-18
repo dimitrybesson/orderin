@@ -1,17 +1,24 @@
 html {
   box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  height: 100%;
 }
 
 #home-body {
   background-color: #4CAF50;
   padding-bottom: 4rem;
+  height: 100%;
 }
 
 .splash-title {
   font-size: 80px;
   text-align: center;
-  color: #000;
+  color: #FFF;
   font-family: 'Permanent Marker', sans-serif;
+  margin-top: 20%;
   margin-bottom: 10px;
 }
 
