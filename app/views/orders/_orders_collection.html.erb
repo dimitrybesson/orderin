@@ -1,0 +1,9 @@
+<% @orders.each do |order| %>
+  <div class="order-display">
+    <p> Order ID: <%= order.id %></p>
+    <p> Restaurant: <%= order.restaurant.name %></p>
+    <p> Supplier: <%= order.supplier.name %></p>
+    <p> Delivery Date: <%= order.delivery_date %></p>
+    <p> Total: $<%= order.formatted_total %></p>
+  </div>
+<% end %>
