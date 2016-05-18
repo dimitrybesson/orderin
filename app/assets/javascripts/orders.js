@@ -155,6 +155,7 @@ $(document).on('ready page:load', function() {
           data: formData.serialize(),
           success: function(data) {
             $('.order-items').append(data);
+            $('.order-item-draggable').draggable({ revert: 'invalid'});
             ui.draggable.remove();
             orderTotalUpdate(orderId);
           }
@@ -181,6 +182,7 @@ $(document).on('ready page:load', function() {
           dataType: 'html',
           success: function(data) {
             $('.inventory-items').prepend(data);
+            $('.draggable').draggable({ revert: 'invalid' });
             ui.draggable.remove();
             orderTotalUpdate(orderId);
           }
