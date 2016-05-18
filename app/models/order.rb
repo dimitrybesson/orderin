@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+
+  store_accessor :status, :seen, :invoiced, :shipped, :received, :paid
   #user
   belongs_to :restaurant
   belongs_to :supplier
