@@ -121,14 +121,16 @@ $(document).on('ready page:load', function() {
 // Click order_item to show edit order_item form
   $('.order-items').on('click', ('.order-item'), function() {
     var orderItemRight = $(this).children();
-    var editIconContainer = orderItemRight.children('.edit-icon-container');
+    var editIconContainer = orderItemRight.children('.edit-icon-container')
+    var editIcon = orderItemRight.children('.edit-icon-container').children('.edit-icon');
     var orderItemQuantity = orderItemRight.children('.order-item-quantity');
 
-    orderItemQuantity.toggleClass('hidden');
-    editIconContainer.remove();
+    orderItemQuantity.addClass('hidden');
+    editIcon.remove();
 
     var editOrderForm = orderItemRight.children('.edit_order_item');
-    editOrderForm.toggleClass('hidden');
+    editOrderForm.removeClass('hidden');
+    // editIconContainer.html(editIcon);
   });
 
 
