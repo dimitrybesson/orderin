@@ -134,15 +134,20 @@ $(document).on('ready page:load', function() {
   });
 
   $(function() {
-    $('.sortable').sortable({
-      revert: true
-    });
-    $('.draggable').draggable({ connectToSortable: '.sortable', revert: 'invalid' });
+    $('.draggable').draggable({ revert: 'invalid' });
     $('.droppable').droppable({
+      tolerance: 'pointer',
       accept: '.draggable',
+      over: function(event, ui) {
+        $(this).addClass('order-dragover');
+      },
+      out: function(event, ui) {
+        $(this).removeClass('order-dragover');
+      },
       drop: function(event, ui) {
         var formData = (ui.draggable.find('form'));
         var orderId = formData.attr('data');
+        $(this).removeClass('order-dragover');
         $.ajax({
           method: 'POST',
           url: '/order_items',
@@ -158,10 +163,18 @@ $(document).on('ready page:load', function() {
     });
     $('.order-item-draggable').draggable({ revert: 'invalid' });
     $('.order-item-droppable').droppable({
+      tolerance: 'pointer',
       accept: '.order-item-draggable',
+      over: function(event, ui) {
+        $(this).addClass('inventory-dragover');
+      },
+      out: function(event, ui) {
+        $(this).removeClass('inventory-dragover');
+      },
       drop: function(event, ui) {
         var deleteUrl = ui.draggable.find('form').attr('action');
         var orderId = ui.draggable.find('form').attr('data');
+        $(this).removeClass('inventory-dragover');
         $.ajax({
           method: 'DELETE',
           url: deleteUrl,
