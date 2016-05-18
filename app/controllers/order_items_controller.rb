@@ -2,6 +2,9 @@ class OrderItemsController < ApplicationController
 
   def create
     @order_item = OrderItem.new(order_item_params)
+    if @order_item.quantity.nil?
+      @order_item.quantity = 0
+    end
     @order = @order_item.order
     @order_items = @order.order_items
     if @order_item.save

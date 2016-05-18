@@ -10,7 +10,7 @@
 </div>
 
 <main id="order-edit">
-  <section class='inventory-section'>
+  <section class='inventory-section order-item-droppable'>
     <div class="inventory">
       <ul class="inventory-items">
         <%= render @inventory_items %>
@@ -18,7 +18,7 @@
     </div>
   </section>
 
-  <aside class="order-summary">
+  <aside class="order-summary inventory-item-droppable">
     <h3>Order Summary</h3>
     <div class="order-details">
       <%= render @order %>

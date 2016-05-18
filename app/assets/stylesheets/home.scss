@@ -1,32 +1,43 @@
 html {
   box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  height: 100%;
 }
 
 #home-body {
   background-color: #4CAF50;
   padding-bottom: 4rem;
+  height: 100%;
+  border-bottom: 1px solid #B6B6B6;
 }
 
 .splash-title {
   font-size: 80px;
   text-align: center;
-  color: #000;
-  font-family: 'Permanent Marker', sans-serif;
+  color: #FFF;
+  font-family: 'Josefin Sans', sans-serif;
+  // font-family: 'Permanent Marker', sans-serif;
+  margin-top: 20%;
   margin-bottom: 10px;
 }
 
-.splash-container {
+#home-main {
   border: 3px solid #000;
   width: 60%;
   margin: auto;
   padding-bottom: 40px;
   margin-top: 2rem;
+  margin-bottom: 2rem;
   background-color: #C8E6C9;
+  padding: 1rem;
 }
 
 .splash-tag {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #000;
 }
 
@@ -52,8 +63,8 @@ html {
 }
 
 .splash-avo {
-  margin: 4rem 45% 0;
-  max-width: 10%;
+  margin: 2rem 44% 0;
+  max-width: 12%;
   border-radius: 50%;
-  border: 1px solid #000;
+  border: 2px solid #000;
 }
