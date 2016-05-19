@@ -28,6 +28,15 @@ html {
   border: 1px solid black;
   overflow: hidden;
   margin: 4px;
+  background-color: #E7D8C9;
+  padding-top: 1rem;
+  @include outer-container();
+}
+
+.inventory-item-name {
+  padding-left: 1rem;
+  @include span-columns(6);
+  margin-right: 0;
 }
 
 ul {
@@ -37,6 +46,14 @@ ul {
 
 .new_order_item {
   display: inline-block;
+  float: right;
+  input[type="submit"] {
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+  input[type="number"] {
+    display:inline-block;
+  }
 }
 
 #order_item_quantity {
@@ -44,28 +61,32 @@ ul {
 }
 
 .inventory-item-right {
-  float: right;
+  @include span-columns(6);
+}
+
+.inventory-item-right-left {
+  display: inline-block;
 }
 
 .inventory-item-price {
   display: inline-block;
   text-align: center;
-  width: 3rem;
+  // @include span-columns(1);
 }
 
 .inventory-item-quantity {
   display: inline-block;
   text-align: center;
-  width: 3rem;
+  // @include span-columns(1);
 }
 
 .order-summary {
-  border: 2px solid red;
+  border: 2px solid $divider;
   padding: 5px;
 }
 
 .inventory-section {
-  border: 2px solid blue;
+  // border: 2px solid $divider;
 }
 
 .order-item {
@@ -108,11 +129,11 @@ ul {
 }
 
 .order-dragover {
-  border: 2px dashed red;
+  border: 2px dashed $accent;
 }
 
 .inventory-dragover {
-  border: 2px dashed blue;
+  border: 2px dashed $accent;
 }
 
 .inventory-section {

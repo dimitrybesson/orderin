@@ -8,17 +8,17 @@ body {
 }
 
 #home-body {
-  background-color: #4CAF50;
+  background-color: $primary;
   padding-bottom: 4rem;
-  height: 100%;
-  border-bottom: 1px solid #B6B6B6;
+  height: 90%;
+  border-bottom: 1px solid $divider;
 }
 
 .splash-title {
   font-size: 120px;
   text-align: center;
   color: #FFF;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: $heading-font-family;
   // font-family: 'Permanent Marker', sans-serif;
   margin-top: 10%;
   margin-bottom: 10px;
@@ -31,7 +31,7 @@ body {
   padding-bottom: 40px;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  background-color: #C8E6C9;
+  background-color: $light-primary;
   padding: 1rem;
 }
 
@@ -42,10 +42,10 @@ body {
 }
 
 .splash-nav {
-  background-color: #388E3C;
+  background-color: $dark-primary;
   height: 2rem;
   overflow: hidden;
-  border-bottom: 1px solid #B6B6B6;
+  border-bottom: 1px solid $divider;
 }
 
 .splash-nav-links {
@@ -55,7 +55,7 @@ body {
 }
 
 .splash-content {
-  background-color: #C8E6C9;
+  background-color: $light-primary;
   width: 70%;
   margin: 4rem auto 0;
   padding: 0.5rem;
@@ -67,4 +67,50 @@ body {
   max-width: 12%;
   border-radius: 50%;
   border: 2px solid #000;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3rem;
+  width: 100%;
+  z-index: 1;
+  background-color: $primary;
+  border-bottom: 1px solid $divider;
+}
+
+main {
+  margin-top: 3rem;
+  margin-left: 8rem;
+  padding: 1rem;
+}
+
+nav {
+  position:fixed;
+  width: 8rem;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin-top: 3rem;
+  border-right: 1px solid $divider;
+}
+
+.nav-link {
+  margin: 0;
+  text-align: center;
+}
+
+
+
+.session-status {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.session-status > p {
+  margin-bottom: 0;
+  color: white;
+  margin-right: 0.5rem;
 }

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'home#index'
   get 'home/index'
 
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :invoice_items
   resources :suppliers
+  resources :items, except: %(new edit)
 
 
   # The priority is based upon order of creation: first created -> highest priority.

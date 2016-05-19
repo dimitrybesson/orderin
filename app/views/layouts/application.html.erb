@@ -7,39 +7,51 @@
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <header>
+    <div class="session-status">
+      <% if user_signed_in? %>
+        <p>
+          Welcome, <%= current_user.email %>
+        </p>
+      <% else %>
+        <%= link_to 'Sign In', new_user_session_path %> <%= link_to 'Sign Up', new_user_registration_path %>
+      <% end %>
+    </div>
+  </header>
 
-  <div class="session-status">
+  <nav>
     <% if user_signed_in? %>
-      <p>
-        Welcome, <%= current_user.email %> <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-      </p>
-    <% else %>
-      <%= link_to 'Sign In', new_user_session_path %> <%= link_to 'Sign Up', new_user_registration_path %>
+      <p class="nav-link"><%= link_to "Home", user_path(current_user) %></p>
+      <p class="nav-link"><%= link_to "View Orders", orders_path %></p>
+      <p class="nav-link"><%= link_to "Browse Suppliers", suppliers_path %></p>
+      <p class="nav-link"><%= link_to "Browse Products", items_path %></p>
+      <p class="nav-link"><%= link_to "Access Manager", root_path %></p>
+      <p class="nav-link"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
     <% end %>
-  </div>
+  </nav>
 
+  <main>
+    <% if flash[:notice] %>
+      <p id='notice'>
+        <%= flash[:notice] %>
+      </p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p id='alert'>
+        <%= flash[:alert] %>
+      </p>
+    <% end %>
+    <% if flash[:error] %>
+      <p id='error'>
+        <%= flash[:error] %>
+      </p>
+    <% end %>
 
-  <% if flash[:notice] %>
-    <p id='notice'>
-      <%= flash[:notice] %>
-    </p>
-  <% end %>
-  <% if flash[:alert] %>
-    <p id='alert'>
-      <%= flash[:alert] %>
-    </p>
-  <% end %>
-  <% if flash[:error] %>
-    <p id='error'>
-      <%= flash[:error] %>
-    </p>
-  <% end %>
-
-<%= yield %>
-
+  <%= yield %>
+</main>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 </body>
 </html>

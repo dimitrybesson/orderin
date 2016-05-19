@@ -1,15 +1,12 @@
 <h1>Edit Order</h1>
-<!--nav will probably be in layout?  -->
-<nav>
-  <!-- Nav options: home and cancel order -->
-</nav>
+
 <div class="order-info">
   <h3> Supplier: <%= @order.supplier.name %></h3>
   <h3>Restaurant: <%= @order.restaurant.name %></h3>
   <h3>Ordererer: <%= @order.user.email %>
 </div>
 
-<main id="order-edit">
+<div id="order-edit">
   <section class='inventory-section order-item-droppable'>
     <div class="inventory-search-bar">
       <%= text_field_tag :inventory_search, "", options = {placeholder: "Search...", data: @order.id} %>
@@ -45,4 +42,4 @@
       <% end %>
     </div>
   </aside>
-</main>
+</div>
