@@ -4,13 +4,16 @@
   <!-- Nav options: home and cancel order -->
 </nav>
 <div class="order-info">
-  <h1> Supplier: <%= @order.supplier.name %></h1>
-  <h1>Restaurant: </h1>
-  <!--user name  -->
+  <h3> Supplier: <%= @order.supplier.name %></h3>
+  <h3>Restaurant: <%= @order.restaurant.name %></h3>
+  <h3>Ordererer: <%= @order.user.email %>
 </div>
 
 <main id="order-edit">
   <section class='inventory-section order-item-droppable'>
+    <div class="inventory-search-bar">
+      <%= text_field_tag :inventory_search, "", options = {placeholder: "Search...", data: @order.id} %>
+    </div>
     <div class="inventory">
       <ul class="inventory-items">
         <%= render @inventory_items %>

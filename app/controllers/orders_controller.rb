@@ -19,6 +19,12 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+
+    if request.xhr?
+       @inventory_items = @order.accessible_items.where('name ilike ?', "%#{params[:search]}%")
+       @order_item = OrderItem.new
+       render @inventory_items
+    end
   end
 
   def create
