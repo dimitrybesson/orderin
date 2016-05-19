@@ -5,4 +5,9 @@ class Supplier < ActiveRecord::Base
   has_many :roles, through: :permissions
   has_many :invoices, through: :orders
   has_many :permissions, as: :institution
+
+  def master?(user)
+    Permission.where(user_id: user.id, institution_id: id, institution_type: "Supplier", role_id: "1").any?
+  end
+
 end

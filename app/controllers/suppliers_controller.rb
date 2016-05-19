@@ -23,6 +23,8 @@ class SuppliersController < ApplicationController
 
   def show
     @supplier = Supplier.find(params[:id])
+    @inventory_items = @supplier.inventory_items
+    @user = current_user
   end
 
   def edit

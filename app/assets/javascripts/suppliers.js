@@ -1,2 +1,16 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(document).on('ready page:load', function() {
+  $('.supplier-order-button').on('click', function() {
+    var supplierIdNumber = $('.supplier-order-button').attr('data');
+    var supplierId = {supplierId: supplierIdNumber};
+    $.ajax({
+      method: 'GET',
+      url: '/orders/new',
+      dataType: 'html',
+      data: supplierId,
+      success: function(data) {
+        $('.supplier-order-modal').html(data);
+        $('.supplier-order-modal').css('display', 'block');
+      }
+    })
+  })
+})
