@@ -1,3 +1,26 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.selected {
+  background-color: yellow;
+}
+
+.filter-options {
+  overflow: auto;
+}
+.restaurant-block {
+  @include span-columns(6);
+  display: inline-block;
+}
+
+.supplier-block {
+  @include span-columns(6);
+  display: inline-block;
+}
+
+.order-block {
+  @include span-columns(12);
+  margin-top: 2rem;
+
+}

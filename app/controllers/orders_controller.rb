@@ -1,8 +1,19 @@
 class OrdersController < ApplicationController
 
   def index
-    #@restaurant = Restaurant.find(session[restaurant_id]) This will be the restaurant that the current user is order for
-    @orders = Order.all # This will have to account for specific restuarant later
+    if params[:restaurant_ids] && params[:supplier_ids]
+      puts "We have restaurants and suppliers *****************************"
+      @orders = Order.where(restaurant_id: params[:restaurant_ids], supplier_id: params[:supplier_ids])
+      render partial: '/orders/orders_collection'
+
+    elsif params[:restaurant_ids]
+      puts 'IN ORDERS CONTROLLER ************************'
+      @restaurants = Restaurant.where(id: params[:restaurant_ids])
+      @orders = @restaurants.map do |restaurant|
+        restaurant.orders
+      end.flatten
+      render partial: '/orders/orders_collection'
+    end
   end
 
   def show

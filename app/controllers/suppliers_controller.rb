@@ -1,10 +1,14 @@
 class SuppliersController < ApplicationController
 
   def index
-    @suppliers = Supplier.all
+    # @suppliers = Supplier.all
+
+
     if params[:restaurant_ids]
-      @restaurant= Restaurant.find(params[:restaurant_id])
-      @suppliers = @restaurant.suppliers
+      @restaurants = Restaurant.where(id: params[:restaurant_ids])
+      @suppliers = @restaurants.map do |restaurant|
+          restaurant.suppliers
+      end.flatten.uniq
       render @suppliers
     end
   end
