@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   has_many :restaurants, through: :permissions, source: :institution, source_type: "Restaurant"
   has_many :suppliers, through: :permissions, source: :institution, source_type: "Supplier"
 
-  def restauranteur?
-    Permission.where(user_id: id, institution_type: "Restaurant").any?
+  def restaurant_orderer?
+    Permission.where(user_id: id, institution_type: "Restaurant", role: (1..2)).any?
   end
+
 end

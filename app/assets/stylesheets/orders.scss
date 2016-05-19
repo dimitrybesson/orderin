@@ -1,6 +1,3 @@
-// Place all the styles related to the orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
 *,
 *:before,
@@ -14,6 +11,7 @@ html {
 
 #order-edit {
   overflow: hidden;
+  padding: 5px;
 }
 
 .inventory-section {
@@ -29,6 +27,7 @@ html {
 .inventory-item {
   border: 1px solid black;
   overflow: hidden;
+  margin: 4px;
 }
 
 ul {
@@ -62,6 +61,7 @@ ul {
 
 .order-summary {
   border: 2px solid red;
+  padding: 5px;
 }
 
 .inventory-section {

@@ -12,6 +12,22 @@ $(document).on('ready page:load', function() {
     });
   }
 
+// Search bar to filter order_items
+
+  $('#inventory_search').on('keyup', function() {
+    var data = {"search": $('#inventory_search').val()};
+    var orderId = $('#inventory_search').attr('data');
+    $.ajax({
+      method: 'GET',
+      url: '/orders/' + orderId,
+      data: data,
+      success: function(data) {
+        $('.inventory-items').html(data);
+        $('.inventory-item-draggable').draggable({ revert: 'invalid' });
+      }
+    })
+  })
+
 // Add and create order_item by selecting inventory_item
   $('.inventory-items').on('submit', '.new_order_item', function(event) {
     event.preventDefault();
