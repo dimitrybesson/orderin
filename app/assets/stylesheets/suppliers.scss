@@ -1,15 +1,23 @@
 .supplier-show-body {
   position: relative;
+  height: 100%;
 }
 .supplier-order-modal {
   display: none;
   position: fixed;
   top: 20%;
   left: 20%;
+  min-width: 40%;
+  min-height: 30%;
   background-color: #C8E6C9;
   border: 1px solid #795548;
 }
 
-.supplier-show-restaurant-select {
-  margin: auto;
+.supplier-show-select {
+  margin: 1rem auto;
+}
+
+.supplier-show-select-submit {
+  margin: 2rem 33%;
+  width: 34%;
 }

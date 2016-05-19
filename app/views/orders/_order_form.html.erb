@@ -1,6 +1,6 @@
 <%= form_for @order do |f| %>
   <%= f.hidden_field :supplier_id, value: params[:supplierId] %>
   <%= f.hidden_field :user_id, value: @user.id %>
-  <%= f.select :restaurant_id, options_from_collection_for_select(@restaurants, "id", "name") %>
-  <%= f.submit "Order" %>
+  <%= f.select :restaurant_id, options_from_collection_for_select(@restaurants, "id", "name"), {}, class: "supplier-show-select" %>
+  <%= f.submit "Order", options = {class: "supplier-show-select-submit"} %>
 <% end %>
