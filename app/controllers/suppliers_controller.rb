@@ -29,6 +29,8 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.find(params[:id])
     @inventory_items = @supplier.inventory_items
     @user = current_user
+    @order = Order.new
+    @restaurants = current_user.restaurants
   end
 
   def edit

@@ -21,13 +21,6 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
   end
 
-  def new
-    @user = current_user
-    @order = Order.new
-    @restaurants = current_user.restaurants
-    render partial: 'order_form'
-  end
-
   def create
     @order = Order.new(order_params)
     @order.status = {}
