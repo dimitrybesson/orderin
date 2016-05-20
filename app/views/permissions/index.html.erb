@@ -1,0 +1,18 @@
+<div class="permission-accordion">
+  <% @permissions.each do |permission| %>
+      <h3><%= permission.restaurant.name %></h3>
+      <div>
+        <ul>
+          <% permission.restaurant.users.each do |user| %>
+            <li class="permission-user">
+              <!-- This is a mess -->
+              <p><%= user.email %> - <%= user.clearance(permission.restaurant) %>- <%= link_to "Edit", edit_permission_path(user.permissions.find_by(institution_id: permission.restaurant.id, institution_type: "Restaurant")), options = {class: "permission-edit-button"} %></p>
+            </li>
+          <% end %>
+        </ul>
+        <p class="permission-new"><%= link_to "Add User", permissions_path, method: :post, class: "permission-new-button", data: permission.restaurant.id %></p>
+      </div>
+  <% end %>
+</div>
+<div class="permission-modal">
+</div>

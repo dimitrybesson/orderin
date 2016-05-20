@@ -1,0 +1,8 @@
+<%= form_for @permission, method: :post do |f| %>
+  <%= f.text_field :user_id %>
+  <%= f.hidden_field :institution_id, value: @restaurant.id %>
+  <!-- this won't stand -->
+  <%= f.hidden_field :institution_type, value: "Restaurant" %>
+  <%= f.select :role_id, options_for_select([['Master', 1], ['Privileged', 2], ['Restricted', 3]]) %>
+  <%= f.submit class: "permission-submission" %>
+<% end %>
