@@ -5,5 +5,4 @@ class InventoryItem < ActiveRecord::Base
   def formatted_price
     '%.2f' % (self.price / 100.0)
   end
-
 end
