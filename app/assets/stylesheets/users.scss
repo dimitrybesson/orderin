@@ -7,20 +7,31 @@
 }
 
 .filter-options {
-  overflow: auto;
+  overflow: hidden;
+  // border: 1px solid $divider;
 }
 .restaurant-block {
   @include span-columns(6);
   display: inline-block;
+  border: 1px solid $divider;
 }
 
 .supplier-block {
   @include span-columns(6);
   display: inline-block;
+  border: 1px solid $divider;
 }
 
 .order-block {
   @include span-columns(12);
-  margin-top: 2rem;
+  border: 1px solid $divider;
+}
 
+.quick-order-form {
+  margin: 2rem;
+
+  input[type="submit"] {
+    width: 100%;
+    margin: 0 auto;
+  }
 }

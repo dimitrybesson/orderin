@@ -14,6 +14,25 @@
   </div>
 </div>
 
+<div class="quick-order-form">
+
+  <%= form_for @order do |f| %>
+    <div class="field">
+      <%= f.hidden_field :restaurant_id %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :supplier_id %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :user_id, value: @user.id %>
+    </div>
+    <div class="action">
+      <%= f.submit "Place Order", class: "place-order" %>
+    </div>
+  <% end %>
+
+</div>
+
 
 <div class="order-block">
   <h2>Orders</h2>
