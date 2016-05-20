@@ -59,6 +59,17 @@ $(document).on('ready page:load', function() {
       $('#order_restaurant_id').val(selectedRestaurantIdArray[0]);
       $('#order_supplier_id').val(selectedSupplierIdArray[0]);
 
+      $.ajax({
+        method: 'GET',
+        url: '/orders',
+        data: {restaurant_ids: selectedRestaurantIdArray, supplier_ids: selectedSupplierIdArray},
+        dataType: 'html',
+        success: function(data) {
+          console.log('IT WORKS')
+          $('.orders-collection').html(data);
+        }
+      })
+
     }
     // this is for when there are restaurants and suppliers
     // can be refactored to only check presence of suppliers, because there cannot be any suppliers on the page without a restaurant being selected first
