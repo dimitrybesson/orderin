@@ -1,7 +1,7 @@
 <ul>
   <% @orders.each do |order| %>
     <li class="order-index-order">
-      <%= link_to "Order##{order.id}", order_path(order) %> <% if !order.invoiced? %> <%= link_to "Edit", edit_order_path(order) %> <% end %>
+      <%= link_to "Order##{order.id}", order_path(order) %> <% unless order.invoiced? %> <%= link_to "Edit", edit_order_path(order) %> <% end %>
       <p>To: <%= order.restaurant.name %>, From: <%= order.supplier.name %></p>
       <p>$<%= order.formatted_total %></p>
     </li>
