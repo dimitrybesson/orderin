@@ -12,6 +12,8 @@ class OrdersController < ApplicationController
       end.flatten
       render partial: '/orders/orders_collection'
     end
+
+    @orders = current_user.orders
   end
 
   def show
