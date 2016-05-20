@@ -1,0 +1,4 @@
+<%= form_for @permission do |f| %>
+  <%= f.select :role_id, options_for_select([['Master', 1], ['Privileged', 2], ['Restricted', 3]]) %>
+  <%= f.submit "Update", class: "permission-submission" %>
+<% end %>

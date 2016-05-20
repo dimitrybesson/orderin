@@ -14,4 +14,23 @@ class User < ActiveRecord::Base
     Permission.where(user_id: id, institution_type: "Restaurant", role: (1..2)).any?
   end
 
+  def restaurant_master?
+    Permission.where(user_id: id, institution_type: "Restaurant", role: 1).any?
+  end
+
+  def restaurant_master_this?(restaurant)
+    Permission.where(user_id: id, restaurant_id: restaurant.id, institution_type: "Restaurant", role: 1).any?
+  end
+
+  def clearance(restaurant)
+    case Permission.find_by(user_id: id, institution_id: restaurant.id, institution_type: "Restaurant").role_id
+    when 1
+      return "Master"
+    when 2
+      return "Privileged"
+    when 3
+      return "Restricted"
+    end
+  end
+
 end
