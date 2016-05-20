@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.3.0"
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
@@ -34,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bourbon', '5.0.0.beta.3'
 gem 'neat'
 gem 'devise'
+gem 'rails_12factor', group: :production
+gem 'puma'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
