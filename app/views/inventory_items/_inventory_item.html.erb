@@ -2,9 +2,10 @@
   <span class="inventory-item-name"><%= inventory_item.name %></span>
 
   <div class="inventory-item-right">
-    <span class="inventory-item-price"><%= inventory_item.formatted_price %></span>
-    <span class="inventory-item-quantity"><%= inventory_item.quantity %></span>
-
+    <div class="inventory-item-right-left">
+      <span class="inventory-item-price"><%= inventory_item.formatted_price %></span>
+      <span class="inventory-item-quantity"><%= inventory_item.quantity %></span>
+    </div>
     <%= form_for @order_item, html: {data: @order.id} do |f| %>
       <%= f.hidden_field :order_id, value: @order.id %>
       <%= f.hidden_field :inventory_item_id, value: inventory_item.id %>

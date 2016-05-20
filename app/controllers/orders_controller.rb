@@ -2,18 +2,18 @@ class OrdersController < ApplicationController
 
   def index
     if params[:restaurant_ids] && params[:supplier_ids]
-      puts "We have restaurants and suppliers *****************************"
       @orders = Order.where(restaurant_id: params[:restaurant_ids], supplier_id: params[:supplier_ids])
       render partial: '/orders/orders_collection'
 
     elsif params[:restaurant_ids]
-      puts 'IN ORDERS CONTROLLER ************************'
       @restaurants = Restaurant.where(id: params[:restaurant_ids])
       @orders = @restaurants.map do |restaurant|
         restaurant.orders
       end.flatten
       render partial: '/orders/orders_collection'
     end
+
+    @orders = current_user.orders
   end
 
   def show

@@ -1,7 +1,8 @@
 <main class="supplier-show-body">
-  <h2><%= @supplier.name %>    <% if current_user.restaurant_orderer? %>
-        <%= button_tag "Place Order", options = {class: "supplier-order-button", data: @supplier.id} %>
-      <% end %></h2>
+  <h2><%= @supplier.name %></h2>
+    <% if current_user.restaurant_orderer? %>
+      <%= button_tag "Place Order", options = {class: "supplier-order-button", data: @supplier.id} %>
+    <% end %>
     <% if @supplier.master?(@user) %>
       <%= link_to "Add Inventory Item", new_supplier_inventory_item_path(@supplier) %>
     <% end %>
