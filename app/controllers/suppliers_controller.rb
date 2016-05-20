@@ -1,9 +1,6 @@
 class SuppliersController < ApplicationController
 
   def index
-    # @suppliers = Supplier.all
-
-
     if params[:restaurant_ids]
       @restaurants = Restaurant.where(id: params[:restaurant_ids])
       @suppliers = @restaurants.map do |restaurant|
@@ -11,6 +8,8 @@ class SuppliersController < ApplicationController
       end.flatten.uniq
       render @suppliers
     end
+
+    @suppliers = Supplier.all
   end
 
   def new
