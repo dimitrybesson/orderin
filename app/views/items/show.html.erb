@@ -1,2 +1,12 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<h3><%= @item.name %></h3>
+<p>Description: <%= @item.description %><p>
+
+<div class="available-from">
+  <ul>
+    <% @inventory_items.each do |inventory_item| %>
+      <li>
+        <%= link_to inventory_item.supplier.name, supplier_path(inventory_item.supplier) %> - $<%= inventory_item.formatted_price %>
+      </li>
+    <% end %>
+  </ul>
+</div>
