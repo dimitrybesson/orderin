@@ -7,7 +7,6 @@ $(document).on('ready page:load', function() {
   $('.permission-user').on('click', '.permission-edit-button', function(e) {
     e.preventDefault();
     $('.permission-modal').css('display', 'block');
-    console.log(this);
     $.ajax({
       method: 'GET',
       url: $(this).attr('href'),
