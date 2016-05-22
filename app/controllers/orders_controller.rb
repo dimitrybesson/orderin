@@ -13,7 +13,9 @@ class OrdersController < ApplicationController
       render partial: '/orders/orders_collection'
     end
 
-    @orders = current_user.orders
+    @orders = current_user.restaurants.map do |restaurant|
+      restaurant.orders
+    end.flatten#.order(id: :desc) ##this is pretty boneheaded. need to find a way to call this without colliding with the name of the model
   end
 
   def show
