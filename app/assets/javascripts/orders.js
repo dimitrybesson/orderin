@@ -83,6 +83,7 @@ $(document).on('ready page:load', function() {
       success: function(data) {
         orderItem.replaceWith(data);
         orderTotalUpdate(orderId);
+        $('.order-item-draggable').draggable({ revert: 'invalid'});
       }
 
     });
