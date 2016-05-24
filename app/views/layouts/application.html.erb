@@ -24,14 +24,22 @@
 
   <nav>
     <% if user_signed_in? %>
-      <p class="nav-link"><%= link_to "Home", user_path(current_user) %></p>
-      <p class="nav-link"><%= link_to "View Orders", orders_path %></p>
-      <p class="nav-link"><%= link_to "Browse Suppliers", suppliers_path %></p>
-      <p class="nav-link"><%= link_to "Browse Products", items_path %></p>
-      <% if current_user.restaurant_master? %>
-        <p class="nav-link"><%= link_to "Access Manager", permissions_path %></p>
+      <% if current_user.restaurant_worker? %>
+        <p class="nav-link"><%= link_to "Home", user_path(current_user) %></p>
+        <p class="nav-link"><%= link_to "View Orders", orders_path %></p>
+        <p class="nav-link"><%= link_to "Browse Suppliers", suppliers_path %></p>
+        <p class="nav-link"><%= link_to "Browse Products", items_path %></p>
+        <% if current_user.restaurant_master? %>
+          <p class="nav-link"><%= link_to "Access Manager", permissions_path %></p>
+        <% end %>
+        <p class="nav-link"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+      <% elsif current_user.supplier_worker? %>
+        <p class="nav-link"><%= link_to "Home", user_path(current_user) %></p>
+        <p class="nav-link"><%= link_to "View Orders", orders_path %></p>
+        <p class="nav-link"><%= link_to "Inventory", supplier_inventory_items_path(current_user.suppliers.first) %>
+        <p class="nav-link"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+      <% else %>
       <% end %>
-      <p class="nav-link"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
     <% end %>
   </nav>
 

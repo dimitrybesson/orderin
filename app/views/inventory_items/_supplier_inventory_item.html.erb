@@ -1,0 +1,8 @@
+<li>
+  <%= @inventory_item.item.name %>
+  <%= @inventory_item.quantity %>
+  <%= @inventory_item.formatted_price %>
+  <% if current_user.suppliers.include?(@supplier) %>
+    <%= link_to "Edit", edit_supplier_inventory_item_path(@supplier, @inventory_item), class: "edit-inventory-item-btn" %>
+  <% end %>
+</li>

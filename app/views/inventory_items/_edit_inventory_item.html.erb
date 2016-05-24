@@ -1,0 +1,17 @@
+<p><%= @inventory_item.name %></p>
+<%= form_for [@supplier, @inventory_item] do |f| %>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

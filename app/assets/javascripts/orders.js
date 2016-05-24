@@ -152,7 +152,7 @@ $(document).on('ready page:load', function() {
     // editIconContainer.html(editIcon);
   });
 
-  $(function() {
+  // $(function() {
     $('.inventory-item-draggable').draggable({ revert: 'invalid' });
     $('.inventory-item-droppable').droppable({
       tolerance: 'pointer',
@@ -208,6 +208,6 @@ $(document).on('ready page:load', function() {
         })
       }
     })
-  });
+  // });
 
 });
