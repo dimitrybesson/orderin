@@ -1,6 +1,8 @@
 $(document).on('ready page:load', function() {
+
   $('.inventory').on('click', '.edit-inventory-item-btn', function(e) {
     e.preventDefault();
+    e.stopPropagation();
     $(this).parent().addClass('selected');
     $.ajax({
       method: 'GET',
@@ -24,5 +26,9 @@ $(document).on('ready page:load', function() {
         $('.edit-inventory-item-modal').toggleClass('hidden');
       }
     })
+  })
+  $('.edit-inventory-item-modal').on('click', '.modal-close-btn', function() {
+    $('.edit-inventory-item-modal').toggleClass('hidden');
+    $('.selected').removeClass('selected');
   })
 })

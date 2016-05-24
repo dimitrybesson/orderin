@@ -1,6 +1,18 @@
 .edit-inventory-item-modal {
   position: fixed;
-  top: 30%;
+  top: 15%;
   left: 30%;
-  background-color: tomato;
+  background-color: $light-gray;
+  height: 60%;
+  width: 60%;
+  padding: 2rem;
+  border: 1px solid black;
+  border-radius: 1%;
+}
+
+.modal-close-btn {
+  float: right;
+  border: 1px solid black;
+  padding: 0 5px;
+  cursor: pointer;
 }
