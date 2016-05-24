@@ -12,9 +12,15 @@
 
 .modal-close-btn {
   float: right;
-  border: 1px solid black;
-  padding: 0 5px;
+  padding: 0 7px;
   cursor: pointer;
+  border-radius: 50%;
+  font-family: $perfect-x-font-family;
+}
+
+.modal-close-btn:hover {
+    background-color: tomato;
+    color: white;
 }
 
 .column-name {
