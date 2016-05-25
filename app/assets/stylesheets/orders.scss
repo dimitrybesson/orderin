@@ -52,7 +52,7 @@
     margin: 0;
   }
   input[type="submit"] {
-
+    width: 40%;
   }
 }
 
@@ -71,7 +71,7 @@
 /////////////////////////ORDER SUMMARY////////////////////////////////
 
 .column-order-name {
-  width: 50%;
+  width: 35%;
 }
 
 .column-order-price {
@@ -79,7 +79,7 @@
 }
 
 .column-order-quantity {
-  width: 10%;
+  width: 30%;
 }
 
 .column-order-edit {
@@ -87,7 +87,7 @@
 }
 
 .column-order-subtotal {
-  width: 15%;
+  width: 10%;
 }
 
 .column-order-close {
@@ -100,6 +100,15 @@
 
 .cell-order-item-quantity {
   text-align: right;
+
+  input[type="number"] {
+    display: inline-block;
+    width: 40%;
+  }
+  input[type="submit"] {
+    width: 40%;
+  }
+
 }
 
 .cell-order-item-subtotal {

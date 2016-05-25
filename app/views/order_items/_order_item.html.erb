@@ -4,7 +4,7 @@
     <td class='cell-order-item-price'><%= order_item.formatted_price %></td>
 
     <% if !order_item.order.invoiced? %>
-      <td class='cell-order-item-quantity'><%= order_item.quantity %>
+      <td class='cell-order-item-quantity'><span class='order-item-quantity-value'><%= order_item.quantity %></span>
         <%= form_for order_item, html: {class: 'hidden edit_order_item', data: order_item.order.id} do |f| %>
           <%= f.number_field :quantity, options = {min: 0, max: (order_item.inventory_item.quantity + order_item.quantity)} %>
           <%= f.submit "+" %></td>
@@ -14,19 +14,7 @@
     <% end %>
 
     <td class='cell-order-item-edit'><% if !order_item.order.invoiced? %><span class='edit-icon hidden'>E</span><% end %></td>
-    <% if !order_item.order.invoiced? %>
 
-
-
-
-      <%= form_for order_item, html: {class: 'hidden edit_order_item', data: order_item.order.id} do |f| %>
-        <%= f.number_field :quantity, options = {min: 0, max: (order_item.inventory_item.quantity + order_item.quantity)} %>
-        <%= f.submit "+" %>
-      <% end %>
-
-
-
-    <% end %>
 
     <td class='cell-order-item-subtotal'><%= order_item.formatted_subtotal %></td>
 

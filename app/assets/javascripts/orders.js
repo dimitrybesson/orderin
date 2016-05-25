@@ -138,18 +138,17 @@ $(document).on('ready page:load', function() {
 
 // Click order_item to show edit order_item form
   $('.order-items').on('click', '.order-item', function() {
-    var orderItemRight = $(this).children();
-    var editIconContainer = orderItemRight.children('.edit-icon-container')
-    var editIcon = orderItemRight.children('.edit-icon-container').children('.edit-icon');
-    var orderItemQuantity = orderItemRight.children('.order-item-quantity');
 
-    orderItemQuantity.addClass('hidden');
-    editIcon.remove();
+    var quantityCell = $(this).children('.cell-order-item-quantity');
+    var quantityValue = quantityCell.children('.order-item-quantity-value');
+    quantityValue.toggleClass('hidden');
 
-    var editOrderForm = orderItemRight.children('.edit_order_item');
-    editOrderForm.removeClass('hidden');
-    // editIconContainer.html(editIcon);
-    debugger
+    var quantityForm = quantityCell.children('.edit_order_item');
+    quantityForm.toggleClass('hidden');
+
+    var editCell = $(this).children('.cell-order-item-edit');
+    editCell.toggleClass('hidden');
+
   });
 
   // $(function() {

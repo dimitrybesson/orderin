@@ -73,6 +73,12 @@ header {
   border-bottom: 1px solid $divider;
 }
 
+.title {
+  color: white;
+  font-family: $base-font-family;
+  font-size: 3rem;
+}
+
 main {
   margin-top: 3rem;
   margin-left: 8rem;
