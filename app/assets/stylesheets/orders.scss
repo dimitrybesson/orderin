@@ -15,14 +15,16 @@
   width: 65%;
   border: 1px solid black;
   border-radius: 1%;
+  padding: 1rem;
 }
 
 .order-summary {
   display: inline-block;
   float: right;
-  width: 30%;
+  width: 32%;
   border: 1px solid black;
   border-radius: 1%;
+  padding: 1rem;
 }
 
 .column-inv-name {
@@ -37,24 +39,20 @@
   width: 10%;
 }
 
-.column-quantity-field {
-  width: 10%;
+.column-order-item-form {
+  width: 20%;
 }
 
-.column-submit-btn {
-    width: 10%;
-}
 
-.cell-order-item-quantity-field {
+.cell-order-item-form {
+  text-align: right;
   input[type="number"] {
-    width: 60%;
-    margin: 0 auto;
+    display: inline-block;
+    width: 40%;
+    margin: 0;
   }
-}
-
-.cell-order-item-submit-btn {
   input[type="submit"] {
-    margin: 0 auto;
+
   }
 }
 

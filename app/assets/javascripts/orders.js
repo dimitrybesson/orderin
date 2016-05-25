@@ -32,7 +32,7 @@ $(document).on('ready page:load', function() {
   $('.inventory-items').on('submit', '.new_order_item', function(event) {
     event.preventDefault();
 
-    var inventoryItem = $(this).parent().parent()
+    var inventoryItem = $(this).parent().parent()//row
     orderId = $(this).attr('data');
     $.ajax({
       method: 'POST',
@@ -61,7 +61,7 @@ $(document).on('ready page:load', function() {
       url: $(this).attr('href'),
       dataType: 'html',
       success: function(data) {
-        $('.inventory-items').prepend(data);
+        $('.inventory-item').first().before(data);
         $('.inventory-item-draggable').draggable({ revert: 'invalid' });
         orderItem.remove(); //instead, we are going to remove order-item
         orderTotalUpdate(orderId);
@@ -116,21 +116,20 @@ $(document).on('ready page:load', function() {
 // Hover over order_item to see edit option and pointer cursor
   $('.order-items').on('mouseover', '.order-item', function() {
 
-    var orderItemRight = $(this).children();
-    var editIconContainer = orderItemRight.children('.edit-icon-container');
-    var editIcon = editIconContainer.children(); //Assumes there is ever only one child in editIconContainer
+    var orderItemEditCell = $(this).children('.cell-order-item-edit');
+    var editIcon = orderItemEditCell.children('.edit-icon');
 
     editIcon.toggleClass('hidden');
     $(this).css({cursor: 'pointer'});
+
   });
 
   $('.order-items').on('mouseout', '.order-item', function() {
 
-    var orderItemRight = $(this).children();
-    var editIconContainer = orderItemRight.children('.edit-icon-container');
-    var editIcon = editIconContainer.children();
-
+    var orderItemEditCell = $(this).children('.cell-order-item-edit');
+    var editIcon = orderItemEditCell.children('.edit-icon');
     editIcon.toggleClass('hidden');
+
   });
 
   $('.order-items').on('click', '.edit_order_item', function(event) {
@@ -138,7 +137,7 @@ $(document).on('ready page:load', function() {
   });
 
 // Click order_item to show edit order_item form
-  $('.order-items').on('click', ('.order-item'), function() {
+  $('.order-items').on('click', '.order-item', function() {
     var orderItemRight = $(this).children();
     var editIconContainer = orderItemRight.children('.edit-icon-container')
     var editIcon = orderItemRight.children('.edit-icon-container').children('.edit-icon');
@@ -150,6 +149,7 @@ $(document).on('ready page:load', function() {
     var editOrderForm = orderItemRight.children('.edit_order_item');
     editOrderForm.removeClass('hidden');
     // editIconContainer.html(editIcon);
+    debugger
   });
 
   // $(function() {
