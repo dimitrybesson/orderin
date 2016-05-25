@@ -77,3 +77,33 @@
     background-color: tomato;
     color: white;
 }
+
+.supplier-landing-orders {
+  width: 50%;
+  float: left;
+}
+
+.supplier-landing-charts {
+  width: 50%;
+  float: left;
+}
+
+.supplier-order-popup {
+  height: 0;
+  width: 0;
+  background-color: $light-gray;
+  position: fixed;
+  overflow: hidden;
+
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+.supplier-order-popup-active {
+  left: 50%;
+  top: 15%;
+  height: 75%;
+  width: 45%;
+  padding: 1.5rem;
+}

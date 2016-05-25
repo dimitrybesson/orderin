@@ -40,7 +40,15 @@
     </div>
   </div>
 <% elsif current_user.supplier_worker? %>
-  <p>You are a supplier. Nice.</p>
+  <div class="supplier-landing-orders">
+    <p>Upcoming orders: <%= @orders.count %></p>
+    <% @orders.each do |order| %>
+      <div class="supplier-landing-order">
+        <p> <%= link_to "Order##{order.id}", order_path(order), class: "supplier-landing-order-link", data: order.id %> - <%= order.restaurant.name %></p>
+        <div class="supplier-order-popup <%= order.id %>"></div>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <p class="institution-creation"><%= link_to "Sign up your restaurant!", new_restaurant_path %></p>
   <p class="institution-creation"><%= link_to "Sign up your supply company!", new_supplier_path %></p>

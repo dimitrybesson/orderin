@@ -31,7 +31,6 @@ $(document).on('ready page:load', function() {
 // Add and create order_item by selecting inventory_item
   $('.inventory-items').on('submit', '.new_order_item', function(event) {
     event.preventDefault();
-
     var inventoryItem = $(this).parent().parent()
     orderId = $(this).attr('data');
     $.ajax({
