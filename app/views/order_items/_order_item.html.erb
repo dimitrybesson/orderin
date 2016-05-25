@@ -1,18 +1,17 @@
-<li class="order-item order-item-draggable">
-  <%= order_item.name %>
-  <div class="order-item-right">
-    <span class='order-item-price'><%= order_item.formatted_price %></span>
-    <% if !order_item.order.invoiced? %><span class='order-item-quantity'><% else %><span class='order-item-quantity-invoiced'><% end %><%= order_item.quantity %></span>
-    <div class='edit-icon-container'><% if !order_item.order.invoiced? %><span class='edit-icon hidden'>E</span><% end %></div>
-    <% if !order_item.order.invoiced? %>
+<tr class="order-item order-item-draggable">
+  <td class="cell-order-item-name"><%= order_item.name %></td>
+
+    <td class='cell-order-item-price'><%= order_item.formatted_price %></td>
+    <% if !order_item.order.invoiced? %><td class='cell-order-item-quantity'><% else %><td class='cell-order-item-quantity-invoiced'><% end %><%= order_item.quantity %></span>
+    <td><% if !order_item.order.invoiced? %><span class='edit-icon hidden'>E</span><% end %>
+    <% if !order_item.order.invoiced? %></td>
       <%= form_for order_item, html: {class: 'hidden edit_order_item', data: order_item.order.id} do |f| %>
-        <%= f.number_field :quantity, options = {min: 0, max: (order_item.inventory_item.quantity + order_item.quantity)} %>
-        <%= f.submit "+" %>
+        <td class="hidden"><%= f.number_field :quantity, options = {min: 0, max: (order_item.inventory_item.quantity + order_item.quantity)} %></td>
+        <td class="hidden"><%= f.submit "+" %></td>
       <% end %>
     <% end %>
-    <span class='order-item-subtotal'><%= order_item.formatted_subtotal %></span>
-    <% if !order_item.order.invoiced? %>
+    <td class='cell-order-item-subtotal'><%= order_item.formatted_subtotal %></td>
+    <td class="cell-order-item-close"><% if !order_item.order.invoiced? %>
       <%= link_to "X", order_item_path(order_item), method: :delete, class: 'order-item-delete', data: order_item.order.id %>
-    <% end %>
-  </div>
-</li>
+    <% end %></td>
+</tr>

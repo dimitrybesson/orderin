@@ -12,9 +12,21 @@
       <%= text_field_tag :inventory_search, "", options = {placeholder: "Search...", data: @order.id} %>
     </div>
     <div class="inventory">
-      <ul class="inventory-items">
+      <table class="inventory-items">
+        <col class="column-inv-name"/>
+        <col class="column-inv-price"/>
+        <col class="column-inv-quantity"/>
+        <col class="column-quantity-field"/>
+        <col class="column-submit-btn"/>
+        <tr>
+          <th class="cell-inv-name">Name</th>
+          <th class="cell-inv-price">Price</th>
+          <th class="cell-inv-quantity">Quantity</th>
+          <th class="cell-quantity-field">Add</th>
+          <th class="cell-submit-btn"></th>
+        </tr>
         <%= render @inventory_items %>
-      </ul>
+      </table>
     </div>
   </section>
 
