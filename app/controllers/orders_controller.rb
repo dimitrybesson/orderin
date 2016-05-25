@@ -32,9 +32,13 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
 
     if request.xhr?
+      if params[:search]
        @inventory_items = @order.accessible_items.where('name ilike ?', "%#{params[:search]}%")
        @order_item = OrderItem.new
        render @inventory_items
+      else
+        render partial: 'supplier_show_popup'
+      end
     end
   end
 

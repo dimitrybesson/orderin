@@ -89,6 +89,22 @@ $(document).on('ready page:load', function() {
     }
   });
 
+  // supplier landing page
+
+  $('.supplier-landing-order-link').on('click', function(e) {
+    e.preventDefault();
+    var orderId = $(this).attr('data');
+    $('.' + orderId).addClass('supplier-order-popup-active');
+    $.ajax({
+      method: 'GET',
+      url: $(this).attr('href'),
+      dataType: 'html',
+      success: function(data) {
+        $('.' + orderId).html(data);
+      }
+    })
+  })
+
   // for users with no institutions
   $('.institution-creation').on('click', function(e) {
     e.preventDefault();

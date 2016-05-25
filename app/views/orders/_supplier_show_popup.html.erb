@@ -1,0 +1,7 @@
+<p><%= link_to "Order##{@order.id}", order_path(@order) %></p>
+<p>Delivery Date: <%= @order.delivery_date %></p>
+<p>Restaurant: <%= @order.restaurant.name %></p>
+<p>Phone: <%= @order.restaurant.phone %></p>
+<p>Address: <%= @order.restaurant.street_address %></p>
+<p>Total: <%= @order.formatted_total %></p>
+<p>Instructions: <%= @order.instructions %></p>
