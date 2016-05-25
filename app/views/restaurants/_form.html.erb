@@ -1,0 +1,18 @@
+<p class="institution-modal-close-btn">X</p>
+<%= form_for @restaurant do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :street_address %>
+    <%= f.text_field :street_address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

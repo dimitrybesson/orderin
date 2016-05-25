@@ -14,13 +14,20 @@ class SuppliersController < ApplicationController
 
   def new
     @supplier = Supplier.new
+    render partial: 'form'
   end
 
   def create
     @supplier = Supplier.new(supplier_params)
     if @supplier.save
-      # redirect to
+      @permission = Permission.new(user_id: current_user.id, role_id: 1, institution_id: @supplier.id, institution_type: "Supplier")
+      if @permission.save
+        redirect_to user_url(current_user)
+      else
+        # error handling
+      end
     else
+      # error handling
     end
   end
 

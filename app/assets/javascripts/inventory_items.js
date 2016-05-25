@@ -3,7 +3,7 @@ $(document).on('ready page:load', function() {
   $('.inventory').on('click', '.edit-inventory-item-btn', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    $(this).parent().addClass('selected');
+    $(this).parents('tr').addClass('selected');
     $.ajax({
       method: 'GET',
       url: $(this).attr('href'),

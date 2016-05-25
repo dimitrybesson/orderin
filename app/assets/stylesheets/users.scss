@@ -35,3 +35,45 @@
     margin: 0 auto;
   }
 }
+
+.institution-creation {
+  border: 1px solid black;
+  background-color: $light-gray;
+  color: white;
+  display: inline-block;
+  padding: 0.5rem;
+}
+
+.signup-modal {
+  position: fixed;
+  top: 3rem;
+  left: 10%;
+  height: 0;
+  width: 80%;
+  background-color: $light-gray;
+  border-radius: 1%;
+
+  transition-property: height;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+.modal-on {
+  height: 80%;
+  padding: 2rem;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.institution-modal-close-btn {
+  float: right;
+  padding: 0 7px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-family: $perfect-x-font-family;
+}
+
+.institution-modal-close-btn:hover {
+    background-color: tomato;
+    color: white;
+}

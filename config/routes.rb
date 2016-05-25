@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   patch 'invoice_items' => 'invoice_items#mass_update'
 
   resources :invoice_items
-  resources :suppliers
   resources :items, except: %w(new edit)
   resources :permissions, except: %w(show)
 

@@ -1,41 +1,48 @@
+<% if current_user.restaurant_worker? %>
+  <div class="filter-options">
+    <div class="restaurant-block">
+      <h2>Restaurants</h2>
+      <div class="user-restaurants">
+        <%= render @restaurants %>
+      </div>
+    </div>
 
-<div class="filter-options">
-  <div class="restaurant-block">
-    <h2>Restaurants</h2>
-    <div class="user-restaurants">
-      <%= render @restaurants %>
+    <div class="supplier-block">
+      <h2>Suppliers</h2>
+      <div class="user-suppliers">
+      </div>
     </div>
   </div>
 
-  <div class="supplier-block">
-    <h2>Suppliers</h2>
-    <div class="user-suppliers">
+  <div class="quick-order-form">
+
+    <%= form_for @order do |f| %>
+      <div class="field">
+        <%= f.hidden_field :restaurant_id %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :supplier_id %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :user_id, value: @user.id %>
+      </div>
+      <div class="action">
+        <%= f.submit "Place Order", class: "place-order" %>
+      </div>
+    <% end %>
+
+  </div>
+
+
+  <div class="order-block">
+    <h2>Orders</h2>
+    <div class="orders-collection">
     </div>
   </div>
-</div>
-
-<div class="quick-order-form">
-
-  <%= form_for @order do |f| %>
-    <div class="field">
-      <%= f.hidden_field :restaurant_id %>
-    </div>
-    <div class="field">
-      <%= f.hidden_field :supplier_id %>
-    </div>
-    <div class="field">
-      <%= f.hidden_field :user_id, value: @user.id %>
-    </div>
-    <div class="action">
-      <%= f.submit "Place Order", class: "place-order" %>
-    </div>
-  <% end %>
-
-</div>
-
-
-<div class="order-block">
-  <h2>Orders</h2>
-  <div class="orders-collection">
-  </div>
-</div>
+<% elsif current_user.supplier_worker? %>
+  <p>You are a supplier. Nice.</p>
+<% else %>
+  <p class="institution-creation"><%= link_to "Sign up your restaurant!", new_restaurant_path %></p>
+  <p class="institution-creation"><%= link_to "Sign up your supply company!", new_supplier_path %></p>
+  <div class="signup-modal"></div>
+<% end %>
