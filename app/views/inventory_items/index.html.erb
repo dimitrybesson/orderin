@@ -1,5 +1,5 @@
 <h1><%= @supplier.name %></h1>
-<h1>InventoryItems</h1>
+<h1>Inventory Items</h1>
 
 <% if current_user.restaurant_worker? %>
   <%= form_for @order do |f| %>
@@ -14,20 +14,20 @@
 <div class="inventory">
   <table>
     <col class="column-name"/>
-    <col class="column-quantity"/>
     <col class="column-price"/>
+    <col class="column-quantity"/>
     <col class="column-edit"/>
     <tr>
       <th>Name</th>
-      <th class="cell-quantity">Quantity</th>
       <th class="cell-price">Price</th>
+      <th class="cell-quantity">Quantity</th>
       <th></th>
     </tr>
     <% @inventory_items.each do |inventory_item| %>
       <tr>
         <td><%= inventory_item.item.name %></td>
-        <td class="cell-quantity"><%= inventory_item.quantity %></td>
         <td class="cell-price"><%= inventory_item.formatted_price %></td>
+        <td class="cell-quantity"><%= inventory_item.quantity %></td>
         <% if current_user.suppliers.include?(@supplier) %>
           <td class="cell-edit"><%= link_to "Edit", edit_supplier_inventory_item_path(@supplier, inventory_item), class: "edit-inventory-item-btn" %></td>
         <% end %>

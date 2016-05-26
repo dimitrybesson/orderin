@@ -4,131 +4,116 @@
 *:after {
   box-sizing: border-box;
 }
+//////////////////////INVENTORY ITEM LIST SECTION/////////////////////
 
-html {
-  font-family: sans-serif;
-}
-
-#order-edit {
-  overflow: hidden;
-  padding: 5px;
+#inventory_search {
+  border: 2px solid red;
 }
 
 .inventory-section {
-  width: 67%;
-  float: left;
-}
-
-.order-summary {
-  width: 33%;
-  float: right;
-}
-
-.inventory-item {
+  display: inline-block;
+  width: 65%;
   border: 1px solid black;
-  overflow: hidden;
-  margin: 4px;
-  background-color: #E7D8C9;
-  padding-top: 1rem;
-  @include outer-container();
-}
-
-.inventory-item-name {
-  padding-left: 1rem;
-  @include span-columns(6);
-  margin-right: 0;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-.new_order_item {
-  display: inline-block;
-  float: right;
-  input[type="submit"] {
-    display: inline-block;
-    margin-bottom: 4px;
-  }
-  input[type="number"] {
-    display:inline-block;
-  }
-}
-
-#order_item_quantity {
-  width: 50px;
-}
-
-.inventory-item-right {
-  @include span-columns(6);
-}
-
-.inventory-item-right-left {
-  display: inline-block;
-}
-
-.inventory-item-price {
-  display: inline-block;
-  text-align: center;
-  // @include span-columns(1);
-}
-
-.inventory-item-quantity {
-  display: inline-block;
-  text-align: center;
-  // @include span-columns(1);
+  border-radius: 1%;
 }
 
 .order-summary {
-  border: 2px solid $divider;
-  padding: 5px;
-}
-
-.inventory-section {
-  // border: 2px solid $divider;
-}
-
-.order-item {
-  overflow: hidden;
-}
-
-.order-item-right {
+  display: inline-block;
   float: right;
+  width: 30%;
+  border: 1px solid black;
+  border-radius: 1%;
 }
 
-.order-item-price {
-  display: inline-block;
+.column-inv-name {
+  width: 50%;
+}
+
+.column-inv-price {
+  width: 10%;
+}
+
+.column-inv-quantity {
+  width: 10%;
+}
+
+.column-quantity-field {
+  width: 10%;
+}
+
+.column-submit-btn {
+    width: 10%;
+}
+
+.cell-order-item-quantity-field {
+  input[type="number"] {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+.cell-order-item-submit-btn {
+  input[type="submit"] {
+    margin: 0 auto;
+  }
+}
+
+.cell-inv-price {
   text-align: right;
-  width: 2rem;
 }
 
-.order-item-quantity {
-  display: inline-block;
+.cell-inv-quantity {
   text-align: right;
-  width: 3rem;
 }
 
-.order-item-quantity-invoiced {
-  display: inline-block;
+.cell-quantity-field {
+  text-align: center;
+}
+
+/////////////////////////ORDER SUMMARY////////////////////////////////
+
+.column-order-name {
+  width: 50%;
+}
+
+.column-order-price {
+  width: 15%;
+}
+
+.column-order-quantity {
+  width: 10%;
+}
+
+.column-order-edit {
+  width: 5%;
+}
+
+.column-order-subtotal {
+  width: 15%;
+}
+
+.column-order-close {
+  width: 5%;
+}
+
+.cell-order-item-price {
   text-align: right;
-  width: 3rem;
 }
 
-.edit-icon-container {
-  display: inline-block;
-  width: 1rem;
-}
-
-.edit_order_item {
-  display: inline;
-}
-
-.order-item-subtotal {
-  display: inline-block;
+.cell-order-item-quantity {
   text-align: right;
-  width: 3rem;
 }
+
+.cell-order-item-subtotal {
+  text-align: right;
+}
+
+.cell-order-item-close {
+  text-align: center;
+}
+
+
+///////////////////////////OTHER//////////////////////////////////////
 
 .hidden {
   display: none;
@@ -143,10 +128,10 @@ ul {
 }
 
 .inventory-section {
-  @include span-columns(8);
-  padding: 1rem;
+  // @include span-columns(8);
+  // padding: 1rem;
 }
 
 .order-summary {
-  @include span-columns(4);
+  // @include span-columns(4);
 }

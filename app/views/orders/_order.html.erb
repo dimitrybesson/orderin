@@ -1,6 +1,20 @@
-<ul class="order-items">
+<table class="order-items">
+  <col class="column-order-name"/>
+  <col class="column-order-price"/>
+  <col class="column-order-quantity"/>
+  <col class="column-order-edit"/>
+  <col class="column-order-subtotal"/>
+  <col class="column-order-close"/>
+  <tr>
+    <th class="cell-order-name">Name</th>
+    <th class="cell-order-item-price">Price</th>
+    <th class="cell-order-item-quantity">Qty</th>
+    <th class="cell-order-edit"></th>
+    <th class="cell-order-item-subtotal">Subtotal</th>
+    <th class="cell-order-item-close"></th>
+  </tr>
   <%= render @order_items %>
-</ul>
+</table>
 
 <div class="order-calculations">
   <%= render '/orders/order_total' %>
