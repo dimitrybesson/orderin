@@ -12,7 +12,7 @@
 
 .inventory-section {
   display: inline-block;
-  width: 65%;
+  width: 55%;
   border: 1px solid black;
   border-radius: 1%;
   padding: 1rem;
@@ -21,7 +21,7 @@
 .order-summary {
   display: inline-block;
   float: right;
-  width: 32%;
+  width: 42%;
   border: 1px solid black;
   border-radius: 1%;
   padding: 1rem;
@@ -62,6 +62,7 @@
 
 .cell-inv-quantity {
   text-align: right;
+
 }
 
 .cell-quantity-field {
@@ -106,7 +107,8 @@
     width: 40%;
   }
   input[type="submit"] {
-    width: 40%;
+    width: 30%;
+    padding: 5%;
   }
 
 }

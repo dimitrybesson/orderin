@@ -55,7 +55,6 @@ $(document).on('ready page:load', function() {
 
     var orderItem = $(this).parent().parent();
     orderId = $(this).attr('data');
-
     $.ajax({
       method: 'DELETE',
       url: $(this).attr('href'),
@@ -145,6 +144,12 @@ $(document).on('ready page:load', function() {
 
     var quantityForm = quantityCell.children('.edit_order_item');
     quantityForm.toggleClass('hidden');
+
+    if (quantityCell.attr('colspan')) {
+      quantityCell.removeAttr('colspan');
+    } else {
+      quantityCell.attr('colspan', '2');
+    }
 
     var editCell = $(this).children('.cell-order-item-edit');
     editCell.toggleClass('hidden');
