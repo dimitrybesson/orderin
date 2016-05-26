@@ -31,7 +31,7 @@ $(document).on('ready page:load', function() {
 // Add and create order_item by selecting inventory_item
   $('.inventory-items').on('submit', '.new_order_item', function(event) {
     event.preventDefault();
-    var inventoryItem = $(this).parent()
+    var inventoryItem = $(this).parent().parent()
     orderId = $(this).attr('data');
     $.ajax({
       method: 'POST',
@@ -59,7 +59,7 @@ $(document).on('ready page:load', function() {
       url: $(this).attr('href'),
       dataType: 'html',
       success: function(data) {
-        $('.inventory-item').first().before(data);
+        $('.inventory-item-table-heading-row').after(data);
         $('.inventory-item-draggable').draggable({ revert: 'invalid' });
         orderItem.remove(); //instead, we are going to remove order-item
         orderTotalUpdate(orderId);
