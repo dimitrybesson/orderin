@@ -1,3 +1,5 @@
 <h1>Order Number: <%= @order.id %></h1>
-<%= link_to "Create Invoice", order_invoices_path(@order), method: :post %>
+<% if current_user.supplier_worker? %>
+  <%= link_to "Create Invoice", order_invoices_path(@order), method: :post %>
+<% end %>
 <%= render @order %>

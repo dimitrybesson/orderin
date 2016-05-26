@@ -20,9 +20,11 @@ class OrdersController < ApplicationController
     end
 
     if current_user.supplier_worker?
-      @orders = current_user.suppliers.map do |supplier|
-        supplier.orders
-      end.flatten#.order(id: :desc) ##this is pretty boneheaded. need to find a way to call this without colliding with the name of the model
+      # @orders = current_user.suppliers.map do |supplier|
+      #   supplier.orders
+      # end.flatten#.order(id: :desc) ##this is pretty boneheaded. need to find a way to call this without colliding with the name of the model
+      
+      @orders = Order.find_by_sql("SELECT * FROM orders WHERE (status ? 'submitted') AND supplier_id = #{current_user.suppliers[0].id}")
     end
 
   end
