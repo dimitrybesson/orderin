@@ -10,9 +10,16 @@
           <%= link_to "Create Invoice", order_invoices_path(order), method: :post %>
         <% end %>
       <% end %>
-      <% if order.seen? %>
-        <span class="order-status">Seen!</span>
-      <% end %>
+
+      <span class="order-status">
+        <% if order.seen? %>
+          Seen!
+        <% end %>
+        <% if order.invoiced? %>
+          Invoiced!
+        <% end %>
+      </span>
+
       <p>To: <%= order.restaurant.name %></p>
       <p> From: <%= order.supplier.name %></p>
       <p>$<%= order.formatted_total %></p>
