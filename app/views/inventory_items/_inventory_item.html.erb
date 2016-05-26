@@ -2,11 +2,11 @@
   <td class="cell-inv-name"><%= inventory_item.name %></td>
   <td class="cell-inv-price"><%= inventory_item.formatted_price %></td>
   <td class="cell-inv-quantity"><%= inventory_item.quantity %></td>
-    <%= form_for @order_item, html: {data: @order.id} do |f| %>
+    <td class="cell-order-item-form"><%= form_for @order_item, html: {data: @order.id} do |f| %>
       <%= f.hidden_field :order_id, value: @order.id %>
       <%= f.hidden_field :inventory_item_id, value: inventory_item.id %>
-    <td class="cell-order-item-quantity-field"><%= f.number_field :quantity, options = {min: 0, max: inventory_item.quantity} %></td>
-      <td class="cell-order-item-submit-btn"><%= f.submit "Add" %></td>
+    <%= f.number_field :quantity, options = {min: 0, max: inventory_item.quantity} %>
+      <%= f.submit "Add" %></td>
     <% end %>
 
 

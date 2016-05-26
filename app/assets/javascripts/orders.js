@@ -31,6 +31,7 @@ $(document).on('ready page:load', function() {
 // Add and create order_item by selecting inventory_item
   $('.inventory-items').on('submit', '.new_order_item', function(event) {
     event.preventDefault();
+
     var inventoryItem = $(this).parent().parent()
     orderId = $(this).attr('data');
     $.ajax({
@@ -54,13 +55,12 @@ $(document).on('ready page:load', function() {
 
     var orderItem = $(this).parent().parent();
     orderId = $(this).attr('data');
-
     $.ajax({
       method: 'DELETE',
       url: $(this).attr('href'),
       dataType: 'html',
       success: function(data) {
-        $('.inventory-items').prepend(data);
+        $('.inventory-item').first().before(data);
         $('.inventory-item-draggable').draggable({ revert: 'invalid' });
         orderItem.remove(); //instead, we are going to remove order-item
         orderTotalUpdate(orderId);
@@ -115,21 +115,20 @@ $(document).on('ready page:load', function() {
 // Hover over order_item to see edit option and pointer cursor
   $('.order-items').on('mouseover', '.order-item', function() {
 
-    var orderItemRight = $(this).children();
-    var editIconContainer = orderItemRight.children('.edit-icon-container');
-    var editIcon = editIconContainer.children(); //Assumes there is ever only one child in editIconContainer
+    var orderItemEditCell = $(this).children('.cell-order-item-edit');
+    var editIcon = orderItemEditCell.children('.edit-icon');
 
     editIcon.toggleClass('hidden');
     $(this).css({cursor: 'pointer'});
+
   });
 
   $('.order-items').on('mouseout', '.order-item', function() {
 
-    var orderItemRight = $(this).children();
-    var editIconContainer = orderItemRight.children('.edit-icon-container');
-    var editIcon = editIconContainer.children();
-
+    var orderItemEditCell = $(this).children('.cell-order-item-edit');
+    var editIcon = orderItemEditCell.children('.edit-icon');
     editIcon.toggleClass('hidden');
+
   });
 
   $('.order-items').on('click', '.edit_order_item', function(event) {
@@ -137,18 +136,24 @@ $(document).on('ready page:load', function() {
   });
 
 // Click order_item to show edit order_item form
-  $('.order-items').on('click', ('.order-item'), function() {
-    var orderItemRight = $(this).children();
-    var editIconContainer = orderItemRight.children('.edit-icon-container')
-    var editIcon = orderItemRight.children('.edit-icon-container').children('.edit-icon');
-    var orderItemQuantity = orderItemRight.children('.order-item-quantity');
+  $('.order-items').on('click', '.order-item', function() {
 
-    orderItemQuantity.addClass('hidden');
-    editIcon.remove();
+    var quantityCell = $(this).children('.cell-order-item-quantity');
+    var quantityValue = quantityCell.children('.order-item-quantity-value');
+    quantityValue.toggleClass('hidden');
 
-    var editOrderForm = orderItemRight.children('.edit_order_item');
-    editOrderForm.removeClass('hidden');
-    // editIconContainer.html(editIcon);
+    var quantityForm = quantityCell.children('.edit_order_item');
+    quantityForm.toggleClass('hidden');
+
+    if (quantityCell.attr('colspan')) {
+      quantityCell.removeAttr('colspan');
+    } else {
+      quantityCell.attr('colspan', '2');
+    }
+
+    var editCell = $(this).children('.cell-order-item-edit');
+    editCell.toggleClass('hidden');
+
   });
 
   // $(function() {
