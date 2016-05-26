@@ -105,10 +105,12 @@
   input[type="number"] {
     display: inline-block;
     width: 40%;
+    max-width: 4rem;
   }
   input[type="submit"] {
     width: 30%;
     padding: 5%;
+    max-width: 3rem;
   }
 
 }
