@@ -203,7 +203,7 @@ $(document).on('ready page:load', function() {
           url: deleteUrl,
           dataType: 'html',
           success: function(data) {
-            $('.inventory-items').prepend(data);
+            $('.inventory-item-table-heading-row').after(data);
             $('.inventory-item-draggable').draggable({ revert: 'invalid' });
             ui.draggable.remove();
             orderTotalUpdate(orderId);
