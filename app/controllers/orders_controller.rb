@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
       # @orders = current_user.suppliers.map do |supplier|
       #   supplier.orders
       # end.flatten#.order(id: :desc) ##this is pretty boneheaded. need to find a way to call this without colliding with the name of the model
-      
+
       @orders = Order.find_by_sql("SELECT * FROM orders WHERE (status ? 'submitted') AND supplier_id = #{current_user.suppliers[0].id}")
     end
 
@@ -32,6 +32,10 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+
+    if current_user.supplier_worker?
+      @order.seen
+    end
 
     if request.xhr?
       if params[:search]

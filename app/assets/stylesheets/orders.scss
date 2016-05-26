@@ -99,7 +99,7 @@
   text-align: right;
 }
 
-.cell-order-item-quantity {
+.cell-order-item-quantity, .cell-order-item-quantity-invoiced {
   text-align: right;
 
   input[type="number"] {
@@ -145,4 +145,18 @@
 
 .order-summary {
   // @include span-columns(4);
+}
+
+.order-index-order {
+  width: 50%;
+  border: 1px solid black;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+
+  p {
+    margin: 0;
+  }
+  .order-status {
+    float: right;
+  }
 }

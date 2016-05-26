@@ -46,4 +46,15 @@ class Order < ActiveRecord::Base
     status["paid"]
   end
 
+  def completed?
+    status["completed"]
+  end
+
+  def seen
+    if !status["seen"]
+      status["seen"] = true
+      save
+    end
+  end
+
 end

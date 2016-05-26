@@ -1,4 +1,4 @@
-<table class="order-items">
+<table class="order-items<% if @order.invoiced? %>-invoiced<% end %>">
   <col class="column-order-name"/>
   <col class="column-order-price"/>
   <col class="column-order-quantity"/>
