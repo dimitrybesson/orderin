@@ -18,12 +18,14 @@
   @include span-columns(6);
   display: inline-block;
   border: 1px solid $divider;
+  padding: $small-spacing;
 }
 
 .supplier-block {
   @include span-columns(6);
   display: inline-block;
   border: 1px solid $divider;
+  padding: $small-spacing;
 }
 
 .order-block {
@@ -102,6 +104,8 @@
 .supplier-order-popup {
   height: 0;
   width: 0;
+  left: 50%;
+  top: 15%;
   background-color: $light-gray;
   position: fixed;
   overflow: hidden;
@@ -112,15 +116,27 @@
 }
 
 .supplier-order-popup-active {
-  left: 50%;
-  top: 15%;
   height: 75%;
   width: 45%;
   padding: 1.5rem;
   border: 1px solid black;
+  border-radius: 1%;
 }
 
 .supplier-landing-order-list {
   // border: 1px solid black;
   margin: 0 1rem 3rem;
+}
+
+.supplier-order-modal-close-btn {
+  float: right;
+  padding: 0 7px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-family: $perfect-x-font-family;
+}
+
+.supplier-order-modal-close-btn:hover {
+    background-color: tomato;
+    color: white;
 }

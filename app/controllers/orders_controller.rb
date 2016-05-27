@@ -2,29 +2,28 @@ class OrdersController < ApplicationController
 
   def index
     if params[:restaurant_ids] && params[:supplier_ids]
-      @orders = Order.where(restaurant_id: params[:restaurant_ids], supplier_id: params[:supplier_ids])
+      @orders = Order.where(restaurant_id: params[:restaurant_ids], supplier_id: params[:supplier_ids]).order(id: :desc).first(10)
       render partial: '/orders/orders_collection'
 
     elsif params[:restaurant_ids]
       @restaurants = Restaurant.where(id: params[:restaurant_ids])
       @orders = @restaurants.map do |restaurant|
         restaurant.orders
-      end.flatten
+      end.flatten.sort{|a,b| b.id <=> a.id}[0, 5]
       render partial: '/orders/orders_collection'
     end
 
     if current_user.restaurant_worker?
       @orders = current_user.restaurants.map do |restaurant|
         restaurant.orders
-      end.flatten#.order(id: :desc) ##this is pretty boneheaded. need to find a way to call this without colliding with the name of the model
+      end.flatten.sort{|a,b| b.id <=> a.id}[0, 5]
     end
 
     if current_user.supplier_worker?
-      # @orders = current_user.suppliers.map do |supplier|
-      #   supplier.orders
-      # end.flatten#.order(id: :desc) ##this is pretty boneheaded. need to find a way to call this without colliding with the name of the model
-
-      @orders = Order.find_by_sql("SELECT * FROM orders WHERE (status ? 'submitted') AND supplier_id = #{current_user.suppliers[0].id}")
+      @orders = Order.find_by_sql("SELECT * FROM orders
+                                  WHERE (status ? 'submitted')
+                                  AND supplier_id = #{current_user.suppliers[0].id}
+                                  ORDER BY id DESC")
     end
 
   end

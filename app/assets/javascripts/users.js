@@ -93,6 +93,7 @@ $(document).on('ready page:load', function() {
   $('.supplier-landing-order-link').on('click', function(e) {
     e.preventDefault();
     var orderId = $(this).attr('data');
+    $('.supplier-order-popup-active').removeClass('supplier-order-popup-active');
     $('.' + orderId).addClass('supplier-order-popup-active');
     $.ajax({
       method: 'GET',
@@ -102,6 +103,10 @@ $(document).on('ready page:load', function() {
         $('.' + orderId).html(data);
       }
     })
+  })
+
+  $('.supplier-order-popup').on('click', '.supplier-order-modal-close-btn', function() {
+    $(this).parent().toggleClass('supplier-order-popup-active');
   })
 
   // for users with no institutions

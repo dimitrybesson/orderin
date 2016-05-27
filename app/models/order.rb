@@ -57,4 +57,12 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def has_incomplete_invoice?
+    invoice.present? && !invoiced?
+  end
+
+  def has_no_invoice?
+    invoice.nil?
+  end
+
 end

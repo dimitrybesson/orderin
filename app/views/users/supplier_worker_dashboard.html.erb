@@ -1,0 +1,29 @@
+<div class="supplier-landing-orders">
+  <div class="supplier-landing-new-orders supplier-landing-order-list">
+    <h3>New Orders (<%= @submitted_orders.count %>)</h3>
+    <% @submitted_orders.each do |order| %>
+      <div class="supplier-landing-order">
+        <p> <%= link_to "Order##{order.id}", order_path(order), class: "supplier-landing-order-link", data: order.id %> - <%= order.restaurant.name %></p>
+        <div class="supplier-order-popup <%= order.id %>"></div>
+      </div>
+    <% end %>
+  </div>
+  <div class="supplier-landing-invoiced-orders supplier-landing-order-list">
+    <h3>Enroute Orders (<%= @invoiced_orders.count %>)</h3>
+    <% @invoiced_orders.each do |order| %>
+      <div class="supplier-landing-order">
+        <p> <%= link_to "Order##{order.id}", order_path(order), class: "supplier-landing-order-link", data: order.id %> - <%= order.restaurant.name %></p>
+        <div class="supplier-order-popup <%= order.id %>"></div>
+      </div>
+    <% end %>
+  </div>
+  <div class="supplier-landing-delivered-orders supplier-landing-order-list">
+    <h3>Orders with Payment Outstanding (<%= @delivered_orders.count %>)</h3>
+    <% @delivered_orders.each do |order| %>
+      <div class="supplier-landing-order">
+        <p> <%= link_to "Order##{order.id}", order_path(order), class: "supplier-landing-order-link", data: order.id %> - <%= order.restaurant.name %></p>
+        <div class="supplier-order-popup <%= order.id %>"></div>
+      </div>
+    <% end %>
+  </div>
+</div>
