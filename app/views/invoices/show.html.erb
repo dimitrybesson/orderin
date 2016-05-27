@@ -1,5 +1,5 @@
 <div class="invoice-container">
-  <% if current_user.supplier_worker? %>
+  <% if current_user.supplier_worker? && !@order.shipped? %>
     <%= button_to "SHIP", order_path(@order), method: :patch, form_class: "invoice-ship-btn" %>
   <% end %>
   <p>Invoice#: <%= @invoice.id %></p>

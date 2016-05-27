@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :invoices
   end
 
+  get 'invoices' => 'invoices#index', as: 'invoices'
+
   resources :order_items
   resources :restaurants
 

@@ -13,4 +13,12 @@ class Invoice < ActiveRecord::Base
       invoice_item.order_item_id = order_item.id
     end
   end
+
+  def price_formatter(price_in_cents)
+    '%.2f' % (price_in_cents / 100.0)
+  end
+
+  def total
+    price_formatter(invoice_items.inject(0) { |sum, item| sum + item.price })
+  end
 end

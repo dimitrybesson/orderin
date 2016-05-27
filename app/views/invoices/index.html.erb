@@ -1,2 +1,17 @@
-<h1>Invoices#index</h1>
-<p>Find me in app/views/invoices/index.html.erb</p>
+<h2>Invoices</h2>
+
+<div id="invoice-tabs">
+  <ul>
+    <li><a href="#all-invoices">All</a></li>
+    <% current_user.restaurants.each do |restaurant| %>
+      <li><a href="#<%= restaurant.id %>" data-restaurant-id="<%= restaurant.id %>" class="invoice-tab"><%= restaurant.name %></a></li>
+    <% end %>
+  </ul>
+  <div id="all-invoices">
+    <%= render @invoices %>
+  </div>
+  <% current_user.restaurants.each do |restaurant| %>
+    <div id="<%= restaurant.id %>">
+    </div>
+  <% end %>
+</div>

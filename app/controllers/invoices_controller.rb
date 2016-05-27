@@ -1,7 +1,20 @@
 class InvoicesController < ApplicationController
 
   def index
-    # this will have to be filterable for a supplier, restaurant
+    if current_user.restaurant_worker?
+      if request.xhr?
+        @restaurant = Restaurant.find(params[:restaurant_id])
+        @orders = @restaurant.orders.where("status ? 'invoiced'")
+        @invoices = @orders.map { |order| order.invoice }
+        render @invoices
+      else
+        @restaurants = current_user.restaurants
+        @orders = @restaurants.map { |restaurant| restaurant.orders.where("status ? 'invoiced'") }.flatten
+        @invoices = @orders.map { |order| order.invoice }
+      end
+    elsif current_user.supplier_worker?
+
+    end
   end
 
   def show
