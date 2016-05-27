@@ -12,11 +12,24 @@
       <% end %>
 
       <span class="order-status">
-        <% if order.seen? %>
-          Seen!
-        <% end %>
-        <% if order.invoiced? %>
-          Invoiced!
+        <% if order.completed? %>
+          Completed!
+        <% else %>
+          <% if order.seen? %>
+            Seen!
+          <% end %>
+          <% if order.invoiced? %>
+            Invoiced!
+          <% end %>
+          <% if order.shipped? %>
+            Shipped!
+          <% end %>
+          <% if order.received? %>
+            Received!
+          <% end %>
+          <% if order.paid? %>
+            Paid!
+          <% end %>
         <% end %>
       </span>
 

@@ -1,10 +1,15 @@
-<h1>Invoices#show</h1>
-Invoice#: <%= @invoice.id %>
-Order#: <%= @invoice.order_id %>
+<div class="invoice-container">
+  <% if current_user.supplier_worker? %>
+    <%= button_to "SHIP", order_path(@order), method: :patch, form_class: "invoice-ship-btn" %>
+  <% end %>
+  <p>Invoice#: <%= @invoice.id %></p>
+  <p>Order#: <%= @invoice.order_id %></p>
 
-<p>Items</p>
-<% @invoice_items.each do |invoice_item| %>
-  <div class="invoice-item">
-    <%= invoice_item.order_item.name.capitalize %>, quantity: <%= invoice_item.quantity %>, price: <%= invoice_item.formatted_price %>, subtotal: <%= invoice_item.formatted_subtotal %>, <span class="<%= "positive-delta" if invoice_item.delta_is_positive? %><%= "negative-delta" if invoice_item.delta_is_negative? %>">difference: <%= invoice_item.quantity - invoice_item.order_item.quantity %>
-  </div>
-<% end %>
+
+  <p>Items</p>
+  <% @invoice_items.each do |invoice_item| %>
+    <div class="invoice-item">
+      <%= invoice_item.order_item.name.capitalize %>, quantity: <%= invoice_item.quantity %>, price: <%= invoice_item.formatted_price %>, subtotal: <%= invoice_item.formatted_subtotal %>, <span class="<%= "positive-delta" if invoice_item.delta_is_positive? %><%= "negative-delta" if invoice_item.delta_is_negative? %>">difference: <%= invoice_item.quantity - invoice_item.order_item.quantity %>
+    </div>
+  <% end %>
+</div>

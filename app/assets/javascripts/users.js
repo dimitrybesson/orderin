@@ -21,7 +21,6 @@ $(document).on('ready page:load', function() {
 
     // this is for when all restaurants are unselected, need to clear the suppliers section
     if (selectedRestaurantIdArray.length === 0) {
-      console.log('nothing is selected')
       $('.user-suppliers').html('')
       $('.orders-collection').html('')
       $('.place-order').attr('disabled', 'true');

@@ -6,6 +6,7 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = Invoice.find(params[:id])
+    @order = Order.find(params[:order_id])
     @invoice_items = @invoice.invoice_items
   end
 
@@ -32,6 +33,7 @@ class InvoicesController < ApplicationController
 
       redirect_to invoice_url(@invoice)
     else
+      # error_handling
     end
   end
 

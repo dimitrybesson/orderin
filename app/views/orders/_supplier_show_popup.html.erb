@@ -5,7 +5,7 @@
     <%= link_to "Order##{@order.id}", order_invoice_path(@order, @order.invoice) %>
   <% end %>
 </p>
-<p>Delivery Date: <%= @order.delivery_date %></p>
+<p>Delivery Date: <%= @order.delivery_date.to_date.strftime("%a, %b %d, %Y") %></p>
 <p>Restaurant: <%= @order.restaurant.name %></p>
 <p>Phone: <%= @order.restaurant.phone %></p>
 <p>Address: <%= @order.restaurant.street_address %></p>

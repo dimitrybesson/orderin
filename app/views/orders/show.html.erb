@@ -1,4 +1,25 @@
-<h1>Order Number: <%= @order.id %> <% if @order.seen? %>Seen!<% end %></h1>
+<h1>
+  Order Number: <%= @order.id %>
+  <% if @order.completed? %>
+    Completed!
+  <% else %>
+    <% if @order.seen? %>
+      Seen!
+    <% end %>
+    <% if @order.invoiced? %>
+      Invoiced!
+    <% end %>
+    <% if @order.shipped? %>
+      Shipped!
+    <% end %>
+    <% if @order.received? %>
+      Received!
+    <% end %>
+    <% if @order.paid? %>
+      Paid!
+    <% end %>
+  <% end %>
+</h1>
 <% if current_user.supplier_worker? %>
   <%= link_to "Create Invoice", order_invoices_path(@order), method: :post %>
 <% end %>

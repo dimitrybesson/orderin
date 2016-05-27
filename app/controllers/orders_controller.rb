@@ -74,7 +74,14 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if @order.update_attributes(order_params)
+    if request.xhr?
+      @order.status[:shipped] = true
+      if @order.save
+        render nothing: true
+      else
+        # error handling
+      end
+    elsif @order.update_attributes(order_params)
       @order.status[:submitted] = true
       @order.save
       redirect_to order_url(@order) # we will add logic to allow user to edit if status is not sent

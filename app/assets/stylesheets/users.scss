@@ -23,8 +23,15 @@
 }
 
 .order-block {
-  @include span-columns(12);
+  // @include span-columns(12);
   border: 1px solid $divider;
+  width: 60%;
+  margin: 0 auto;
+  padding: $small-spacing;
+}
+
+.order-display {
+  border-top: 1px solid black;
 }
 
 .quick-order-form {
