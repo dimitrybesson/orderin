@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.restaurant, .supplier:hover {
+  cursor: pointer;
+}
+
 .selected {
   background-color: $light-primary;
 }
