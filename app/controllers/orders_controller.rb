@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     if current_user.restaurant_worker?
       @orders = current_user.restaurants.map do |restaurant|
         restaurant.orders
-      end.flatten.sort{|a,b| b.id <=> a.id}[0, 5]
+      end.flatten.sort{|a,b| b.id <=> a.id}
     end
 
     if current_user.supplier_worker?
@@ -86,6 +86,11 @@ class OrdersController < ApplicationController
       redirect_to order_url(@order) # we will add logic to allow user to edit if status is not sent
     else
     end
+  end
+
+  def deliver
+    @deliveries = current_user.deliveries
+    render partial: 'deliveries'
   end
 
   private

@@ -1,0 +1,13 @@
+<p class="deliveries-modal-close-btn">X</p>
+<ul class="deliveries">
+  <% @deliveries.each do |delivery| %>
+    <li class="delivery">
+      <p>Supplier: <%= delivery.supplier.name %></p>
+      <p>Restaurant: <%= delivery.restaurant.name %></p>
+      <p>Invoice #<%= delivery.invoice.id %></p>
+      <p>Order #<%= delivery.id %></p>
+      <p>Total: $<%= delivery.invoice.total %></p>
+      <p>Delivery date: <%= delivery.delivery_date.strftime("%a, %b %d, %Y") %>
+    </li>
+  <% end %>
+</ul>

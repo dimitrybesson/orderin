@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag "//www.google.com/jsapi" %>
   <%= javascript_include_tag "chartkick" %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
@@ -31,6 +32,7 @@
     <% if user_signed_in? %>
       <% if current_user.restaurant_worker? %>
         <p class="nav-link"><%= link_to "Home", user_path(current_user) %></p>
+        <p class="nav-link"><%= link_to "Deliveries (#{current_user.deliveries_count})", deliveries_path, class: "deliveries-link" %>
         <p class="nav-link"><%= link_to "View Orders", orders_path %></p>
         <p class="nav-link"><%= link_to "View Invoices", invoices_path %></p>
         <p class="nav-link"><%= link_to "Browse Suppliers", suppliers_path %></p>
@@ -71,7 +73,7 @@
     <% end %>
 
   <%= yield %>
-</main>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <div class="deliveries-modal hidden"></div>
+  </main>
 </body>
 </html>

@@ -41,4 +41,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def deliveries
+    restaurants.map { |restaurant| restaurant.orders.where("status ? 'shipped' AND NOT status ? 'received'") }.flatten
+  end
+
+  def deliveries_count
+    deliveries.count
+  end
+
 end

@@ -113,3 +113,37 @@ nav {
   color: white;
   margin-right: 0.5rem;
 }
+
+.delivery {
+  border-top: 1px solid black;
+}
+
+.delivery:first-child {
+  border: 0;
+}
+
+.deliveries-modal {
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: $light-gray;
+  padding: $base-spacing;
+  border: 1px solid black;
+  border-radius: 1%;
+  overflow: scroll;
+}
+
+.deliveries-modal-close-btn {
+  float: right;
+  padding: 0 7px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-family: $perfect-x-font-family;
+}
+
+.deliveries-modal-close-btn:hover {
+    background-color: tomato;
+    color: white;
+}

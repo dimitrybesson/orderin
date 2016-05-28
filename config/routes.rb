@@ -9,10 +9,13 @@ Rails.application.routes.draw do
   resources :suppliers do
     resources :inventory_items
   end
+  
+  get 'orders/deliveries' => 'orders#deliver', as: 'deliveries'
 
   resources :orders do
     resources :invoices
   end
+
 
   get 'invoices' => 'invoices#index', as: 'invoices'
 
