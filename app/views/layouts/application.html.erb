@@ -40,7 +40,7 @@
         <% if current_user.restaurant_master? %>
           <p class="nav-link"><%= link_to "Access Manager", permissions_path %></p>
         <% end %>
-        <p class="nav-link"><%= link_to "Add Restaurant", new_restaurant_path %>
+        <p class="nav-link restaurant-creation"><%= link_to "Add Restaurant", new_restaurant_path %>
         <p class="nav-link"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
       <% elsif current_user.supplier_worker? %>
         <p class="nav-link"><%= link_to "Home", user_path(current_user) %></p>
@@ -74,6 +74,7 @@
 
   <%= yield %>
   <div class="deliveries-modal hidden"></div>
+  <div class="signup-modal"></div>
   </main>
 </body>
 </html>
