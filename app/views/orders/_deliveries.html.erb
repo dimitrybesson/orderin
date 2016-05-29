@@ -1,13 +1,16 @@
 <p class="deliveries-modal-close-btn">X</p>
 <ul class="deliveries">
-  <% @deliveries.each do |delivery| %>
+  <% @orders.each do |order| %>
     <li class="delivery">
-      <p>Supplier: <%= delivery.supplier.name %></p>
-      <p>Restaurant: <%= delivery.restaurant.name %></p>
-      <p>Invoice #<%= delivery.invoice.id %></p>
-      <p>Order #<%= delivery.id %></p>
-      <p>Total: $<%= delivery.invoice.total %></p>
-      <p>Delivery date: <%= delivery.delivery_date.strftime("%a, %b %d, %Y") %>
+      <p>Supplier: <%= order.supplier.name %></p>
+      <p>Restaurant: <%= order.restaurant.name %></p>
+      <p>Invoice #<%= order.invoice.id %></p>
+      <p>Order #<%= order.id %></p>
+      <p class="delivery-total">Total: $<%= order.invoice.total %></p>
+      <p class="delivery-date">Delivery date: <%= order.delivery_date.strftime("%a, %b %d, %Y") %>
+        <%= button_to "RECEIVE ORDER", order_path(order), method: :patch, form_class: "invoice-receive-btn" %>
+        <%= image_tag("gift.svg", class: "order-received-img", title: "Delivered") %>
+      </p>
     </li>
   <% end %>
 </ul>

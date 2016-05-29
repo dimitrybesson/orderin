@@ -12,6 +12,10 @@ $(document).on('ready page:load', function() {
     });
   }
 
+  $(function() {
+    $( document ).tooltip();
+  });
+  
 // Search bar to filter order_items
 
   $('#inventory_search').on('keyup', function() {

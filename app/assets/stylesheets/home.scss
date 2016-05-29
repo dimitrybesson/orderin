@@ -116,6 +116,7 @@ nav {
 
 .delivery {
   border-top: 1px solid black;
+  padding: $small-spacing;
 }
 
 .delivery:first-child {
@@ -128,11 +129,12 @@ nav {
   left: 10%;
   width: 80%;
   height: 80%;
-  background-color: $light-gray;
+  background-color: #EEE;
   padding: $base-spacing;
   border: 1px solid black;
   border-radius: 1%;
   overflow: scroll;
+  background-color: $light-gray;
 }
 
 .deliveries-modal-close-btn {

@@ -1,0 +1,50 @@
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.15rem;
+  padding: 0.1rem;
+  border-radius: 20%;
+}
+
+.icon-checkmark {
+  background-color: #00FF00;
+}
+
+
+.icon-exclamation {
+  background-color: yellow;
+}
+
+.icon-eyeball {
+  padding: 0;
+}
+
+.icon-truck {
+  width: 2rem;
+  height: 1.5rem;
+}
+
+.ui-tooltip {
+  :first-child {
+    font-size: 0.75rem;
+  }
+}
+
+.order-received-img {
+  height: 3rem;
+  position: relative;
+  top: 0.75rem;
+  left: 4.9rem;
+}
+
+.order-received-img {
+  opacity: 0;
+
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+}
+
+.order-received-img-active {
+  opacity: 1;
+}

@@ -25,7 +25,6 @@ class OrdersController < ApplicationController
                                   AND supplier_id = #{current_user.suppliers[0].id}
                                   ORDER BY id DESC")
     end
-
   end
 
   def show
@@ -74,7 +73,11 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if request.xhr?
-      @order.status[:shipped] = true
+      if @order.shipped?
+        @order.status[:received] = true
+      elsif @order.invoiced?
+        @order.status[:shipped] = true
+      end
       if @order.save
         render nothing: true
       else
@@ -89,7 +92,7 @@ class OrdersController < ApplicationController
   end
 
   def deliver
-    @deliveries = current_user.deliveries
+    @orders = current_user.deliveries
     render partial: 'deliveries'
   end
 

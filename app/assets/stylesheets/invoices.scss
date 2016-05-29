@@ -24,3 +24,30 @@
   float: right;
   margin: 2rem 2rem 0 0;
 }
+
+.order-shipped-img {
+  float: right;
+  margin: 2rem 36rem 0 0;
+
+  transition-property: margin-right;
+  transition-duration: 2s;
+  transition-delay: 0.55s;
+  transition-timing-function: ease-in-out;
+}
+
+.order-shipped-img-active {
+  margin-right: 0;
+}
+
+.invoice {
+  border-top: 1px solid black;
+}
+
+.delivery-date {
+  display: inline-block;
+}
+
+.invoice-receive-btn {
+  display: inline-block;
+  margin-left: 2rem;
+}

@@ -23,19 +23,19 @@
           Completed!
         <% else %>
           <% if order.seen? %>
-            Seen!
+            <%= image_tag("eyeball.svg", class: "icon icon-eyeball", title: "Seen by the supplier") %>
           <% end %>
           <% if order.invoiced? %>
-            Invoiced!
+            <%= image_tag("clipboard.svg", class: "icon icon-clipboard", title: "Invoiced") %>
           <% end %>
           <% if order.shipped? %>
-            Shipped!
+            <%= image_tag("truck.svg", class: "icon icon-truck", title: "Shipped") %>
           <% end %>
           <% if order.received? %>
-            Received!
+            <%= image_tag("gift.svg", class: "icon icon-gift", title: "Delivered") %>
           <% end %>
           <% if order.paid? %>
-            Paid!
+            <%= image_tag("dollar.svg", class: "icon icon-dollar", title: "Paid") %>
           <% end %>
         <% end %>
       </span>
