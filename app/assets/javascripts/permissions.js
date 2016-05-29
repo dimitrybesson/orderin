@@ -43,7 +43,7 @@ $(document).on('ready page:load', function() {
       })
     }
   })
-  $('.permission-new-button').on('click', function(e) {
+  $('.permission-new-btn').on('click', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     $.ajax({
@@ -57,5 +57,30 @@ $(document).on('ready page:load', function() {
         $('.permission-modal').html(data)
       }
     })
+  })
+  $('.permission-user').draggable({
+    revert: true
+  });
+  $('.permission-remove-icon').droppable({
+    tolerance: 'pointer',
+    accept: '.permission-user',
+    over: function(event, ui) {
+      $(this).addClass('permission-remove-icon-dragover');
+    },
+    out: function(event, ui) {
+      $(this).removeClass('permission-remove-icon-dragover');
+    },
+    drop: function(event, ui) {
+      var permissionId = ui.draggable.data('permission-id');
+      $(this).removeClass('permission-remove-icon-dragover');
+      $.ajax({
+        method: 'DELETE',
+        url: '/permissions/' + permissionId,
+        dataType: 'html',
+        success: function() {
+          ui.draggable.remove();
+        }
+      })
+    }
   })
 })

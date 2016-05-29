@@ -7,3 +7,31 @@
   height: 20%;
   background-color: tomato;
 }
+
+.permission-new {
+  display: inline-block;
+}
+
+.permission-user {
+  border: 1px solid black;
+  width: 45%;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+  line-height: 2rem;
+  background-color: white;
+
+  p {
+    margin: 0;
+  }
+}
+
+.permission-remove-icon {
+  height: 6.59375rem;
+  margin-left: 3rem;
+}
+
+.permission-remove-icon-dragover {
+  border: 0.25rem dashed black;
+  padding-top: 0.25rem;
+}

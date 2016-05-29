@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def restaurant_master_this?(restaurant)
-    Permission.where(user_id: id, restaurant_id: restaurant.id, institution_type: "Restaurant", role: 1).any?
+    Permission.find_by(user_id: id, institution_id: restaurant.id, institution_type: "Restaurant", role: 1).present?
   end
 
   def clearance(restaurant)

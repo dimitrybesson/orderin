@@ -34,6 +34,12 @@ class PermissionsController < ApplicationController
     end
   end
 
+  def destroy
+    @permission = Permission.find(params[:id])
+    @permission.destroy
+    render nothing: true
+  end
+
   private
 
   def permission_params
