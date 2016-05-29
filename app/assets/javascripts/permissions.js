@@ -6,39 +6,39 @@ $(document).on('ready page:load', function() {
 
   $('.permission-user').on('click', '.permission-edit-button', function(e) {
     e.preventDefault();
-    $('.permission-modal').css('display', 'block');
+    $('.permissions-modal').toggleClass('hidden');
     $.ajax({
       method: 'GET',
       url: $(this).attr('href'),
       dataType: 'html',
       success: function(data) {
-        $('.permission-modal').addClass('edit-button'),
-        $('.permission-modal').html(data);
+        $('.permissions-modal').addClass('edit-button'),
+        $('.permissions-modal').html(data);
       }
     })
   })
-  $('.permission-modal').on('submit', 'form', function(e) {
+  $('.permissions-modal').on('submit', 'form', function(e) {
     e.preventDefault();
     var formData = $(this).serialize();
-    if ($('.permission-modal').hasClass('edit-button')) {
+    if ($('.permissions-modal').hasClass('edit-button')) {
       $.ajax({
         method: 'PATCH',
         url: $(this).attr('action'),
         data: formData,
         dataType: 'html',
         success: function() {
-          $('.permission-modal').css('display', 'none');
-          $('.permission-modal').removeClass('edit-button');
+          $('.permissions-modal').toggleClass('hidden');
+          $('.permissions-modal').removeClass('edit-button');
         }
-    })} else if ($('.permission-modal').hasClass('submit-button')) {
+    })} else if ($('.permissions-modal').hasClass('submit-button')) {
       $.ajax({
         method: 'POST',
         url: $(this).attr('action'),
         data: formData,
         dataType: 'html',
         success: function() {
-          $('.permission-modal').removeClass('submit-button');
-          $('.permission-modal').css('display', 'none');
+          $('.permissions-modal').removeClass('submit-button');
+          $('.permissions-modal').toggleClass('hidden');
         }
       })
     }
@@ -52,9 +52,9 @@ $(document).on('ready page:load', function() {
       data: {data: $(this).attr('data')},
       dataType: 'html',
       success: function(data) {
-        $('.permission-modal').css('display', 'block'),
-        $('.permission-modal').addClass('submit-button'),
-        $('.permission-modal').html(data)
+        $('.permissions-modal').toggleClass('hidden');
+        $('.permissions-modal').addClass('submit-button');
+        $('.permissions-modal').html(data);
       }
     })
   })
@@ -82,5 +82,8 @@ $(document).on('ready page:load', function() {
         }
       })
     }
+  })
+  $('.permissions-modal').on('click', '.permissions-modal-close-btn', function() {
+    $('.permissions-modal').toggleClass('hidden');
   })
 })

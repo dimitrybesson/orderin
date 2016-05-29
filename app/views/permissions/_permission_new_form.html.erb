@@ -1,5 +1,8 @@
+<p class="permissions-modal-close-btn">X</p>
 <%= form_for @permission, method: :post do |f| %>
-  <%= f.text_field :user_id %>
+  <h3>Add employee</h3>
+  <%= f.label "User Email:" %>
+  <%= f.text_field :user_id, placeholder: "example@email.com" %>
   <%= f.hidden_field :institution_id, value: @restaurant.id %>
   <!-- this won't stand -->
   <%= f.hidden_field :institution_type, value: "Restaurant" %>

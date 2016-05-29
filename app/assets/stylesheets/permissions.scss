@@ -1,11 +1,11 @@
-.permission-modal {
-  display: none;
+.permissions-modal {
   position: fixed;
-  top: 8%;
+  top: 10%;
   left: 25%;
   width: 30%;
-  height: 20%;
-  background-color: tomato;
+  background-color: $light-gray;
+  padding: 3rem;
+  border: 1px solid black;
 }
 
 .permission-new {
@@ -20,6 +20,7 @@
   border-radius: 5px;
   line-height: 2rem;
   background-color: white;
+  cursor: pointer;
 
   p {
     margin: 0;
@@ -34,4 +35,30 @@
 .permission-remove-icon-dragover {
   border: 0.25rem dashed black;
   padding-top: 0.25rem;
+}
+
+.new_permission {
+
+}
+
+.permissions-modal-close-btn {
+  float: right;
+  padding: 0 7px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-family: $perfect-x-font-family;
+}
+
+.permissions-modal-close-btn:hover {
+    background-color: tomato;
+    color: white;
+}
+
+#permission_role_id {
+  margin: 0 auto;
+}
+
+.permission-submission {
+  margin: 1rem auto;
+  display: block;
 }
