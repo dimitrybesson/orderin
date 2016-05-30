@@ -75,8 +75,11 @@ header {
 
 .title {
   color: white;
-  font-family: $base-font-family;
-  font-size: 3rem;
+  margin-top: 0.345rem;
+  font-family: $heading-font-family;
+  font-size: 3.3rem;
+  display: inline-block;
+  line-height: 3rem;
 }
 
 main {
@@ -148,4 +151,18 @@ nav {
 .deliveries-modal-close-btn:hover {
     background-color: tomato;
     color: white;
+}
+
+.header-avocado {
+  height: 1.75rem;
+  position: fixed;
+  top: 1.2rem;
+  left: 9.9rem;
+  transition: all 1s ease-in 0s;
+}
+
+.header-avocado-active {
+  top: 7rem;
+  left: 16.75rem;
+  transform: rotateZ(1035deg);
 }

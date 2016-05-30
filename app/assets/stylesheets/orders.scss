@@ -80,7 +80,7 @@
 }
 
 .column-order-quantity {
-  width: 30%;
+  width: 20%;
 }
 
 .column-order-edit {
@@ -88,11 +88,11 @@
 }
 
 .column-order-subtotal {
-  width: 10%;
+  width: 15%;
 }
 
 .column-order-close {
-  width: 5%;
+  width: 10%;
 }
 
 .cell-order-item-price {
@@ -104,12 +104,15 @@
 
   input[type="number"] {
     display: inline-block;
-    width: 40%;
+    width: 60%;
+    height: 1.5rem;
     max-width: 4rem;
+    margin-bottom: 0;
   }
   input[type="submit"] {
     width: 30%;
-    padding: 5%;
+    height: 1.25rem;
+    padding: 0;
     max-width: 3rem;
   }
 

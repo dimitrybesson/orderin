@@ -10,6 +10,7 @@
 
 .permission-new {
   display: inline-block;
+  margin-top: 2rem;
 }
 
 .permission-user {
@@ -30,15 +31,12 @@
 .permission-remove-icon {
   height: 6.59375rem;
   margin-left: 3rem;
+  margin-top: 2rem;
 }
 
 .permission-remove-icon-dragover {
   border: 0.25rem dashed black;
   padding-top: 0.25rem;
-}
-
-.new_permission {
-
 }
 
 .permissions-modal-close-btn {
@@ -61,4 +59,9 @@
 .permission-submission {
   margin: 1rem auto;
   display: block;
+}
+
+.permission-edit-icon {
+  width: 1.5rem;
+  margin-left: 1rem;
 }

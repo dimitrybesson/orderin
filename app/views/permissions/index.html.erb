@@ -10,7 +10,7 @@
               <p><%= user.email %> -
                 <%= user.clearance(permission.restaurant) %>
                 <% unless current_user.id == user.id %>
-                  - <%= link_to "Edit", edit_permission_path(user.permissions.find_by(institution_id: permission.restaurant.id, institution_type: "Restaurant")), options = {class: "permission-edit-button"} %>
+                  <%= link_to image_tag("pencil.svg", class: "permission-edit-icon"), edit_permission_path(user.permissions.find_by(institution_id: permission.restaurant.id, institution_type: "Restaurant")), options = {class: "permission-edit-button"} %>
                 <% end %>
               </p>
             </li>

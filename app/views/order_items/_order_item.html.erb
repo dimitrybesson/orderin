@@ -13,7 +13,7 @@
       <td class='cell-order-item-quantity-invoiced'><%= order_item.quantity %></td>
     <% end %>
 
-    <td class='cell-order-item-edit'><% if !order_item.order.invoiced? %><span class='edit-icon hidden'>E</span><% end %></td>
+    <td class='cell-order-item-edit'><% if !order_item.order.invoiced? %><span class='edit-icon hidden'><%= image_tag('pencil.svg', class: 'order-item-edit-icon') %></span><% end %></td>
 
 
     <td class='cell-order-item-subtotal'><%= order_item.formatted_subtotal %></td>
