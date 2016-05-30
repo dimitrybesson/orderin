@@ -6,6 +6,8 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_one :invoice # this can be a has_one relationship
 
+  validates :user, :restaurant, :supplier, :delivery_date, presence: true
+
   def total
     order_items.inject(0) { |sum, item| sum + item.subtotal }
   end

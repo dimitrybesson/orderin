@@ -2,6 +2,9 @@ class InvoiceItem < ActiveRecord::Base
   belongs_to :invoice
   belongs_to :order_item
 
+  validates :invoice, :order_item, :quantity, presence: true
+  validates :quantity, numericality: { greater_than_or_equal_to: 0 }
+
   def price
     self.order_item.price
   end

@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   has_many :restaurants, through: :permissions, source: :institution, source_type: "Restaurant"
   has_many :suppliers, through: :permissions, source: :institution, source_type: "Supplier"
 
+  def works_at?(institution_id, institution_type)
+    Permission.find_by(user_id: id, institution_id: institution_id, institution_type: institution_type).present?
+  end
+
   def restaurant_worker?
     restaurants.any?
   end

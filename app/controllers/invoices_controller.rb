@@ -13,7 +13,7 @@ class InvoicesController < ApplicationController
         @invoices = @orders.map { |order| order.invoice }
       end
     elsif current_user.supplier_worker?
-
+      # TODO
     end
   end
 

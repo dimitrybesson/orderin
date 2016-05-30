@@ -3,6 +3,9 @@ class OrderItem < ActiveRecord::Base
   belongs_to :inventory_item
   has_one :invoice_item
 
+  validates :order, :inventory_item, :quantity, presence: true
+  validates :quantity, numericality: { greater_than_or_equal_to: 0 }
+
   def subtotal
     self.price * self.quantity
   end

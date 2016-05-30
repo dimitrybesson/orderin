@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     if params[:restaurant_ids] && params[:supplier_ids]
       @orders = Order.where(restaurant_id: params[:restaurant_ids], supplier_id: params[:supplier_ids]).order(id: :desc).first(10)

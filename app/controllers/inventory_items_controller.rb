@@ -1,9 +1,10 @@
 class InventoryItemsController < ApplicationController
 
+  before_action :user_works_for_this_supplier
+
   def index
     @supplier = Supplier.find(params[:supplier_id])
     @inventory_items = @supplier.inventory_items
-
     @order = Order.new
   end
 
@@ -27,5 +28,11 @@ class InventoryItemsController < ApplicationController
 
   def inventory_item_params
     params.require(:inventory_item).permit(:item_id, :supplier_id, :quantity, :price, :name)
+  end
+
+  def user_works_for_this_supplier
+    unless current_user.works_at?(params[:supplier_id], "Supplier")
+      redirect_to root_url
+    end
   end
 end

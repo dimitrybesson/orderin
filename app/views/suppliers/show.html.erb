@@ -3,7 +3,7 @@
     <% if current_user.restaurant_orderer? %>
       <%= button_tag "Place Order", options = {class: "supplier-order-button", data: @supplier.id} %>
     <% end %>
-    <% if @supplier.master?(@user) %>
+    <% if @supplier.is_master?(@user) %>
       <%= link_to "Add Inventory Item", new_supplier_inventory_item_path(@supplier) %>
     <% end %>
     <div class=supplier-show-contact>
@@ -15,7 +15,7 @@
       <% @inventory_items.each do |inventory_item| %>
         <li>
           <strong><%= inventory_item.name.capitalize %></strong> - $<%= inventory_item.formatted_price %>. Quantity: <%= inventory_item.quantity %>
-          <% if @supplier.master?(@user) %>
+          <% if @supplier.is_master?(@user) %>
             <%= link_to "Edit", edit_supplier_inventory_item_path(@supplier, inventory_item) %>
           <% end %>
         </li>
