@@ -1,3 +1,5 @@
 == Avocado
 
-Avocado is a restaurant supply management system aimed at kitchens that are ready to ditch that greasy clipboard full of invoices.
+Avocado is a restaurant supply management system aimed at kitchens and their suppliers.
+
+Say goodbye to the greasy clipboard full of invoices!
