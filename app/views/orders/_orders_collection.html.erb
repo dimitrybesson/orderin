@@ -10,16 +10,16 @@
             <%= image_tag("eyeball.svg", class: "icon icon-eyeball", title: "Seen by supplier") %>
           <% end %>
           <% if order.invoiced? %>
-            <%= image_tag("clipboard.svg", class: "icon icon-clipboard") %>
+            <%= image_tag("clipboard.svg", class: "icon icon-clipboard", title: "Invoiced") %>
           <% end %>
           <% if order.shipped? %>
-            <%= image_tag("truck.svg", class: "icon icon-truck") %>
+            <%= image_tag("truck.svg", class: "icon icon-truck", title: "Shipped") %>
           <% end %>
           <% if order.received? %>
-            <%= image_tag("gift.svg", class: "icon icon-gift") %>
+            <%= image_tag("gift.svg", class: "icon icon-gift", title: "Received") %>
           <% end %>
           <% if order.paid? %>
-            <%= image_tag("dollar.svg", class: "icon icon-dollar") %>
+            <%= image_tag("dollar.svg", class: "icon icon-dollar", title: "Paid") %>
           <% end %>
         <% end %>
       </span>
