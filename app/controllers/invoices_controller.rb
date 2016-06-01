@@ -13,7 +13,13 @@ class InvoicesController < ApplicationController
         @invoices = @orders.map { |order| order.invoice }
       end
     elsif current_user.supplier_worker?
-      # TODO
+      @supplier = current_user.suppliers.first
+      if request.xhr?
+        @invoices = Invoice.joins(order: :restaurant).where("restaurants.name ilike ? AND orders.supplier_id = #{@supplier.id}", "%#{params[:search]}%")
+        render @invoices
+      else
+        @invoices = @supplier.invoices
+      end
     end
   end
 
@@ -30,7 +36,7 @@ class InvoicesController < ApplicationController
     if @invoice.save
       redirect_to edit_order_invoice_url(@invoice.order, @invoice)
     else
-      ## what now?
+      ## error handling
     end
   end
 
