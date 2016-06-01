@@ -8,6 +8,24 @@
 
 
   <p>Items</p>
+  <table class="invoice-items">
+    <col class="column-invoice-item-name"/>
+    <col class="column-invoice-item-price"/>
+    <col class="column-invoice-item-quantity"/>
+    <col class="column-invoice-item-subtotal"/>
+    <col class="column-invoice-item-difference"/>
+
+    <tr class="inventory-item-table-heading-row">
+      <th class="cell-inv-name">Name</th>
+      <th class="cell-inv-price">Price</th>
+      <th class="cell-inv-quantity">Quantity</th>
+      <th class="cell-order-item-form">Add</th>
+    </tr>
+    <%= render @inventory_items %>
+  </table>
+
+
+
   <% @invoice_items.each do |invoice_item| %>
     <div class="invoice-item">
       <%= invoice_item.order_item.name.capitalize %>, quantity: <%= invoice_item.quantity %>, price: <%= invoice_item.formatted_price %>, subtotal: <%= invoice_item.formatted_subtotal %>, <span class="<%= "positive-delta" if invoice_item.delta_is_positive? %><%= "negative-delta" if invoice_item.delta_is_negative? %>">difference: <%= invoice_item.quantity - invoice_item.order_item.quantity %>
