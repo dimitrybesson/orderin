@@ -1,1 +1,7 @@
-<%= render @suppliers %>
+<% @suppliers.each do |supplier| %>
+  <%= link_to(supplier) do %>
+    <div class="supplier-show" data-id="<%= supplier.id %>">
+      <%= supplier.name %>
+    </div>
+  <% end %>
+<% end %>

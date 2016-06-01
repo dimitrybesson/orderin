@@ -9,7 +9,7 @@ class SuppliersController < ApplicationController
       render @suppliers
     end
 
-    @suppliers = Supplier.all
+    @suppliers = Supplier.all.order(:name)
   end
 
   def new

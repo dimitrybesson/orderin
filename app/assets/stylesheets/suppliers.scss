@@ -30,3 +30,11 @@
   @include span-columns(9);
   margin-right: 0;
 }
+
+.supplier-show {
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  padding: 1rem;
+  max-width: 50%;
+}
