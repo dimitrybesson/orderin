@@ -43,4 +43,16 @@ $(document).on('ready page:load', function() {
       }.bind(this)
     })
   })
+  $('#invoices_search').on('keyup', function() {
+    var data = {"search": $('#invoices_search').val()};
+    $.ajax({
+      method: "GET",
+      url: "/invoices",
+      data: data,
+      dataType: 'html',
+      success: function(data) {
+        $('.supplier-invoices-list').html(data);
+      }
+    })
+  })
 })

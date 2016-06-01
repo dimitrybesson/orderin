@@ -1,17 +1,26 @@
 <h2>Invoices</h2>
 
-<div id="invoice-tabs">
-  <ul>
-    <li><a href="#all-invoices">All</a></li>
+<% if current_user.restaurant_worker? %>
+  <div id="invoice-tabs">
+    <ul>
+      <li><a href="#all-invoices">All</a></li>
+      <% current_user.restaurants.each do |restaurant| %>
+        <li><a href="#<%= restaurant.id %>" data-restaurant-id="<%= restaurant.id %>" class="invoice-tab"><%= restaurant.name %></a></li>
+      <% end %>
+    </ul>
+    <div id="all-invoices">
+      <%= render @invoices %>
+    </div>
     <% current_user.restaurants.each do |restaurant| %>
-      <li><a href="#<%= restaurant.id %>" data-restaurant-id="<%= restaurant.id %>" class="invoice-tab"><%= restaurant.name %></a></li>
+      <div id="<%= restaurant.id %>">
+      </div>
     <% end %>
-  </ul>
-  <div id="all-invoices">
+  </div>
+<% elsif current_user.supplier_worker? %>
+  <div class="supplier-invoices-search-bar">
+    <%= text_field_tag :invoices_search, "", placeholder: "Search by Restaurant..." %>
+  </div>
+  <div class="supplier-invoices-list">
     <%= render @invoices %>
   </div>
-  <% current_user.restaurants.each do |restaurant| %>
-    <div id="<%= restaurant.id %>">
-    </div>
-  <% end %>
-</div>
+<% end %>
