@@ -8,9 +8,48 @@
 
 
   <p>Items</p>
-  <% @invoice_items.each do |invoice_item| %>
-    <div class="invoice-item">
-      <%= invoice_item.order_item.name.capitalize %>, quantity: <%= invoice_item.quantity %>, price: <%= invoice_item.formatted_price %>, subtotal: <%= invoice_item.formatted_subtotal %>, <span class="<%= "positive-delta" if invoice_item.delta_is_positive? %><%= "negative-delta" if invoice_item.delta_is_negative? %>">difference: <%= invoice_item.quantity - invoice_item.order_item.quantity %>
-    </div>
-  <% end %>
+  <section class='invoice-section'>
+    <table class="invoice-items-table">
+      <col class="column-invoice-item-name"/>
+      <col class="column-invoice-item-price"/>
+      <col class="column-invoice-item-quantity"/>
+      <col class="column-invoice-item-subtotal"/>
+      <col class="column-invoice-item-difference"/>
+
+      <tr class="invoice-item-table-heading-row">
+        <th class="cell-invoice-item-name">Name</th>
+        <th class="cell-invoice-item-price">Price</th>
+        <th class="cell-invoice-item-quantity">Quantity</th>
+        <th class="cell-invoice-item-subtotal">Subtotal</th>
+        <th class="cell-invoice-item-difference">+/-</th>
+      </tr>
+
+      <% @invoice_items.each do |invoice_item| %>
+        <tr class="invoice-item">
+          <td class="cell-invoice-item-name"><%= invoice_item.order_item.name.capitalize %></td>
+          <td class="cell-invoice-item-price"><%= invoice_item.formatted_price %></td>
+          <td class="cell-invoice-item-quantity"><%= invoice_item.quantity %></td>
+          <td class="cell-invoice-item-subtotal"><%= invoice_item.formatted_subtotal %></td>
+
+          <% if invoice_item.delta_is_positive? %>
+            <td class="cell-invoice-item-difference positive-delta">
+            +<%= invoice_item.delta %>
+            </td>
+          <% elsif invoice_item.delta_is_negative? %>
+            <td class="cell-invoice-item-difference negative-delta">
+            -<%= invoice_item.delta %>
+            </td>
+          <% else %>
+            <td class="cell-invoice-item-difference">
+            <%= invoice_item.delta %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+
+
+
+
 </div>

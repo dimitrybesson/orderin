@@ -1,7 +1,7 @@
 <div class="invoice">
   <p>Supplier: <%= invoice.order.supplier.name %></p>
   <p>Restaurant: <%= invoice.order.restaurant.name %></p>
-  <p>Invoice #<%= invoice.id %></p>
+  <p><%= link_to "Invoice ##{invoice.id}", order_invoice_path(invoice.order, invoice)%></p>
   <p>Order #<%= invoice.order.id %></p>
   <p>Total: $<%= invoice.total %></p>
   <p>Delivery date: <%= invoice.order.delivery_date.strftime("%a, %b %d, %Y") %>

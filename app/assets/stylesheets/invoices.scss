@@ -2,22 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.invoice-item {
-  padding: 0.5rem;
-  border: 1px solid #000;
-  margin: .3rem;
-}
-
 .negative-delta {
-  border: 1px solid red;
+  color: red;
 }
 
 .positive-delta {
-  border: 1px solid green;
-}
-
-.invoice-container {
-  max-width: 50rem;
+  color: green;
 }
 
 .invoice-ship-btn {
@@ -39,10 +29,6 @@
   margin-right: 0;
 }
 
-.invoice {
-  border-top: 1px solid black;
-}
-
 .delivery-date {
   display: inline-block;
 }
@@ -50,4 +36,75 @@
 .invoice-receive-btn {
   display: inline-block;
   margin-left: 2rem;
+}
+
+/////////////////////INVOICE SHOW TABLE//////////////////////
+
+.invoice-section {
+  display: inline-block;
+  width: 100%;
+  max-width: 70rem;
+  border: 1px solid black;
+  border-radius: 1%;
+  padding: 1rem;
+}
+
+.invoice_items-table {
+
+}
+
+.invoice {
+  border-top: 1px solid black;
+
+  p {
+    a {
+      color: blue;
+      text-decoration: none;
+      transition: color $base-duration $base-timing;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: shade($action-color, 25%);
+      }
+    }
+  }
+}
+
+.invoice-item {
+  padding: 0.5rem;
+  margin: .3rem;
+}
+
+
+.column-invoice-item-name {
+  width: 60%;
+}
+.column-invoice-item-price {
+  width: 10%;
+}
+.column-invoice-item-quantity {
+  width: 10%;
+}
+.column-invoice-item-subtotal {
+  width: 10%;
+}
+.column-invoice-item-difference {
+  width: 10%;
+}
+
+.cell-invoice-item-price {
+  text-align: right;
+}
+
+.cell-invoice-item-quantity {
+  text-align: right;
+}
+
+.cell-invoice-item-subtotal {
+  text-align: right;
+}
+
+.cell-invoice-item-difference {
+  text-align: center;
 }
