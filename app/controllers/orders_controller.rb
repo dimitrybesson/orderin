@@ -95,7 +95,11 @@ class OrdersController < ApplicationController
 
   def deliver
     @orders = current_user.deliveries
-    render partial: 'deliveries'
+    if @orders.any?
+      render partial: 'deliveries'
+    else
+      render partial: 'deliveries_empty'
+    end
   end
 
   private
