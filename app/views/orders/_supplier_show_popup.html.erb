@@ -8,9 +8,9 @@
     <%= link_to "Order##{@order.id}", order_path(@order) %> - <%= link_to "Create Invoice", order_invoices_path(@order), method: :post %>
   <% end %>
 </p>
-<p>Delivery Date: <%= @order.delivery_date.to_date.strftime("%a, %b %d, %Y") %></p>
-<p>Restaurant: <%= @order.restaurant.name %></p>
-<p>Phone: <%= @order.restaurant.phone %></p>
-<p>Address: <%= @order.restaurant.street_address %></p>
-<p>Total: <%= @order.formatted_total %></p>
-<p>Instructions: <%= @order.instructions %></p>
+<p><span class="subheading-bold">Delivery Date:</span> <%= @order.delivery_date.to_date.strftime("%a, %b %d, %Y") %></p>
+<p><span class="subheading-bold">Restaurant:</span> <%= @order.restaurant.name %></p>
+<p><span class="subheading-bold">Phone:</span> <%= @order.restaurant.phone %></p>
+<p><span class="subheading-bold">Address:</span> <%= @order.restaurant.street_address %></p>
+<p><span class="subheading-bold">Total:</span> <%= @order.formatted_total %></p>
+<p><span class="subheading-bold">Instructions:</span> <%= @order.instructions %></p>

@@ -28,7 +28,7 @@ class PermissionsController < ApplicationController
   def update
     @permission = Permission.find(params[:id])
     if @permission.update_attributes(permission_params)
-      render nothing: true
+      render @permission
     else
       # error handling?
     end

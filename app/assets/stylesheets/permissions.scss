@@ -21,10 +21,14 @@
   border-radius: 5px;
   line-height: 2rem;
   background-color: white;
-  cursor: pointer;
+  cursor: -webkit-grab;
 
   p {
     margin: 0;
+  }
+
+  :active {
+    cursor: -webkit-grabbing;
   }
 }
 

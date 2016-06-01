@@ -1,0 +1,6 @@
+<li class="permission-user" data-permission-id="<%= @permission.id %>">
+  <p><%= @permission.user.email %> -
+    <%= @permission.user.clearance(@permission.restaurant) %>
+    <%= link_to image_tag("pencil.svg", class: "permission-edit-icon"), edit_permission_path(@permission), options = {class: "permission-edit-button"} %>
+  </p>
+</li>

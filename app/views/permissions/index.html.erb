@@ -3,7 +3,7 @@
     <% if current_user.restaurant_master_this?(permission.restaurant) %>
       <h3><%= permission.restaurant.name %></h3>
       <div>
-        <ul>
+        <ul class="permission-users">
           <% permission.restaurant.users.each do |user| %>
             <li class="permission-user" data-permission-id="<%= Permission.find_by(user_id: user.id, institution_id: permission.restaurant.id, institution_type: "Restaurant").id %>">
               <!-- This is a mess -->
