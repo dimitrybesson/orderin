@@ -29,10 +29,6 @@
   margin-right: 0;
 }
 
-.invoice {
-  border-top: 1px solid black;
-}
-
 .delivery-date {
   display: inline-block;
 }
@@ -55,6 +51,24 @@
 
 .invoice_items-table {
 
+}
+
+.invoice {
+  border-top: 1px solid black;
+
+  p {
+    a {
+      color: blue;
+      text-decoration: none;
+      transition: color $base-duration $base-timing;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: shade($action-color, 25%);
+      }
+    }
+  }
 }
 
 .invoice-item {
