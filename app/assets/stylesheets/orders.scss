@@ -115,7 +115,6 @@
     padding: 0;
     max-width: 3rem;
   }
-
 }
 
 .cell-order-item-subtotal {
@@ -139,15 +138,6 @@
 
 .inventory-dragover {
   border: 2px dashed $accent;
-}
-
-.inventory-section {
-  // @include span-columns(8);
-  // padding: 1rem;
-}
-
-.order-summary {
-  // @include span-columns(4);
 }
 
 .order-index-order {

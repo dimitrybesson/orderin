@@ -6,39 +6,35 @@ class InvoiceItem < ActiveRecord::Base
   validates :quantity, numericality: { greater_than_or_equal_to: 0 }
 
   def price
-    self.order_item.price
+    order_item.price
   end
 
   def subtotal
-    self.price * self.quantity
+    price * quantity
   end
 
   def formatted_price
-    self.order_item.formatted_price
+    order_item.formatted_price
   end
 
   def formatted_subtotal
-    '%.2f' % (self.subtotal / 100.0)
+    '%.2f' % (subtotal / 100.0)
   end
 
   def update_inventory(delta)
-    new_quantity = self.order_item.inventory_item.quantity + delta
-    self.order_item.inventory_item.update_attributes(quantity: new_quantity)
+    new_quantity = order_item.inventory_item.quantity + delta
+    order_item.inventory_item.update_attributes(quantity: new_quantity)
+  end
+
+  def delta
+    quantity - order_item.quantity
   end
 
   def delta_is_positive?
-    if (self.quantity - self.order_item.quantity) > 0
-      return true
-    else
-      return false
-    end
+    delta > 0
   end
 
   def delta_is_negative?
-    if (self.quantity - self.order_item.quantity) < 0
-      return true
-    else
-      return false
-    end
+    delta < 0
   end
 end
