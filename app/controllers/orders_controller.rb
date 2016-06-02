@@ -16,12 +16,14 @@ class OrdersController < ApplicationController
     end
 
     if current_user.restaurant_worker?
+      @restaurants = current_user.restaurants
       @orders = current_user.restaurants.map do |restaurant|
         restaurant.orders
       end.flatten.sort{|a,b| b.id <=> a.id}
     end
 
     if current_user.supplier_worker?
+      @restaurants = current_user.supplier.first.restaurants
       @orders = Order.find_by_sql("SELECT * FROM orders
                                   WHERE (status ? 'submitted')
                                   AND supplier_id = #{current_user.suppliers[0].id}

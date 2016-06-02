@@ -126,6 +126,43 @@
 }
 
 
+/////////////////ORDER INDEX PAGE//////////////////////////////
+
+.filter-options {
+  border: 1px solid red;
+  border-radius: 0.25rem;
+}
+
+.filter-option {
+  cursor: pointer;
+}
+
+.filter-option-heading {
+  font-weight: bolder;
+}
+
+.filter-options-restaurants {
+  border: 1px solid blue;
+  border-radius: 0.25rem;
+}
+
+.filter-restaurant {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  padding: 0.2rem;
+}
+
+.filter-status {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  padding: 0.2rem;
+}
+
+.filter-option-active {
+  background-color: pink;
+}
 ///////////////////////////OTHER//////////////////////////////////////
 
 .hidden {

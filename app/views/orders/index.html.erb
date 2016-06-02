@@ -1,11 +1,41 @@
 <h2>Your Orders</h2>
 
 <div class="filter-options">
-  <div class="filter-options-restaurant">
-
+  <div class="filter-options-restaurants">
+    <span class='filter-option-heading'>Filter by Restaurant:</span>
+    <% @restaurants.each do |restaurant| %>
+      <div class="filter-option filter-restaurant" data-restaurant-id="<%= restaurant.id %>">
+        <%= restaurant.name %>
+      </div>
+    <% end %>
   </div>
 
   <div class="filter-options-status">
+    <span class='filter-option-heading'>Filter by Status:</span>
+    <!-- <div class="filter-option filter-status">
+      Submitted
+    </div> -->
+    <div class="filter-option filter-status" data-status='seen'>
+      Seen
+    </div>
+    <div class="filter-option filter-status" data-status='invoiced'>
+      Invoiced
+    </div>
+    <div class="filter-option filter-status" data-status='shipped'>
+      Shipped
+    </div>
+    <div class="filter-option filter-status" data-status='received'>
+      Received
+    </div>
+    <div class="filter-option filter-status" data-status='delivered'>
+      Delivered
+    </div>
+    <div class="filter-option filter-status" data-status='paid'>
+      Paid
+    </div>
+    <div class="filter-option filter-status" data-status='completed'>
+      Completed
+    </div>
 
   </div>
 
