@@ -219,6 +219,22 @@ $(document).on('ready page:load', function() {
   //
   $('.filter-option').on('click', function() {
     $(this).toggleClass('filter-option-active');
+
+    var filterRestaurantIdList = [];
+    $('.filter-restaurant.filter-option-active').each(function() {
+      filterRestaurantIdList.push($(this).data('restaurant-id'));
+    })
+
+    $.ajax({
+      method: 'GET',
+      url: '/orders',
+      data: {filter_restaurant_ids: filterRestaurantIdList},
+      dataType: 'html',
+      success: function(data) {
+        console.log(data);
+      }
+    })
   })
+
 
 });
