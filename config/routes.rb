@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :suppliers do
     resources :inventory_items
   end
-  
+
   get 'orders/deliveries' => 'orders#deliver', as: 'deliveries'
 
   resources :orders do
@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   resources :invoice_items
   resources :items, except: %w(new edit)
   resources :permissions, except: %w(show)
+
+  get 'filter_index' => 'orders#filter_index', as: 'filter_index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

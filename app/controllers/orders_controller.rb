@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+
     if params[:restaurant_ids] && params[:supplier_ids]
       @orders = Order.where(restaurant_id: params[:restaurant_ids], supplier_id: params[:supplier_ids]).order(id: :desc).first(10)
       render partial: '/orders/orders_collection'
@@ -14,6 +15,7 @@ class OrdersController < ApplicationController
       end.flatten.sort{|a,b| b.id <=> a.id}[0, 5]
       render partial: '/orders/orders_collection'
     end
+
 
     if current_user.restaurant_worker?
       @restaurants = current_user.restaurants
@@ -28,6 +30,18 @@ class OrdersController < ApplicationController
                                   WHERE (status ? 'submitted')
                                   AND supplier_id = #{current_user.suppliers[0].id}
                                   ORDER BY id DESC")
+    end
+  end
+
+  def filter_index
+    if current_user.restaurant_worker?
+      if request.xhr?
+        @orders = Order.where(restaurant_id: params[:filter_restaurant_ids])
+        render partial: '/orders/orders_collection'
+      end
+    end
+
+    if current_user.supplier_worker?
     end
   end
 

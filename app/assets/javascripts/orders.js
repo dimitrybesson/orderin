@@ -227,11 +227,11 @@ $(document).on('ready page:load', function() {
 
     $.ajax({
       method: 'GET',
-      url: '/orders',
+      url: '/filter_index',
       data: {filter_restaurant_ids: filterRestaurantIdList},
       dataType: 'html',
       success: function(data) {
-        console.log(data);
+        $('.selected-orders').html(data);
       }
     })
   })
