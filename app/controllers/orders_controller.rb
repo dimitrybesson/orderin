@@ -36,7 +36,11 @@ class OrdersController < ApplicationController
   def filter_index
     if current_user.restaurant_worker?
       @restaurant_orders = Order.where(restaurant_id: params[:filter_restaurant_ids])
-
+      if @restaurant_orders.empty?
+        @restaurant_orders = current_user.restaurants.map do |restaurant|
+          restaurant.orders
+        end.flatten.sort { |x, y| y <=> x }
+      end
       @orders = @restaurant_orders
       if params[:filter_statuses]
         @status_orders = []
@@ -47,7 +51,13 @@ class OrdersController < ApplicationController
             @status_orders = @status_orders.flatten & (Order.where("status ? '#{status}'"))
           end
         end
-        @orders = @restaurant_orders & @status_orders.flatten.uniq
+        if @restaurant_orders.any?
+          @orders = @restaurant_orders & @status_orders.flatten.uniq
+        else
+          @orders = current_user.orders.map do |restaurant|
+            restaurant.orders
+          end.flatten
+        end
       end
 
 
