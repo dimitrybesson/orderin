@@ -128,6 +128,10 @@
 
 /////////////////ORDER INDEX PAGE//////////////////////////////
 
+.container-statuses {
+  float: right;
+}
+
 .filter-options {
   border: 1px solid red;
   border-radius: 0.25rem;
@@ -163,6 +167,14 @@
 
 .filter-option-active {
   background-color: pink;
+}
+
+.selected-orders {
+  max-width: 80%;
+  border: 1px solid black;
+  border-radius: 1%;
+  margin: 0 auto;
+  padding: 1%;
 }
 ///////////////////////////OTHER//////////////////////////////////////
 
