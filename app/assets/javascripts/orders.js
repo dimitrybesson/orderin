@@ -221,8 +221,13 @@ $(document).on('ready page:load', function() {
     $(this).toggleClass('filter-option-active');
 
     var filterRestaurantIdList = [];
+    var filterOrderStatusList = [];
     $('.filter-restaurant.filter-option-active').each(function() {
       filterRestaurantIdList.push($(this).data('restaurant-id'));
+    })
+    $('.filter-status.filter-option-active').each(function() {
+      filterOrderStatusList.push($(this).data('status'));
+      console.log(filterOrderStatusList)
     })
 
     $.ajax({
