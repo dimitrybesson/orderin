@@ -59,10 +59,6 @@ class OrdersController < ApplicationController
           end.flatten
         end
       end
-
-
-
-
       render partial: '/orders/orders_collection'
     end
 
