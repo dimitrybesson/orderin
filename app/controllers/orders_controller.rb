@@ -35,10 +35,10 @@ class OrdersController < ApplicationController
 
   def filter_index
     if current_user.restaurant_worker?
-      if request.xhr?
-        @orders = Order.where(restaurant_id: params[:filter_restaurant_ids])
-        render partial: '/orders/orders_collection'
-      end
+      @restaurant_orders = Order.where(restaurant_id: params[:filter_restaurant_ids])
+      @status_orders = Order.where("status ? 'seen' AND status ? 'invoiced'")
+      @orders = @restaurant_orders & @status_orders
+      render partial: '/orders/orders_collection'
     end
 
     if current_user.supplier_worker?

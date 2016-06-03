@@ -227,13 +227,12 @@ $(document).on('ready page:load', function() {
     })
     $('.filter-status.filter-option-active').each(function() {
       filterOrderStatusList.push($(this).data('status'));
-      console.log(filterOrderStatusList)
     })
 
     $.ajax({
       method: 'GET',
       url: '/filter_index',
-      data: {filter_restaurant_ids: filterRestaurantIdList},
+      data: {filter_restaurant_ids: filterRestaurantIdList, filter_statuses: filterOrderStatusList},
       dataType: 'html',
       success: function(data) {
         $('.selected-orders').html(data);
