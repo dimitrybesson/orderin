@@ -45,6 +45,14 @@ $(document).on('ready page:load', function() {
   })
   $('.inventory-item-suggestion-modal').on('click', '.create-new-item-btn', function(e) {
     e.preventDefault();
+    $.ajax({
+      method: 'GET',
+      url: $(this).attr('href'),
+      dataType: 'html',
+      success: function(data) {
+        $('.inventory-item-form-container').html(data);
+      }
+    })
   })
   $('.inventory-item-suggestion-modal').on('click', '.item-link', function(e) {
     e.preventDefault();
@@ -68,6 +76,19 @@ $(document).on('ready page:load', function() {
       success: function(data) {
         $('.inventory-item-form-container').empty();
         $('.activeForm').remove();
+        $('.inventory-item-table').append(data);
+      }
+    })
+  })
+  $('.inventory-item-suggestion-modal').on('submit', ('.new_item_and_inventory_item'), function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: $(this).attr('action'),
+      dataType: 'html',
+      data: $(this).serialize(),
+      success: function(data) {
+        $('.inventory-item-form-container').empty();
         $('.inventory-item-table').append(data);
       }
     })
