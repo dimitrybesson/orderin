@@ -22,13 +22,21 @@
   width: 34%;
 }
 
+.supplier-show-container {
+  max-width: 50rem;
+  margin: 0;
+}
+
 .supplier-show-contact {
-  @include span-columns(3);
+
 }
 
 .supplier-show-inventory {
-  @include span-columns(9);
   margin-right: 0;
+}
+
+.supplier-order-btn {
+  float: right;
 }
 
 .supplier-show {

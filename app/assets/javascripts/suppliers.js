@@ -5,7 +5,7 @@ $(document).on('ready page:load', function() {
   $('.supplier-show-body').on('click', function() {
     $('.supplier-order-modal').css('display', 'none');
   });
-  $('.supplier-show-body').on('click', '.supplier-order-button', function(e) {
+  $('.supplier-show-body').on('click', '.supplier-order-btn', function(e) {
     e.stopPropagation();
     $('.supplier-order-modal').css('display', 'block');
   })
