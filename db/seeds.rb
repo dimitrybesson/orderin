@@ -18,9 +18,9 @@ jurgen = User.find_by(email: 'jurgen@chabrol.com')
 # user working for supplier
 
 #ROLES
-Role.create(name: 'Master')
-Role.create(name: 'Privileged')
-Role.create(name: 'Restricted')
+Role.create(name: 'master')
+Role.create(name: 'privileged')
+Role.create(name: 'restricted')
 
 # RESTAURANTS
 el_caballito = Restaurant.create(name: 'El Caballito', street_address: '220 King St W, Toronto, ON M5H 1K4', phone: '(416) 628-9838')
