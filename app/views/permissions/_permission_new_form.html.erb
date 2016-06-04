@@ -4,8 +4,7 @@
   <%= f.label "User Email:" %>
   <%= f.text_field :user_id, placeholder: "example@email.com" %>
   <%= f.hidden_field :institution_id, value: @restaurant.id %>
-  <!-- this won't stand -->
   <%= f.hidden_field :institution_type, value: "Restaurant" %>
-  <%= f.select :role_id, options_for_select([['Master', 1], ['Privileged', 2], ['Restricted', 3]]) %>
+  <%= f.select :role_id, options_for_select([['Master', Role.find_by(name: "master").id], ['Privileged', Role.find_by(name: "privileged").id], ['Restricted', Role.find_by(name: "restricted").id]]) %>
   <%= f.submit class: "permission-submission" %>
 <% end %>

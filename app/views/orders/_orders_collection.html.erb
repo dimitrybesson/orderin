@@ -38,10 +38,10 @@
           <% end %>
         <% end %>
       </div>
-    
+
     <p> Restaurant: <%= order.restaurant.name %></p>
     <p> Supplier: <%= link_to order.supplier.name, supplier_path(order.supplier) %></p>
-    <p> Delivery Date: <%= order.delivery_date.to_date.strftime("%a, %b %d, %Y") %></p>
+    <p> Delivery Date: <%= order.delivery_date.to_date.strftime("%a, %b %d, %Y") if order.delivery_date.present? %></p>
     <p> Total: $<%= order.formatted_total %></p>
   </div>
 <% end %>

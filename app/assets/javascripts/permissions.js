@@ -13,10 +13,11 @@ $(document).on('ready page:load', function() {
       data: {data: $(this).attr('data')},
       dataType: 'html',
       success: function(data) {
+        $(this).parent().siblings('.permission-users').addClass('target-restaurant');
         $('.permissions-modal').toggleClass('hidden');
-        $('.permissions-modal').addClass('submit-button');
+        $('.permissions-modal').addClass('create-button');
         $('.permissions-modal').html(data);
-      }
+      }.bind(this)
     })
   })
 
@@ -54,15 +55,20 @@ $(document).on('ready page:load', function() {
           });
           $('.permissions-modal').removeAttr('data');
         }
-    })} else if ($('.permissions-modal').hasClass('submit-button')) {
+    })} else if ($('.permissions-modal').hasClass('create-button')) {
       $.ajax({
         method: 'POST',
         url: $(this).attr('action'),
         data: formData,
         dataType: 'html',
-        success: function() {
-          $('.permissions-modal').removeClass('submit-button');
+        success: function(data) {
+          $('.permissions-modal').removeClass('create-button');
           $('.permissions-modal').toggleClass('hidden');
+          $('.target-restaurant').append(data);
+          $('.target-restaurant').removeClass('target-restaurant');
+          $('.permission-user').draggable({
+            revert: true
+          })
         }
       })
     }
@@ -94,5 +100,6 @@ $(document).on('ready page:load', function() {
   })
   $('.permissions-modal').on('click', '.permissions-modal-close-btn', function() {
     $('.permissions-modal').toggleClass('hidden');
+    $('.target-restaurant').removeClass('target-restaurant');
   })
 })
