@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     end
 
     if current_user.supplier_worker?
-      @restaurants = current_user.supplier.first.restaurants
+      @restaurants = current_user.suppliers.first.restaurants.uniq
       @orders = Order.find_by_sql("SELECT * FROM orders
                                   WHERE (status ? 'submitted')
                                   AND supplier_id = #{current_user.suppliers[0].id}
@@ -63,7 +63,28 @@ class OrdersController < ApplicationController
     end
 
     if current_user.supplier_worker?
+      @restaurant_orders = Order.where(restaurant_id: params[:filter_restaurant_ids])
+      if @restaurant_orders.empty?
+        @restaurant_orders = current_user.suppliers.first.orders #order asc
+      end
+      @orders = @restaurant_orders
+      if params[:filter_statuses]
+        @status_orders = []
+        params[:filter_statuses].each do |status|
+          if @status_orders.empty?
+            @status_orders << (Order.where("status ? '#{status}'"))
+          else
+            @status_orders = @status_orders.flatten & (Order.where("status ? '#{status}'"))
+          end
+        end
+        if @restaurant_orders.any?
+          @orders = @restaurant_orders & @status_orders.flatten.uniq
+        else
+          @orders = current_user.suppliers.first.orders
+        end
+      end
     end
+    render partial: '/orders/orders_collection'
   end
 
   def show
