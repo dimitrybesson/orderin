@@ -60,9 +60,8 @@ class OrdersController < ApplicationController
         end
       end
       render partial: '/orders/orders_collection'
-    end
-
-    if current_user.supplier_worker?
+      
+    elsif current_user.supplier_worker?
       @restaurant_orders = Order.where(restaurant_id: params[:filter_restaurant_ids])
       if @restaurant_orders.empty?
         @restaurant_orders = current_user.suppliers.first.orders #order asc
@@ -83,8 +82,8 @@ class OrdersController < ApplicationController
           @orders = current_user.suppliers.first.orders
         end
       end
+      render partial: '/orders/orders_collection'
     end
-    render partial: '/orders/orders_collection'
   end
 
   def show

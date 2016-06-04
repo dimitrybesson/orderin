@@ -2,7 +2,7 @@
 
 <div class="filter-options">
   <div class="filter-options-restaurants">
-    <span class='filter-option-heading'>Filter by Restaurant:</span>
+    <div class='filter-option-heading'>Filter by Restaurant:</div>
     <% @restaurants.each do |restaurant| %>
       <div class="filter-option filter-restaurant" data-restaurant-id="<%= restaurant.id %>">
         <%= restaurant.name %>
@@ -11,7 +11,7 @@
   </div>
 
   <div class="filter-options-status">
-    <span class='filter-option-heading'>Filter by Status:</span>
+    <div class='filter-option-heading'>Filter by Status:</div>
     <!-- <div class="filter-option filter-status">
       Submitted
     </div> -->

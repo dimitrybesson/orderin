@@ -133,36 +133,40 @@
 }
 
 .filter-options {
-  border: 1px solid red;
-  border-radius: 0.25rem;
   margin: 1rem 0;
 }
 
 .filter-option {
   cursor: pointer;
+  margin-left: 0.1rem;
+  padding: 0 1rem;
 }
 
 .filter-option-heading {
+  display: inline-block;
   font-weight: bolder;
+  width: 9rem;
 }
 
 .filter-options-restaurants {
-  border: 1px solid blue;
-  border-radius: 0.25rem;
+}
+
+.filter-options-status {
+  margin-top: 0.5rem;
 }
 
 .filter-restaurant {
   display: inline-block;
   border: 1px solid black;
   border-radius: 0.25rem;
-  padding: 0.2rem;
+  // padding: 0.2rem;
 }
 
 .filter-status {
   display: inline-block;
   border: 1px solid black;
   border-radius: 0.25rem;
-  padding: 0.2rem;
+  // padding: 0.2rem;
 }
 
 .filter-option-active {
