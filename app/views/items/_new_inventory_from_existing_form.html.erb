@@ -1,0 +1,17 @@
+<%= form_for [@supplier, @inventory_item] do |f| %>
+  <p><%= @inventory_item.name %></p>
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, min: 0 %>
+  </div>
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price, min: 0 %>
+  </div>
+  <%= f.hidden_field :item_id, value: params[:id] %>
+  <%= f.hidden_field :supplier_id, value: @supplier.id %>
+  <%= f.hidden_field :name, value: @item.name %>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

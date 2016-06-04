@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   patch 'invoice_items' => 'invoice_items#mass_update'
 
   resources :invoice_items
-  resources :items, except: %w(new edit)
+  resources :items, except: %w(edit)
   resources :permissions, except: %w(show)
 
   get 'filter_index' => 'orders#filter_index', as: 'filter_index'

@@ -1,0 +1,9 @@
+<p class="new-inventory-item-modal-close-btn">X</p>
+<div><%= link_to "Create a New Item", new_item_path, class: "create-new-item-btn" %></div>
+<div class="inventory-item-suggestion-list">
+  <ul>
+    <%= render @items %>
+  </ul>
+</div>
+<div class="inventory-item-form-container">
+</div>

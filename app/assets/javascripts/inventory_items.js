@@ -31,4 +31,70 @@ $(document).on('ready page:load', function() {
     $('.edit-inventory-item-modal').toggleClass('hidden');
     $('.selected').removeClass('selected');
   })
+  $('.new_inventory_item_btn').on('click', function(e) {
+    e.preventDefault();
+    $('.inventory-item-suggestion-modal').toggleClass('hidden');
+    $.ajax({
+      method: 'GET',
+      url: $(this).attr('href'),
+      dataType: 'html',
+      success: function(data) {
+        $('.inventory-item-suggestion-modal').html(data);
+      }
+    })
+  })
+  $('.inventory-item-suggestion-modal').on('click', '.create-new-item-btn', function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'GET',
+      url: $(this).attr('href'),
+      dataType: 'html',
+      success: function(data) {
+        $('.inventory-item-form-container').html(data);
+      }
+    })
+  })
+  $('.inventory-item-suggestion-modal').on('click', '.item-link', function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'GET',
+      url: $(this).attr('href'),
+      dataType: 'html',
+      success: function(data) {
+        $('.inventory-item-form-container').html(data);
+        $(this).parent().addClass('activeForm');
+      }.bind(this)
+    })
+  })
+  $('.inventory-item-suggestion-modal').on('submit', ('.new_inventory_item'), function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: $(this).attr('action'),
+      dataType: 'html',
+      data: $(this).serialize(),
+      success: function(data) {
+        $('.inventory-item-form-container').empty();
+        $('.activeForm').remove();
+        $('.inventory-item-table').append(data);
+      }
+    })
+  })
+  $('.inventory-item-suggestion-modal').on('submit', ('.new_item_and_inventory_item'), function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: $(this).attr('action'),
+      dataType: 'html',
+      data: $(this).serialize(),
+      success: function(data) {
+        $('.inventory-item-form-container').empty();
+        $('.inventory-item-table').append(data);
+      }
+    })
+  })
+  $('.inventory-item-suggestion-modal').on('click', '.new-inventory-item-modal-close-btn', function() {
+    $('.inventory-item-suggestion-modal').empty();
+    $('.inventory-item-suggestion-modal').toggleClass('hidden');
+  })
 })

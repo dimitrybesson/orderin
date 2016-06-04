@@ -1,5 +1,6 @@
 <h1><%= @supplier.name %></h1>
 <h1>Inventory Items</h1>
+<%= link_to "Add New Product", supplier_inventory_items_path(@supplier), class: "new_inventory_item_btn" %>
 
 <% if current_user.restaurant_worker? %>
   <%= form_for @order do |f| %>
@@ -12,7 +13,7 @@
 <% end %>
 
 <div class="inventory">
-  <table>
+  <table class="inventory-item-table">
     <col class="column-name"/>
     <col class="column-price"/>
     <col class="column-quantity"/>
@@ -37,4 +38,6 @@
 </div>
 
 <div class="edit-inventory-item-modal hidden">
+</div>
+<div class="inventory-item-suggestion-modal hidden">
 </div>
