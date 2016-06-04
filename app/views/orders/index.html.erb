@@ -1,48 +1,44 @@
 <h2>Your Orders</h2>
-<ul>
-  <% @orders.each do |order| %>
-    <li class="order-index-order">
-      <% if current_user.restaurant_worker? %>
-        <% if order.invoiced? %>
-          <%= link_to "Order##{order.id}", order_invoice_path(order, order.invoice) %>
-        <% else %>
-          <%= link_to "Order##{order.id}", order_path(order) %> - <%= link_to "Edit", edit_order_path(order) %>
-        <% end %>
-      <% elsif current_user.supplier_worker? %>
-        <% if order.invoiced? %>
-          <%= link_to "Order##{order.id}", order_invoice_path(order, order.invoice) %>
-        <% elsif order.has_incomplete_invoice? %>
-          <%= link_to "Order##{order.id}", order_path(order) %> - <%= link_to "Edit Invoice", edit_order_invoice_path(order, order.invoice) %>
-        <% elsif order.has_no_invoice? %>
-          <%= link_to "Order##{order.id}", order_path(order) %> - <%= link_to "Create Invoice", order_invoices_path(order), method: :post %>
-        <% end %>
-      <% end %>
 
-      <span class="order-status">
-        <% if order.completed? %>
-          Completed!
-        <% else %>
-          <% if order.seen? %>
-            <%= image_tag("eyeball.svg", class: "icon icon-eyeball", title: "Seen by the supplier") %>
-          <% end %>
-          <% if order.invoiced? %>
-            <%= image_tag("clipboard.svg", class: "icon icon-clipboard", title: "Invoiced") %>
-          <% end %>
-          <% if order.shipped? %>
-            <%= image_tag("truck.svg", class: "icon icon-truck", title: "Shipped") %>
-          <% end %>
-          <% if order.received? %>
-            <%= image_tag("gift.svg", class: "icon icon-gift", title: "Delivered") %>
-          <% end %>
-          <% if order.paid? %>
-            <%= image_tag("dollar.svg", class: "icon icon-dollar", title: "Paid") %>
-          <% end %>
-        <% end %>
-      </span>
+<div class="filter-options">
+  <div class="filter-options-restaurants">
+    <span class='filter-option-heading'>Filter by Restaurant:</span>
+    <% @restaurants.each do |restaurant| %>
+      <div class="filter-option filter-restaurant" data-restaurant-id="<%= restaurant.id %>">
+        <%= restaurant.name %>
+      </div>
+    <% end %>
+  </div>
 
-      <p>To: <%= order.restaurant.name %></p>
-      <p> From: <%= order.supplier.name %></p>
-      <p>$<%= order.formatted_total %></p>
-    </li>
-  <% end %>
-</ul>
+  <div class="filter-options-status">
+    <span class='filter-option-heading'>Filter by Status:</span>
+    <!-- <div class="filter-option filter-status">
+      Submitted
+    </div> -->
+    <div class="filter-option filter-status" data-status='seen'>
+      Seen
+    </div>
+    <div class="filter-option filter-status" data-status='invoiced'>
+      Invoiced
+    </div>
+    <div class="filter-option filter-status" data-status='shipped'>
+      Shipped
+    </div>
+    <div class="filter-option filter-status" data-status='received'>
+      Received
+    </div>
+    <div class="filter-option filter-status" data-status='paid'>
+      Paid
+    </div>
+    <div class="filter-option filter-status" data-status='completed'>
+      Completed
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="selected-orders">
+  <%= render partial: 'orders_collection' %>
+</div>

@@ -15,7 +15,7 @@ $(document).on('ready page:load', function() {
   $(function() {
     $( document ).tooltip();
   });
-  
+
 // Search bar to filter order_items
 
   $('#inventory_search').on('keyup', function() {
@@ -215,6 +215,30 @@ $(document).on('ready page:load', function() {
         })
       }
     })
-  // });
+  //ORDER INDEX FILTERING
+  //
+  $('.filter-option').on('click', function() {
+    $(this).toggleClass('filter-option-active');
+
+    var filterRestaurantIdList = [];
+    var filterOrderStatusList = [];
+    $('.filter-restaurant.filter-option-active').each(function() {
+      filterRestaurantIdList.push($(this).data('restaurant-id'));
+    })
+    $('.filter-status.filter-option-active').each(function() {
+      filterOrderStatusList.push($(this).data('status'));
+    })
+
+    $.ajax({
+      method: 'GET',
+      url: '/filter_index',
+      data: {filter_restaurant_ids: filterRestaurantIdList, filter_statuses: filterOrderStatusList},
+      dataType: 'html',
+      success: function(data) {
+        $('.selected-orders').html(data);
+      }
+    })
+  })
+
 
 });

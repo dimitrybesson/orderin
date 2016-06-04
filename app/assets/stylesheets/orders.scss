@@ -126,6 +126,56 @@
 }
 
 
+/////////////////ORDER INDEX PAGE//////////////////////////////
+
+.container-statuses {
+  float: right;
+}
+
+.filter-options {
+  border: 1px solid red;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+}
+
+.filter-option {
+  cursor: pointer;
+}
+
+.filter-option-heading {
+  font-weight: bolder;
+}
+
+.filter-options-restaurants {
+  border: 1px solid blue;
+  border-radius: 0.25rem;
+}
+
+.filter-restaurant {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  padding: 0.2rem;
+}
+
+.filter-status {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  padding: 0.2rem;
+}
+
+.filter-option-active {
+  background-color: pink;
+}
+
+.selected-orders {
+  max-width: 80%;
+  // border: 1px solid black;
+  border-radius: 1%;
+  margin: 0 auto;
+  padding: 1%;
+}
 ///////////////////////////OTHER//////////////////////////////////////
 
 .hidden {

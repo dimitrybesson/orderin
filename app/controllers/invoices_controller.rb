@@ -14,6 +14,7 @@ class InvoicesController < ApplicationController
       end
     elsif current_user.supplier_worker?
       @supplier = current_user.suppliers.first
+
       if request.xhr?
         @invoices = Invoice.joins(order: :restaurant).where("restaurants.name ilike ? AND orders.supplier_id = #{@supplier.id}", "%#{params[:search]}%")
         render @invoices

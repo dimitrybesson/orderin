@@ -37,7 +37,7 @@
             </td>
           <% elsif invoice_item.delta_is_negative? %>
             <td class="cell-invoice-item-difference negative-delta">
-            -<%= invoice_item.delta %>
+            <%= invoice_item.delta %>
             </td>
           <% else %>
             <td class="cell-invoice-item-difference">
