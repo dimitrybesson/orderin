@@ -14,7 +14,7 @@ class PermissionsController < ApplicationController
     @permission = Permission.new(permission_params)
     @permission.user_id = User.find_by(email: params[:permission][:user_id].to_s).id
     if @permission.save
-      render nothing: true
+      render @permission
     else
       # error handling
     end

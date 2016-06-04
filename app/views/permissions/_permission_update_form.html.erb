@@ -1,6 +1,6 @@
 <p class="permissions-modal-close-btn">X</p>
 <h3>Edit Employee Access</h3>
 <%= form_for @permission do |f| %>
-  <%= f.select :role_id, options_for_select([['Master', 1], ['Privileged', 2], ['Restricted', 3]]) %>
+  <%= f.select :role_id, options_for_select([['Master', Role.find_by(name: "master").id], ['Privileged', Role.find_by(name: "privileged").id], ['Restricted', Role.find_by(name: "restricted").id]]) %>
   <%= f.submit "Update", class: "permission-submission" %>
 <% end %>

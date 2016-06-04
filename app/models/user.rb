@@ -23,26 +23,19 @@ class User < ActiveRecord::Base
   end
 
   def restaurant_orderer?
-    Permission.where(user_id: id, institution_type: "Restaurant", role: (1..2)).any?
+    Permission.where(user_id: id, institution_type: "Restaurant", role_id: (Role.find_by(name: "master").id..Role.find_by(name: "privileged").id)).any?
   end
 
   def restaurant_master?
-    Permission.where(user_id: id, institution_type: "Restaurant", role: 1).any?
+    Permission.where(user_id: id, institution_type: "Restaurant", role_id: Role.find_by(name: "master").id).any?
   end
 
   def restaurant_master_this?(restaurant)
-    Permission.find_by(user_id: id, institution_id: restaurant.id, institution_type: "Restaurant", role: 1).present?
+    Permission.find_by(user_id: id, institution_id: restaurant.id, institution_type: "Restaurant", role_id: Role.find_by(name: "master").id).present?
   end
 
   def clearance(restaurant)
-    case Permission.find_by(user_id: id, institution_id: restaurant.id, institution_type: "Restaurant").role_id
-    when 1
-      return "Master"
-    when 2
-      return "Privileged"
-    when 3
-      return "Restricted"
-    end
+    Permission.find_by(user_id: id, institution_id: restaurant.id, institution_type: "Restaurant").role.name
   end
 
   def deliveries
