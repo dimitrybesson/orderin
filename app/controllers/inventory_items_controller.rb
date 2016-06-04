@@ -6,6 +6,24 @@ class InventoryItemsController < ApplicationController
     @supplier = Supplier.find(params[:supplier_id])
     @inventory_items = @supplier.inventory_items
     @order = Order.new
+
+    if request.xhr?
+      @items = (Item.all - Item.joins("JOIN inventory_items ON inventory_items.item_id=items.id").where("inventory_items.supplier_id = #{@supplier.id}")).sort { | a, b | a.name <=> b.name }
+      render partial: 'inventory_item_suggestions'
+    end
+  end
+
+  def new
+  end
+
+  def create
+    @inventory_item = InventoryItem.new(inventory_item_params)
+    if @inventory_item.save
+      @supplier = @inventory_item.supplier
+      render partial: 'inventory_item_index'
+    else
+      # error handling
+    end
   end
 
   def edit

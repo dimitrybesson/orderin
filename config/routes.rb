@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :suppliers do
     resources :inventory_items
   end
-  
+
   get 'orders/deliveries' => 'orders#deliver', as: 'deliveries'
 
   resources :orders do
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   patch 'invoice_items' => 'invoice_items#mass_update'
 
   resources :invoice_items
-  resources :items, except: %w(new edit)
+  resources :items, except: %w(edit)
   resources :permissions, except: %w(show)
 
   # The priority is based upon order of creation: first created -> highest priority.

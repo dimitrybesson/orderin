@@ -18,6 +18,53 @@
   font-family: $perfect-x-font-family;
 }
 
+.new-inventory-item-modal-close-btn {
+  float: right;
+  padding: 0 7px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  font-family: $perfect-x-font-family;
+}
+
+.new-inventory-item-modal-close-btn:hover {
+    background-color: tomato;
+    color: white;
+}
+
+.inventory-item-suggestion-modal {
+  position: fixed;
+  top: 4rem;
+  left: 9rem;
+  width: 70%;
+  height: 80%;
+  overflow-y: scroll;
+  background-color: $light-gray;
+  border: 1px solid black;
+  border-radius: 1%;
+  padding: 1rem;
+}
+
+.inventory-item-suggestion-list {
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.inventory-item-form-container {
+  float: left;
+  top: 1rem;
+  right: 1rem;
+  width: 50%;
+  height: 90%;
+  margin-top: 1rem;
+  border: 1px solid black;
+  border-radius: 1%;
+  padding: 1rem;
+  overflow-y: scroll;
+}
+
 .modal-close-btn:hover {
     background-color: tomato;
     color: white;
