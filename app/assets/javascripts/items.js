@@ -1,2 +1,14 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(document).on('ready page:load', function() {
+
+  $('#items_search_field').on('keyup', function() {
+    var data = {"search": $('#items_search_field').val()};
+    $.ajax({
+      method: 'GET',
+      url: '/items',
+      data: data,
+      success: function(data) {
+        $('.items-list').html(data);
+      }
+    })
+  })
+})
