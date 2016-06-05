@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
     if request.xhr?
-      @items = Item.where('name ilike ?', "%#{params[:search]}%")
+      @items = Item.where('name ilike ?', "%#{params[:search]}%").order('name')
       render @items
     else
       @items = Item.order('name')
