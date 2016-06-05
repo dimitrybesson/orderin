@@ -74,9 +74,9 @@ $(document).on('ready page:load', function() {
       dataType: 'html',
       data: $(this).serialize(),
       success: function(data) {
-        $('.inventory-item-form-container').empty();
+        $('.inventory-item-form-container').text("New inventory item created!");
         $('.activeForm').remove();
-        $('.inventory-item-table').append(data);
+        $('.inventory-item-column-headings').after(data);
       }
     })
   })
@@ -88,8 +88,8 @@ $(document).on('ready page:load', function() {
       dataType: 'html',
       data: $(this).serialize(),
       success: function(data) {
-        $('.inventory-item-form-container').empty();
-        $('.inventory-item-table').append(data);
+        $('.inventory-item-form-container').text("New inventory item created!");
+        $('.inventory-item-column-headings').after(data);
       }
     })
   })

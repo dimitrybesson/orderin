@@ -56,25 +56,10 @@
   </nav>
 
   <main>
-    <% if flash[:notice] %>
-      <p id='notice'>
-        <%= flash[:notice] %>
-      </p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p id='alert'>
-        <%= flash[:alert] %>
-      </p>
-    <% end %>
-    <% if flash[:error] %>
-      <p id='error'>
-        <%= flash[:error] %>
-      </p>
-    <% end %>
 
-  <%= yield %>
-  <div class="deliveries-modal hidden"></div>
-  <div class="signup-modal"></div>
+    <%= yield %>
+    <div class="deliveries-modal hidden"></div>
+    <div class="signup-modal"></div>
   </main>
 </body>
 </html>
