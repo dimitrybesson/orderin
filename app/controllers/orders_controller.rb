@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
   def filter_index
     if current_user.restaurant_worker?
       @restaurant_orders = Order.where(restaurant_id: params[:filter_restaurant_ids])
-      if @restaurant_orders.empty?
+      if !params[:filter_restaurant_ids]
         @restaurant_orders = current_user.restaurants.map do |restaurant|
           restaurant.orders
         end.flatten.sort { |x, y| y <=> x }
@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
         end
       end
       render partial: '/orders/orders_collection'
-      
+
     elsif current_user.supplier_worker?
       @restaurant_orders = Order.where(restaurant_id: params[:filter_restaurant_ids])
       if @restaurant_orders.empty?

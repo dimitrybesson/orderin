@@ -14,7 +14,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-      @permission = Permission.new(user_id: current_user.id, role_id: 1, institution_id: @restaurant.id, institution_type: "Restaurant")
+      @permission = Permission.new(user_id: current_user.id, role_id: Role.find_by(name: 'master').id, institution_id: @restaurant.id, institution_type: "Restaurant")
       if @permission.save
         redirect_to user_url(current_user)
       else

@@ -1,7 +1,7 @@
 class PermissionsController < ApplicationController
 
   def index
-    @permissions = Permission.where(user_id: current_user.id, role: 1)
+    @permissions = Permission.where(user_id: current_user.id, role_id: Role.find_by(name: 'master').id)
   end
 
   def new
@@ -12,7 +12,7 @@ class PermissionsController < ApplicationController
 
   def create
     @permission = Permission.new(permission_params)
-    @permission.user_id = User.find_by(email: params[:permission][:user_id].to_s).id
+    @permission.user_id = User.find_by(email: params[:permission][:user_id]).id
     if @permission.save
       render @permission
     else
