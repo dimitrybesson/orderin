@@ -44,7 +44,7 @@
 
         <div class="field">
           <%= f.label :delivery_date %>
-          <%= f.date_select :delivery_date %>
+          <%= f.date_select :delivery_date, start_year: Date.today.year %>
         </div>
 
         <div class="actions">

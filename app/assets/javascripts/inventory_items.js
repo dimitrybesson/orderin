@@ -97,4 +97,19 @@ $(document).on('ready page:load', function() {
     $('.inventory-item-suggestion-modal').empty();
     $('.inventory-item-suggestion-modal').toggleClass('hidden');
   })
+
+  // Search bar on inventory_items#index
+  $('#inventory_item_search').on('keyup', function() {
+    var data = {"search": $('#inventory_item_search').val()};
+    var supplierId = $('#inventory_item_search').attr('data');
+    $.ajax({
+      method: 'GET',
+      url: '/suppliers/' + supplierId,
+      data: data,
+      success: function(data) {
+        $('.inventory-item-column-headings').siblings('tr').remove();
+        $('.inventory-item-column-headings').after(data);
+      }
+    })
+  })
 })

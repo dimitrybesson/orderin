@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.order('name')
+    if request.xhr?
+      @items = Item.where('name ilike ?', "%#{params[:search]}%")
+      render @items
+    else
+      @items = Item.order('name')
+    end
   end
 
   def show

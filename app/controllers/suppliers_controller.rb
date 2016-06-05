@@ -33,10 +33,15 @@ class SuppliersController < ApplicationController
 
   def show
     @supplier = Supplier.find(params[:id])
-    @inventory_items = @supplier.inventory_items
-    @user = current_user
-    @order = Order.new
-    @restaurants = current_user.restaurants
+    if request.xhr?
+      @inventory_items = @supplier.inventory_items.where('name ilike ?', "%#{params[:search]}%")
+      render partial: '/inventory_items/inventory_item_index_ajax'
+    else
+      @inventory_items = @supplier.inventory_items
+      @user = current_user
+      @order = Order.new
+      @restaurants = current_user.restaurants
+    end
   end
 
   def edit

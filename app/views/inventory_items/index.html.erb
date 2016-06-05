@@ -1,13 +1,14 @@
 <h1><%= @supplier.name %></h1>
 <h1>Inventory Items</h1>
 <%= link_to "Add New Product", supplier_inventory_items_path(@supplier), class: "new_inventory_item_btn" %>
-
+<div class="inventory-search-bar">
+  <%= text_field_tag :inventory_item_search, "", options = {placeholder: "Search...", data: @supplier.id} %>
+</div>
 <% if current_user.restaurant_worker? %>
   <%= form_for @order do |f| %>
     <div class="field">
        <%= f.hidden_field :supplier_id, value: @supplier.id %>
        <%= f.submit "Place Order" %>
-
     </div>
   <% end %>
 <% end %>
@@ -24,16 +25,16 @@
       <th class="cell-quantity">Quantity</th>
       <th></th>
     </tr>
-    <% @inventory_items.each do |inventory_item| %>
-      <tr>
-        <td><%= inventory_item.item.name %></td>
-        <td class="cell-price"><%= inventory_item.formatted_price %></td>
-        <td class="cell-quantity"><%= inventory_item.quantity %></td>
-        <% if current_user.suppliers.include?(@supplier) %>
-          <td class="cell-edit"><%= link_to "Edit", edit_supplier_inventory_item_path(@supplier, inventory_item), class: "edit-inventory-item-btn" %></td>
-        <% end %>
-      </tr>
-    <% end %>
+      <% @inventory_items.each do |inventory_item| %>
+        <tr>
+          <td><%= inventory_item.item.name %></td>
+          <td class="cell-price"><%= inventory_item.formatted_price %></td>
+          <td class="cell-quantity"><%= inventory_item.quantity %></td>
+          <% if current_user.suppliers.include?(@supplier) %>
+            <td class="cell-edit"><%= link_to "Edit", edit_supplier_inventory_item_path(@supplier, inventory_item), class: "edit-inventory-item-btn" %></td>
+          <% end %>
+        </tr>
+      <% end %>
   </table>
 </div>
 
