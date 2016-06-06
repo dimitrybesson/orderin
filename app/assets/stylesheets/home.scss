@@ -191,3 +191,7 @@ nav {
 .subheading {
   font-size: 1.25rem;
 }
+
+#user_email, #user_password, #user_password_confirmation {
+  max-width: 30rem;
+}
