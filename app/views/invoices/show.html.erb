@@ -3,9 +3,11 @@
     <%= button_to "SHIP", order_path(@order), method: :patch, form_class: "invoice-ship-btn" %>
   <% end %>
   <%= image_tag("truck.svg", class: "order-shipped-img hidden") %>
-  <p>Invoice#: <%= @invoice.id %></p>
-  <p>Order#: <%= @invoice.order_id %></p>
-  <p>Total: $<%= @invoice.total %>
+  <h2 class="page-heading-left">Invoice#: <%= @invoice.id %></h2>
+  <p class="minor-heading">Order#: <%= @invoice.order_id %></p>
+  <p class="minor-heading">Supplier: <%= @invoice.order.supplier.name %></p>
+  <p>Restaurant: <%= @invoice.order.restaurant.name %></p>
+  <p>Total: $<%= @invoice.total %></p>
 
   <section class='invoice-section'>
     <table class="invoice-items-table">
@@ -18,7 +20,7 @@
       <tr class="invoice-item-table-heading-row">
         <th class="cell-invoice-item-name">Name</th>
         <th class="cell-invoice-item-price">Price</th>
-        <th class="cell-invoice-item-quantity">Quantity</th>
+        <th class="cell-invoice-item-quantity">Qty</th>
         <th class="cell-invoice-item-subtotal">Subtotal</th>
         <th class="cell-invoice-item-difference">+/-</th>
       </tr>

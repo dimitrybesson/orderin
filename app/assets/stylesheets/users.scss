@@ -43,6 +43,10 @@
 .quick-order-form {
   margin: 2rem;
 
+  .action {
+    width: 63%;
+    margin: 0 auto;
+  }
   input[type="submit"] {
     width: 100%;
     margin: 0 auto;
@@ -139,4 +143,13 @@
 .supplier-order-modal-close-btn:hover {
     background-color: tomato;
     color: white;
+}
+
+.page-heading {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.page-heading-left {
+  font-size: 2rem;
 }

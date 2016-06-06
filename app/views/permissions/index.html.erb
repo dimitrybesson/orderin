@@ -1,3 +1,4 @@
+<h3 class="page-heading-left">Manage Permissions</h3>
 <div class="permission-accordion">
   <% @permissions.each do |permission| %>
     <% if current_user.restaurant_master_this?(permission.restaurant) %>

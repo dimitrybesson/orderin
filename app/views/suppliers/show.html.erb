@@ -1,12 +1,12 @@
 <main class="supplier-show-body">
-  <h2><%= @supplier.name %></h2>
+  <h2 class="page-heading-left"><%= @supplier.name %></h2>
 
   <div class="supplier-show-container">
     <% if current_user.restaurant_orderer? %>
     <%= button_tag "Place Order", options = {class: "supplier-order-btn", data: @supplier.id} %>
     <% end %>
     <div class=supplier-show-contact>
-      <p><%= @supplier.street_address %></p>
+      <p class="minor-heading"><%= @supplier.street_address %></p>
       <p><%= @supplier.phone %></p>
     </div>
     <div class="supplier-show-inventory">
