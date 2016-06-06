@@ -3,64 +3,43 @@ html {
   height: 100%;
 }
 
+.splash-nav {
+  height: 4rem;
+}
+
+.main-image {
+  width: 100%;
+}
+
 body {
   height: 100%;
 }
 
-#home-body {
-  background-color: $primary;
+.main-container {
+  background-color: black;
+  height: 100%;
+}
+
+.title-content {
+  position: relative;
+  background-color: black;
+  padding-top: 4rem;
   padding-bottom: 4rem;
-  height: 90%;
-  border-bottom: 1px solid $divider;
 }
 
-.splash-title {
-  font-size: 120px;
+.splash-title-div {
+
+  position: absolute;
+  width: 100%;
   text-align: center;
-  color: #FFF;
+  top: 30%;
+  line-height: 100%;
+
+  font-size: 10rem;
+  color: white;
   font-family: $heading-font-family;
-  // font-family: 'Permanent Marker', sans-serif;
-  margin-top: 10%;
-  margin-bottom: 10px;
 }
 
-#home-main {
-  border: 3px solid #000;
-  width: 60%;
-  margin: auto;
-  padding-bottom: 40px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  background-color: $light-primary;
-  padding: 1rem;
-}
-
-.splash-tag {
-  text-align: center;
-  font-size: 1.25rem;
-  color: #000;
-}
-
-.splash-nav {
-  background-color: $dark-primary;
-  height: 2rem;
-  overflow: hidden;
-  border-bottom: 1px solid $divider;
-}
-
-.splash-nav-links {
-  float: right;
-  line-height: 2rem;
-  padding-right: 0.5rem;
-}
-
-.splash-content {
-  background-color: $light-primary;
-  width: 70%;
-  margin: 4rem auto 0;
-  padding: 0.5rem;
-  border: 1px solid black;
-}
 
 header {
   position: fixed;

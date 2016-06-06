@@ -8,14 +8,20 @@
   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
 </head>
-<body>
-  <div id="home-body">
-    <div class="splash-nav"><span class="splash-nav-links"><%= link_to "Log In", new_user_session_path %> | <%= link_to "Sign Up", new_user_registration_path %></span></div>
-    <h1 class="splash-title">Avocado</h1>
-    <p class="splash-tag">We facilitate your ordering and invoicing process.</p>
-  </div>
-  <main id="home-main">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  </main>
-</body>
+  <body>
+    <div class="main-container">
+      <div class="splash-nav">
+        <span class="splash-nav-links"><%= link_to "Log In", new_user_session_path %> | <%= link_to "Sign Up", new_user_registration_path %></span>
+      </div>
+
+      <div class="title-content">
+        <div class="splash-image">
+          <%= image_tag("vegetablesontable.jpg", class: 'main-image') %>
+        </div>
+        <div class="splash-title-div">
+          Avocado
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
