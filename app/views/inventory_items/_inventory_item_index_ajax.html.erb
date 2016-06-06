@@ -1,0 +1,10 @@
+<% @inventory_items.each do |inventory_item| %>
+  <tr>
+    <td><%= inventory_item.item.name %></td>
+    <td class="cell-price"><%= inventory_item.formatted_price %></td>
+    <td class="cell-quantity"><%= inventory_item.quantity %></td>
+    <% if current_user.suppliers.include?(@supplier) %>
+      <td class="cell-edit"><%= link_to "Edit", edit_supplier_inventory_item_path(@supplier, inventory_item), class: "edit-inventory-item-btn" %></td>
+    <% end %>
+  </tr>
+<% end %>

@@ -6,5 +6,23 @@
 }
 
 .items-index-container {
-  width: 50%;
+  width: 70%;
+}
+
+.item-show-container {
+  max-width: 50rem;
+}
+
+#items_search_field {
+  max-width: 70%;
+}
+
+.available-from {
+  margin-top: 3rem;
+}
+
+.available-from-supplier {
+  display: inline-block;
+  min-width: 20rem;
+  margin-bottom: 0;
 }

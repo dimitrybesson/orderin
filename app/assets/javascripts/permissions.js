@@ -40,6 +40,7 @@ $(document).on('ready page:load', function() {
     e.preventDefault();
     var formData = $(this).serialize();
     var permissionId = $('.permissions-modal').attr('data');
+    var permissionElement = 'li[data-permission-id=' + permissionId + ']'
     if ($('.permissions-modal').hasClass('edit-button')) {
       $.ajax({
         method: 'PATCH',
@@ -49,8 +50,8 @@ $(document).on('ready page:load', function() {
         success: function(data) {
           $('.permissions-modal').toggleClass('hidden');
           $('.permissions-modal').removeClass('edit-button');
-          $(`li[data-permission-id=${permissionId}]`).replaceWith(data);
-          $(`li[data-permission-id=${permissionId}]`).draggable({
+          $(permissionElement).replaceWith(data);
+          $(permissionElement).draggable({
             revert: true
           });
           $('.permissions-modal').removeAttr('data');

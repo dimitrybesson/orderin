@@ -14,7 +14,7 @@
   display: inline-block;
   width: 55%;
   border: 1px solid black;
-  border-radius: 1%;
+  border-radius: 0.5rem;
   padding: 1rem;
 }
 
@@ -23,7 +23,7 @@
   float: right;
   width: 42%;
   border: 1px solid black;
-  border-radius: 1%;
+  border-radius: 0.5rem;
   padding: 1rem;
 }
 
@@ -133,7 +133,8 @@
 }
 
 .filter-options {
-  margin: 1rem 0;
+  max-width: 80%;
+  margin: 1rem auto;
 }
 
 .filter-option {
@@ -178,8 +179,8 @@
   // border: 1px solid black;
   border-radius: 1%;
   margin: 0 auto;
-  padding: 1%;
 }
+
 ///////////////////////////OTHER//////////////////////////////////////
 
 .hidden {
@@ -207,4 +208,8 @@
 
 .order-status {
   float: right;
+}
+
+.order-items {
+  max-width: 70rem;
 }

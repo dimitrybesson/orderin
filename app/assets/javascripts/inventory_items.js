@@ -74,9 +74,9 @@ $(document).on('ready page:load', function() {
       dataType: 'html',
       data: $(this).serialize(),
       success: function(data) {
-        $('.inventory-item-form-container').empty();
+        $('.inventory-item-form-container').text("New inventory item created!");
         $('.activeForm').remove();
-        $('.inventory-item-table').append(data);
+        $('.inventory-item-column-headings').after(data);
       }
     })
   })
@@ -88,13 +88,28 @@ $(document).on('ready page:load', function() {
       dataType: 'html',
       data: $(this).serialize(),
       success: function(data) {
-        $('.inventory-item-form-container').empty();
-        $('.inventory-item-table').append(data);
+        $('.inventory-item-form-container').text("New inventory item created!");
+        $('.inventory-item-column-headings').after(data);
       }
     })
   })
   $('.inventory-item-suggestion-modal').on('click', '.new-inventory-item-modal-close-btn', function() {
     $('.inventory-item-suggestion-modal').empty();
     $('.inventory-item-suggestion-modal').toggleClass('hidden');
+  })
+
+  // Search bar on inventory_items#index
+  $('#inventory_item_search').on('keyup', function() {
+    var data = {"search": $('#inventory_item_search').val()};
+    var supplierId = $('#inventory_item_search').attr('data');
+    $.ajax({
+      method: 'GET',
+      url: '/suppliers/' + supplierId,
+      data: data,
+      success: function(data) {
+        $('.inventory-item-column-headings').siblings('tr').remove();
+        $('.inventory-item-column-headings').after(data);
+      }
+    })
   })
 })

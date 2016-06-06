@@ -43,6 +43,10 @@
 .quick-order-form {
   margin: 2rem;
 
+  .action {
+    width: 63%;
+    margin: 0 auto;
+  }
   input[type="submit"] {
     width: 100%;
     margin: 0 auto;
@@ -103,21 +107,21 @@
 
 .supplier-order-popup {
   height: 0;
-  width: 0;
+  width: 47%;
   left: 50%;
   top: 15%;
   background-color: $light-gray;
   position: fixed;
-  overflow: hidden;
+  overflow-y: scroll;
 
   transition-property: all;
-  transition-duration: 0.5s;
+  transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
 }
 
 .supplier-order-popup-active {
   height: 75%;
-  width: 45%;
+  width: 47%;
   padding: 1.5rem;
   border: 1px solid black;
   border-radius: 1%;
@@ -139,4 +143,13 @@
 .supplier-order-modal-close-btn:hover {
     background-color: tomato;
     color: white;
+}
+
+.page-heading {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.page-heading-left {
+  font-size: 2rem;
 }

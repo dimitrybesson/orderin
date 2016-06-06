@@ -26,7 +26,8 @@ $(document).on('ready page:load', function() {
       url: '/orders/' + orderId,
       data: data,
       success: function(data) {
-        $('.inventory-items').html(data);
+        $('.inventory-item').remove();
+        $('.inventory-item-table-heading-row').after(data);
         $('.inventory-item-draggable').draggable({ revert: 'invalid' });
       }
     })

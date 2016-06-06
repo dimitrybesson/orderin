@@ -1,8 +1,8 @@
-<h1>Edit Order</h1>
+<h1 class="page-heading-left">Order#: <%= @order.id %></h1>
 
 <div class="order-info">
-  <h3>Supplier: <%= @order.supplier.name %></h3>
-  <h3>Restaurant: <%= @order.restaurant.name %></h3>
+  <h3 class="minor-heading">Supplier: <%= @order.supplier.name %></h3>
+  <h3 class="minor-heading">Restaurant: <%= @order.restaurant.name %></h3>
   <h3>Orderer: <%= @order.user.email %>
 </div>
 
@@ -44,7 +44,7 @@
 
         <div class="field">
           <%= f.label :delivery_date %>
-          <%= f.date_select :delivery_date %>
+          <%= f.date_select :delivery_date, start_year: Date.today.year %>
         </div>
 
         <div class="actions">

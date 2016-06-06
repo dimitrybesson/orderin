@@ -28,6 +28,6 @@ class Invoice < ActiveRecord::Base
   end
 
   def total
-    price_formatter(invoice_items.inject(0) { |sum, item| sum + item.price })
+    price_formatter(invoice_items.inject(0) { |sum, item| sum + (item.price * item.quantity) })
   end
 end
