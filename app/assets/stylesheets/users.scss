@@ -103,12 +103,12 @@
 
 .supplier-order-popup {
   height: 0;
-  width: 50%;
+  width: 47%;
   left: 50%;
   top: 15%;
   background-color: $light-gray;
   position: fixed;
-  overflow: hidden;
+  overflow-y: scroll;
 
   transition-property: all;
   transition-duration: 0.25s;
@@ -117,7 +117,7 @@
 
 .supplier-order-popup-active {
   height: 75%;
-  width: 50%;
+  width: 47%;
   padding: 1.5rem;
   border: 1px solid black;
   border-radius: 1%;
