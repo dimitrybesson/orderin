@@ -10,16 +10,25 @@
 </head>
   <body>
     <div class="main-container">
-      <div class="splash-nav">
-        <span class="splash-nav-links"><%= link_to "Log In", new_user_session_path %> | <%= link_to "Sign Up", new_user_registration_path %></span>
-      </div>
-
       <div class="title-content">
         <div class="splash-image">
           <%= image_tag("vegetablesontable.jpg", class: 'main-image') %>
         </div>
         <div class="splash-title-div">
           Avocado
+        </div>
+        <div class="splash-title-div-title">
+          Avocado
+        </div>
+        <div class="splash-nav-btns">
+          <div class="splash-nav-btn-container">
+            <div class="splash-nav-btn">
+              <%= link_to "Log In", new_user_session_path %>
+            </div>
+            <div class="splash-nav-btn">
+              <%= link_to "Sign Up", new_user_registration_path %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
