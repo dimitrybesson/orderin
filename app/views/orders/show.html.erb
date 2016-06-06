@@ -1,5 +1,5 @@
-<h1>
-  Order Number: <%= @order.id %>
+<h1 class="page-heading-left">
+  Order#: <%= @order.id %>
   <% if @order.completed? %>
     Completed!
   <% else %>
@@ -20,6 +20,8 @@
     <% end %>
   <% end %>
 </h1>
+<h2 class="minor-heading">Supplier: <%= @order.supplier.name %></h2>
+<h2 class="minor-heading">Restaurant: <%= @order.restaurant.name %></h2>
 <% if current_user.supplier_worker? %>
   <%= link_to "Create Invoice", order_invoices_path(@order), method: :post %>
 <% end %>

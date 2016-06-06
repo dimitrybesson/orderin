@@ -85,3 +85,20 @@
 .cell-quantity, .cell-price, .cell-edit {
   text-align: right;
 }
+
+#inventory_item_search {
+  width: 85%;
+  display: inline-block;
+}
+
+.new_inventory_item_btn {
+  margin-left: 1rem;
+  border: 1px solid black;
+  padding: 0.6rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+
+.inventory-items-index-container {
+  max-width: 70rem;
+}
