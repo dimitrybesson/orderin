@@ -1,6 +1,9 @@
 <div class="invoice-container">
   <% if current_user.supplier_worker? && !@order.shipped? %>
     <%= button_to "SHIP", order_path(@order), method: :patch, form_class: "invoice-ship-btn" %>
+  <% elsif current_user.restaurant_worker? && @order.shipped? && !@order.received? %>
+    <%= button_to "RECEIVE ORDER", order_path(@order), method: :patch, form_class: "invoice-show-receive-btn" %>
+    <%= image_tag("gift.svg", class: "invoice-show-receive-img") %>
   <% end %>
   <%= image_tag("truck.svg", class: "order-shipped-img hidden") %>
   <h2 class="page-heading-left">Invoice#: <%= @invoice.id %></h2>

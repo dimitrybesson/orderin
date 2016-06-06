@@ -14,32 +14,53 @@
   color: green;
 }
 
-.invoice-ship-btn {
+.invoice-ship-btn, .invoice-show-receive-btn {
   float: right;
   margin: 2rem 2rem 0 0;
 }
 
-.order-shipped-img {
-  float: right;
-  margin: 2rem 36rem 0 0;
+.invoice-show-receive-img {
+  position: fixed;
+  left: 71rem;
+  top: -10.4rem;
 
-  transition-property: margin-right;
+  transition-property: top;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+
+.invoice-show-receive-img-active {
+  top: 10.4rem;
+}
+
+.order-shipped-img {
+  position: fixed;
+  top: 10.7rem;
+  left: 25rem;
+
+  transition-property: left;
   transition-duration: 2s;
   transition-delay: 0.55s;
   transition-timing-function: ease-in-out;
 }
 
 .order-shipped-img-active {
-  margin-right: 0;
+  display: inline-block;
+  left: 70rem;
 }
 
 .delivery-date {
   display: inline-block;
 }
 
-.invoice-receive-btn {
+.invoice-view-btn {
   display: inline-block;
   margin-left: 2rem;
+}
+
+.invoice-receive-btn {
+  display: inline-block;
+  margin-left: 1rem;
 }
 
 /////////////////////INVOICE SHOW TABLE//////////////////////

@@ -9,6 +9,7 @@
       <p>Order #<%= order.id %></p>
       <p class="delivery-total">Total: $<%= order.invoice.total %></p>
       <p class="delivery-date">Delivery date: <%= order.delivery_date.strftime("%a, %b %d, %Y") %>
+        <%= button_to "VIEW ORDER", order_invoice_path(order, order.invoice), method: :get, form_class: "invoice-view-btn" %>
         <%= button_to "RECEIVE ORDER", order_path(order), method: :patch, form_class: "invoice-receive-btn" %>
         <%= image_tag("gift.svg", class: "order-received-img", title: "Delivered") %>
       </p>

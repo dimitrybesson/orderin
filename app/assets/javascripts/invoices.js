@@ -43,6 +43,19 @@ $(document).on('ready page:load', function() {
       }.bind(this)
     })
   })
+  $('.invoice-show-receive-btn').on('submit', function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      method: 'PATCH',
+      url: $(this).attr('action'),
+      dataType: 'html',
+      success: function() {
+        $(this).remove();
+        $('.invoice-show-receive-img').addClass('invoice-show-receive-img-active');
+      }.bind(this)
+    })
+  })
   $('#invoices_search').on('keyup', function() {
     var data = {"search": $('#invoices_search').val()};
     $.ajax({
