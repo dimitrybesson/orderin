@@ -14,3 +14,35 @@
 <p><span class="subheading-bold">Address:</span> <%= @order.restaurant.street_address %></p>
 <p><span class="subheading-bold">Total:</span> $<%= @order.formatted_total %></p>
 <p><span class="subheading-bold">Instructions:</span> <%= @order.instructions %></p>
+<div id="map<%= @order.id %>" class="map"></div>
+<script>
+  var map;
+  var geocoder;
+  var restaurantAddress = "<%= @order.restaurant.street_address %>";
+  var mapElement = "map<%= @order.id %>"
+  function initMap() {
+    geocoder = new google.maps.Geocoder();
+    map = new google.maps.Map(document.getElementById(mapElement), {
+      center: {lat: 43.65, lng: -79.38},
+      zoom: 15
+    });
+    if (geocoder) {
+      geocoder.geocode( {'address': restaurantAddress}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              position: results[0].geometry.location
+            });
+            marker.setMap(map);
+          } else {
+            alert("No results found");
+          }
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      })
+    }
+  };
+  initMap();
+</script>
