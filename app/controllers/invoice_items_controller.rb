@@ -25,9 +25,11 @@ class InvoiceItemsController < ApplicationController
     @order = @invoice.order
     @invoice_items.each do |invoice_item|
       # maybe refactor this at some point
-      delta = invoice_item.quantity - params["#{invoice_item.id}"].to_i
+      item_quantity = params["#{invoice_item.id}"].to_i
+      item_quantity = 0 if item_quantity.nil?
+      delta = invoice_item.quantity - item_quantity
       invoice_item.update_inventory(delta)
-      invoice_item.update_attribute("quantity", invoice_item_mass_params("#{invoice_item.id}")["#{invoice_item.id}"])
+      invoice_item.update_attribute("quantity", (invoice_item_mass_params("#{invoice_item.id}")["#{invoice_item.id}"]).to_i)
     end
     @order.status[:invoiced] = true
     @order.save

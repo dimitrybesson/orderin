@@ -127,4 +127,19 @@ $(document).on('ready page:load', function() {
     $('.signup-modal').empty();
     $('.signup-modal').removeClass('modal-on');
   })
+
+  // ship order button for suppliers from their homescreen popup
+  $('.supplier-order-popup').on('click', '.supplier-popup-ship-btn', function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    $.ajax({
+      method: 'PATCH',
+      url: $(this).attr('href'),
+      dataType: 'html',
+      success: function() {
+        $('.supplier-popup-ship-btn').replaceWith("Order Shipped!");
+      }
+    })
+  })
 });
