@@ -3,13 +3,25 @@
 
 <%= form_tag(invoice_items_path, method: :patch) do %>
   <%= hidden_field_tag 'invoice', @invoice.id %>
-  <% @invoice_items.each do |invoice_item| %>
-    <div class="invoice-item invoice-edit-item">
-      <p class="invoice-edit-item-name"><%= invoice_item.order_item.name.capitalize %></p>
-      <%= number_field_tag invoice_item.id, invoice_item.quantity, min: 0, max: (invoice_item.quantity + invoice_item.order_item.inventory_item.quantity), class: "invoice-edit-field margin-zeroer" %>
-      <%= label_tag (:quantity), nil, class: "invoice-edit-field" %>
-      <p class="invoice-edit-field">Ordered: <%= invoice_item.order_item.quantity %></p>
-    </div>
-  <% end %>
+
+  <table class="invoice-edit-invoice-items">
+    <col class="column-invoice-edit-invoice-item-name"/>
+    <col class="column-invoice-edit-invoice-item-ordered-quantity"/>
+    <col class="column-invoice-edit-invoice-item-ship-quantity"/>
+
+    <tr class="invoice-edit-invoice-item-heading-row">
+      <th class="cell-invoice-edit-invoice-item-name">Name</th>
+      <th class="cell-invoice-edit-invoice-item-ordered-quantity">Ord Qty</th>
+      <th class="cell-invoice-edit-invoice-item-ship-quantity">Ship Qty</th>
+    </tr>
+    <% @invoice_items.each do |invoice_item| %>
+      <tr>
+        <td class="cell-invoice-edit-invoice-item-name"><%= invoice_item.order_item.name %></td>
+        <td class="cell-invoice-edit-invoice-item-ordered-quantity"><%= invoice_item.order_item.quantity %></td>
+        <td class="cell-invoice-edit-invoice-item-ship-quantity"><%= number_field_tag invoice_item.id, invoice_item.quantity, min: 0, max: (invoice_item.quantity + invoice_item.order_item.inventory_item.quantity), class: "invoice-edit-field margin-zeroer" %></td>
+      </tr>
+    <% end %>
+  </table>
+
   <%= submit_tag("Submit") %>
 <% end %>

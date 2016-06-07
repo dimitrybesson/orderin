@@ -158,3 +158,34 @@
 .margin-zeroer {
   margin: 0;
 }
+
+///////////////////INVOICE EDIT TABLE/////////////////////////////////////////
+
+.invoice-edit-invoice-items {
+  width: 80%;
+  max-width: 60rem;
+}
+
+.column-invoice-edit-invoice-item-name {
+  width: 70%;
+}
+
+.column-invoice-edit-invoice-item-ordered-quantity {
+  width: 15%;
+}
+
+.column-invoice-edit-invoice-item-ship-quantity {
+  width: 15%;
+}
+
+.cell-invoice-edit-invoice-item-ordered-quantity {
+  text-align: right;
+}
+
+.cell-invoice-edit-invoice-item-ship-quantity {
+  text-align: right;
+}
+
+.invoice-edit-field {
+  max-width: 50%;
+}
