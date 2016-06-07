@@ -132,7 +132,9 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if request.xhr?
-      if @order.shipped?
+      if @order.received?
+        @order.status[:paid] = true
+      elsif @order.shipped?
         @order.status[:received] = true
       elsif @order.invoiced?
         @order.status[:shipped] = true
