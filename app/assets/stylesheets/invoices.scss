@@ -137,3 +137,24 @@
 .cell-invoice-item-difference {
   text-align: center;
 }
+
+.invoice-edit-field {
+  display: inline-block;
+  float: right;
+  margin: 1rem;
+}
+
+.invoice-edit-item {
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.invoice-edit-item-name {
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+.margin-zeroer {
+  margin: 0;
+}
