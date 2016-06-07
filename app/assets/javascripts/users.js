@@ -142,4 +142,17 @@ $(document).on('ready page:load', function() {
       }
     })
   })
+
+  $('.supplier-order-popup').on('click', '.supplier-popup-paid-btn', function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    $.ajax({
+      method: 'PATCH',
+      url: $(this).attr('href'),
+      success: function() {
+        $('.supplier-popup-paid-btn').replaceWith("Paid!");
+      }
+    })
+  })
 });
