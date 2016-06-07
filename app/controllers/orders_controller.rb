@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :order_clearance, only: [:create]
 
   def index
 
@@ -165,5 +166,13 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:restaurant_id, :supplier_id, :user_id, :instructions, :delivery_date, :status)
+  end
+
+  def order_clearance
+    master_id = Role.find_by(name: "master").id
+    privileged_id = Role.find_by(name: "privileged").id
+    unless Permission.find_by(institution_id: order_params[:restaurant_id], institution_type: "Restaurant", user_id: current_user.id, role_id: "#{master_id} OR #{privileged_id}").present?
+      redirect_to root_url
+    end
   end
 end
