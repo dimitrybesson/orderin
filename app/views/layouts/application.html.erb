@@ -37,7 +37,7 @@
     <% if user_signed_in? %>
       <% if current_user.restaurant_worker? %>
         <p class="nav-link"><%= link_to "Home", user_path(current_user) %></p>
-        <p class="nav-link"><%= link_to "Deliveries (#{current_user.deliveries_count})", deliveries_path, class: "deliveries-link" %>
+        <p class="nav-link"><%= link_to "Deliveries", deliveries_path, class: "deliveries-link" %> (<span class="delivery-count" data=<%=current_user.deliveries_count%>><%= current_user.deliveries_count %></span>)</p>
         <p class="nav-link"><%= link_to "View Orders", orders_path %></p>
         <p class="nav-link"><%= link_to "View Invoices", invoices_path %></p>
         <p class="nav-link"><%= link_to "Browse Suppliers", suppliers_path %></p>

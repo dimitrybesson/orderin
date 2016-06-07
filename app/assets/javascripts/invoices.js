@@ -40,6 +40,8 @@ $(document).on('ready page:load', function() {
       success: function() {
         $(this).parent().find('.order-received-img').addClass('order-received-img-active');
         $(this).remove();
+        $('.delivery-count').text(parseInt($('.delivery-count').attr('data')) - 1);
+        $('.delivery-count').attr('data', parseInt($('.delivery-count').attr('data')) - 1);
       }.bind(this)
     })
   })
@@ -53,6 +55,8 @@ $(document).on('ready page:load', function() {
       success: function() {
         $(this).remove();
         $('.invoice-show-receive-img').addClass('invoice-show-receive-img-active');
+        $('.delivery-count').text(parseInt($('.delivery-count').attr('data')) - 1);
+        $('.delivery-count').attr('data', parseInt($('.delivery-count').attr('data')) - 1);
       }.bind(this)
     })
   })
