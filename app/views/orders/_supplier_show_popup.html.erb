@@ -1,6 +1,9 @@
 <p class="supplier-order-modal-close-btn">X</p>
 <p>
-  <% if @order.invoiced? && !@order.shipped? %>
+  <% if @order.received? && !@order.paid? %>
+    <%= link_to "Order##{@order.id}", order_invoice_path(@order, @order.invoice), class: "page-heading-left" %>
+    <%= link_to "Mark as Paid", order_path(@order), method: :patch, class: "supplier-popup-paid-btn" %>
+  <% elsif @order.invoiced? && !@order.shipped? %>
     <%= link_to "Order##{@order.id}", order_invoice_path(@order, @order.invoice), class: "page-heading-left" %>
     <%= link_to "Ship Order", order_path(@order), method: :patch, class: "supplier-popup-ship-btn" %>
   <% elsif @order.invoiced? %>

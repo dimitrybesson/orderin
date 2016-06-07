@@ -6,7 +6,27 @@
     <%= image_tag("gift.svg", class: "invoice-show-receive-img") %>
   <% end %>
   <%= image_tag("truck.svg", class: "order-shipped-img hidden") %>
-  <h2 class="page-heading-left">Invoice#: <%= @invoice.id %></h2>
+  <h2 class="page-heading-left">Invoice#: <%= @invoice.id %>
+    <% if @order.completed? %>
+      Completed!
+    <% else %>
+      <% if @order.seen? %>
+        <%= image_tag("eyeball.svg", class: "icon icon-eyeball", title: "Seen by the supplier") %>
+      <% end %>
+      <% if @order.invoiced? %>
+        <%= image_tag("clipboard.svg", class: "icon icon-clipboard", title: "Invoiced") %>
+      <% end %>
+      <% if @order.shipped? %>
+        <%= image_tag("truck.svg", class: "icon icon-truck", title: "Shipped") %>
+      <% end %>
+      <% if @order.received? %>
+        <%= image_tag("gift.svg", class: "icon icon-gift", title: "Delivered") %>
+      <% end %>
+      <% if @order.paid? %>
+        <%= image_tag("dollar.svg", class: "icon icon-dollar", title: "Paid") %>
+      <% end %>
+    <% end %>
+  </h2>
   <p class="minor-heading">Order#: <%= @invoice.order_id %></p>
   <p class="minor-heading">Supplier: <%= @invoice.order.supplier.name %></p>
   <p>Restaurant: <%= @invoice.order.restaurant.name %></p>

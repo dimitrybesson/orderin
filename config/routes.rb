@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'home/index'
+  get 'home/credits' => 'home#credits', as: 'credits'
 
   devise_for :users
   get 'users/:id' => 'users#show', as: 'user'
